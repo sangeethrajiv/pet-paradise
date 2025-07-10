@@ -1,0 +1,46 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% load products_tag %}
+ {% block title %}You need to be logged in{% endblock title %}
+{% block content %}
+    <style>
+        .login-required-container {
+            text-align: center;
+            margin-top: 50px;
+            width: 100%;
+            padding: 20px;  /* Optional padding for better spacing */
+        }
+        .login-required-container img {
+            width: 80%;  /* Set your desired width */
+            height: auto;  /* Maintain aspect ratio */
+            max-width: 100%;  /* Responsive design */
+        }
+    </style>
+<br>
+<br>
+
+    <div class="login-required-container container">
+        <img src="{% static 'assets/img/login_first.png' %}" alt="Login Required" class="img-fluid">
+        <div class="mt-3">
+            <a class="btn" href="{% url 'login' %}">Login to continue</a>
+        </div>
+    </div>
+
+        <div class="shape-two">
+                            <img src="/static/assets/img/images/testimonial_shape03.png" alt="img" class="alltuchtopdown">
+                            
+                        </div>
+                       
+    <div class="team__shape">
+        <img src="/static/assets/img/team/team_shape.png" alt="img" class="ribbonRotate">
+        
+    </div>
+    <div class="testimonial__shape-wrap">
+        <img src="/static/assets/img/images/testimonial_shape01.png" alt="img" data-aos="fade-down-right" data-aos-delay="400" class="aos-init aos-animate">
+    </div>
+    <div class="footer__shape-wrap">
+                    <img src="/static/assets/img/images/footer_shape01.png" alt="img" data-aos="fade-up-right" data-aos-delay="400" class="aos-init aos-animate">
+                    <img src="/static/assets/img/images/footer_shape02.png" alt="img" data-aos="fade-up-left" data-aos-delay="400" class="aos-init aos-animate">
+                </div>
+
+{%endblock content%}

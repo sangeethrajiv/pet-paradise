@@ -1,0 +1,181 @@
+   {% extends "home/base.html" %}
+   {% load static %}
+   {% block title %}Notification{% endblock title %}
+   {% block content %}
+ 
+   <style>
+        #messages-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            overflow: auto;
+        }
+        .message-container {
+            background-color: white;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+        }
+    </style>
+
+    <div id="messages-page">
+        <div class="message-container">
+            <h1>Notification</h1>
+            <div class="list-group" id="message-list">
+                {% for message in messages %}
+                    <div class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-2">{{ message.title }}</h5>
+                            <small>{{ message.timestamp }}</small>
+                        </div>
+                    <p class="mb-2">Dear {{ message.user.username }}, this is a reminder for your pet's upcoming appointment on  {{ message.confirmed_appointment.date }} at {{ message.confirmed_appointment.time|time:"h:i A" }}.
+                        Please confirm the appointment by responding to this message with 'C'. If you need to reschedule, please call us at 2345678.
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+            <br>
+            <div class="row justify-content-center">
+                <div class="col-auto text-center">
+                    <button class="btn btn-primary" onclick="hideMessages()" style="width: 100px; height: 40px; padding: 26px;">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<main class="fix">
+    <!-- banner-area -->
+    <section class="banner__area banner__bg" data-background="{% static "assets/img/banner_bg.jpg" %}">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-xl-5 col-lg-6">
+                    <div class="banner__content">
+                        <h2 class="title" data-aos="fade-up" data-aos-delay="200">Trusted Pet<img src="{% static "assets/img/banner/banner_title_img01.png" %}" alt="">care & Veterinary Center<span class="icon"><img src="{% static "assets/img/banner/banner_title_img02.png" %}" alt=""></span>Point</h2>
+                        <p data-aos="fade-up" data-aos-delay="400">Template Kit uses demo images from Envato Elements Follower will need to license these images from Envato.</p>
+                        <a href="" class="btn aos-init aos-animate" data-aos="fade-up" data-aos-delay="600">Read More <svg width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+                        <path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+                        <path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+                        </svg></a>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-6 col-md-9">
+                    <div class="banner__img text-end">
+                        <img src="{% static 'assets/img/banner/banner_img01.png' %}" alt="img" data-aos="fade-left" data-aos-delay="800">
+                        <div class="healthy-pets" data-aos="zoom-in" data-aos-delay="1000">
+                            <div class="icon">
+                                <img src="{% static 'assets/img/icon/pet_icon01.svg' %}" alt="" class="injectable">
+                            </div>
+                            <div class="content">
+                                <h6 class="circle rotateme">BETTER - HEALTHY - PETS - LOVE -</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner__shape-wrap">
+            <img src="{% static 'assets/img/banner/banner_shape01.png' %}" alt="img" data-aos="fade-down" data-aos-delay="1200">
+            <img src="{% static 'assets/img/banner/banner_shape02.png' %}" alt="img" data-aos="fade-up-right" data-aos-delay="1200">
+            <img src="{% static 'assets/img/banner/banner_shape03.png' %}" alt="img" class="ribbonRotate">
+            <img src="{% static 'assets/img/banner/banner_shape04.png' %}" alt="img">
+        </div>
+    </section>
+    <!-- banner-area-end -->
+     <!-- about-area -->
+<section class="about__area">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-8">
+                <div class="about__img">
+                    <img src="{% static 'assets/img/images/about_img.png' %}" alt="">
+                    <div class="video__box">
+                        <div class="video__box-shape">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 147" fill="none" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/images/about_video_shape.svg" class="injectable">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M86.9529 0.644859C118.111 -1.54344 139.193 26.5991 152.229 55.1913C163.382 79.6537 163.56 108.547 144.918 127.782C125.437 147.883 95.8226 150.96 70.1167 139.916C35.8367 125.188 -3.77156 103.028 0.725109 65.8316C5.52803 26.1015 47.2712 3.43176 86.9529 0.644859Z" fill="currentcolor"></path>
+</svg>
+                        </div>
+                        <h5 class="title">Watch Our <br> Working Video</h5>
+                       <a href="https://www.youtube.com/watch?v=XdFfCPK5ycw" class="popup-video play-btn"><i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-6">
+                <div class="about__content">
+                    <div class="section__title mb-20">
+                        <span class="sub-title">Know More Us
+                            <strong class="shake">
+                                                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/pet_icon02.svg" class="injectable">
+<path d="M13.4698 10.3934C14.5316 10.7921 15.7693 10.0008 16.2343 8.62072C16.6992 7.24061 16.2091 5.79916 15.1473 5.39432C14.0856 4.99562 12.8478 5.78689 12.3829 7.167C11.9243 8.55325 12.4081 9.9947 13.4698 10.3934Z" fill="currentcolor"></path>
+<path d="M10.6049 5.63968C11.6981 5.79302 12.7222 4.6644 12.8855 3.11254C13.0489 1.56068 12.3012 0.17443 11.2018 0.0149505C10.1086 -0.138395 9.08446 0.99023 8.92111 2.54209C8.75148 4.10008 9.50541 5.48633 10.6049 5.63968Z" fill="currentcolor"></path>
+<path d="M0.175492 8.62072C0.640418 10.0008 1.87812 10.7982 2.93991 10.3934C4.0017 9.9947 4.49176 8.54712 4.02683 7.167C3.56191 5.78689 2.3242 4.98949 1.26241 5.39432C0.200623 5.79916 -0.289433 7.24061 0.175492 8.62072Z" fill="currentcolor"></path>
+<path d="M3.52421 3.11254C3.69385 4.6644 4.71794 5.79916 5.81114 5.63968C6.90434 5.48633 7.65828 4.10008 7.49492 2.54209C7.33157 0.990231 6.30748 -0.144529 5.21428 0.0149505C4.11479 0.17443 3.36086 1.56068 3.52421 3.11254Z" fill="currentcolor"></path>
+<path d="M2.88337 14.8282C3.55562 16.1408 5.20799 16.7481 6.38287 16.2205C6.57764 16.1285 6.61533 16.1408 7.3567 15.7912C7.59545 15.6808 7.84676 15.601 8.20488 15.601C8.57556 15.601 8.82059 15.6808 9.05305 15.7912C9.79442 16.1408 9.82583 16.1285 10.0269 16.2205C11.2018 16.7419 12.8541 16.1347 13.5264 14.8282C14.5442 12.8408 12.4018 11.3687 11.9683 10.9516C11.0635 10.0744 10.9756 9.18503 10.8876 8.78633C10.5295 7.22834 9.26667 6.63336 8.20488 6.60269C7.14309 6.63949 5.88025 7.22834 5.52213 8.78633C5.43417 9.18503 5.34621 10.0683 4.44149 10.9516C4.00798 11.3748 1.86556 12.8408 2.88337 14.8282Z" fill="currentcolor"></path>
+</svg>
+                            </strong>
+                        </span>
+                        <h2 class="title">Our Passion Is Providing <br> Superior Pet Care</h2>
+                    </div>
+                    <div class="about__content-inner">
+                        <div class="experience__box">
+                            <div class="experience__box-shape">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 126 118" fill="none" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/images/experience_shape.svg" class="injectable">
+<path d="M1.59541 38.3554C-4.4184 17.6207 13.0083 -2.4148 34.5612 0.454689L58.5153 3.64389C61.1751 3.998 63.8707 3.998 66.5304 3.64389L91.8365 0.274701C113.035 -2.54759 130.366 16.83 125.022 37.3781L120.935 53.0905C119.831 57.3353 119.681 61.769 120.496 66.0776L123.582 82.3855C127.435 102.749 109.75 120.734 89.1371 117.414L64.5688 113.456C60.8828 112.863 57.1177 112.954 53.4653 113.725L36.4442 117.321C13.894 122.084 -5.47438 100.981 1.41104 79.1494L4.96817 67.8708C6.73094 62.2816 6.80047 56.3018 5.16813 50.6737L1.59541 38.3554Z" fill="currentcolor"></path>
+</svg>
+                            </div>
+                            <div class="experience__box-content">
+                                <h4 class="title">15 <span>Yr</span></h4>
+                                <p>Experience</p>
+                            </div>
+                        </div>
+                        <p>Come see how I’m styling these final days of summer with bright palettes and pops of color that will dazzle your wardrobe year round!</p>
+                    </div>
+                    <p>We will work with you to develop individualised care plans, including management of chronic diseases. We are committed to being the region’s premier healthcare network providing patient centered care that inspires.</p>
+                    <div class="about__content-bottom">
+                        <div class="about__content-sign">
+                            <img src="{% static 'assets/img/images/author_sign.png' %}" alt="">
+                        </div>
+                        <div class="customer__review">
+                            <div class="customer__review-img">
+                                <ul class="list-wrap">
+                                    <li><img src="{% static 'assets/img/images/author_01.png' %}" alt=""></li>
+                                    <li><img src="{% static 'assets/img/images/author_02.png' %}" alt=""></li>
+                                    <li><img src="{% static 'assets/img/images/author_03.png' %}" alt=""></li>
+                                    <li><img src="{% static 'assets/img/images/author_04.png' %}" alt=""></li>
+                                </ul>
+                            </div>
+                            <div class="customer__review-content">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>4.7 (1,567 Reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shape">
+                        <img src="{% static 'assets/img/images/about_shape02.png' %}" alt="img" data-aos="fade-down-left" data-aos-delay="400">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="about__shape-wrap">
+        <img src="{% static 'assets/img/images/about_shape01.png' %}" alt="img" data-aos="fade-up-right" data-aos-delay="800">
+        <img src="{% static 'assets/img/images/about_shape03.png' %}" alt="img" class="ribbonRotate">
+    </div>
+</section>
+<!-- about-area-end -->
+    <script>
+        function hideMessages() {
+            window.location.href = "{% url 'home' %}";
+        }
+    </script>
+    
+    {% endblock content %}

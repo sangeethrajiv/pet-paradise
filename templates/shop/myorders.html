@@ -1,0 +1,442 @@
+{% extends "home/base2.html" %}
+{% load static %}
+{% load products_tag%}
+{% block title %}My orders{% endblock title %}
+{% block content %}
+
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
+    <div class="page-content">
+                <!-- breadcrumb-area -->
+        <section class="breadcrumb__area fix">
+            <div class="container">
+                <div class="row align-items-end">
+                    <div class="col-lg-8">
+                        <div class="breadcrumb__content">
+                            <h3 class="title">Order History</h3>
+                            <nav class="breadcrumb">
+                                <span property="itemListElement" typeof="ListItem">
+                                    <a href="{% url 'home' %}">Home</a>
+                                </span>
+                                <span class="breadcrumb-separator"><i class="fas fa-arrow-right"></i></span>
+                                <span property="itemListElement" typeof="ListItem">
+                                    <a href="{% url 'orderslist' %}">Order History</a></span>
+                                <span class="breadcrumb-separator"><i class="fas fa-arrow-right"></i></span>
+                                <span property="itemListElement" typeof="ListItem">
+                                    <a href="">My Orders</a></span>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="breadcrumb__img">
+                            <img src="{% static 'assets/img/images/breadcrumb_img.png' %}" alt="img" data-aos="fade-left" data-aos-delay="800">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="breadcrumb__shape-wrap">
+                <img src="{% static 'assets/img/images/breadcrumb_shape01.png' %}" alt="img" data-aos="fade-down-right" data-aos-delay="400">
+                <img src="{% static 'assets/img/images/breadcrumb_shape02.png' %}" alt="img" data-aos="fade-up-left" data-aos-delay="400">
+            </div>
+        </section>
+        <!-- breadcrumb-area-end -->
+        <div class="container-fluid">
+            <br>
+            <br>
+
+            <!-- Layout container with Flexbox -->
+            <div class="row">
+                <!-- Main content area -->
+                <div class="col-xl-8">
+                    <div class="card" style="border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                        <div class="card-header" style="background-color: #f8f9fa; border-bottom: 1px solid #ddd; padding: 1rem;">
+                             {% if order %}
+                            <div class="d-flex align-items-center">
+                                <h5 class="card-title flex-grow-1 mb-0" style="margin: 0; font-size: 1.25rem;">Order #{{order.order_id}}</h5>
+                                <div class="flex-shrink-0">
+                                    <a href="" class="btn btn-secondary btn-sm" style="font-size: 0.875rem; padding: 0.25rem 0.5rem; border-radius: 4px;">
+                                        <i class="fas fa-download align-middle me-1"></i> Invoice
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" style="padding: 1rem;">
+                            <div class="table-responsive table-card">
+                                
+                    <table class="table table-nowrap align-middle table-borderless mb-0">
+                        <thead class="table-light text-muted">
+                            <tr>
+                                <th scope="col">Product Details</th>
+                                <th scope="col">Item Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Rating</th>
+                                <th scope="col" class="text-end">Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                         {% for orderz in order_items %}
+                            <tr>
+                                <td>
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 avatar-md bg-light rounded p-1" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                                            <img src="{{ orderz.product.featured_image }}" alt="" class="img-fluid d-block" style="max-width: 100%; height: auto;">
+                                            <img src="{{ orderz.pet.image }}" alt="" class="img-fluid d-block" style="max-width: 100%; height: auto;">
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="fs-16" style="font-size: 1rem;">
+                                                <a href="" class="link-primary" style="text-decoration: none; color: #007bff;">{{ orderz.product.title|truncatechars:40 }}</a>
+                                            </h5>
+                                            <p class="text-muted mb-0" style="margin: 0;">Color: <span class="fw-medium">Pink</span></p>
+                                            <p class="text-muted mb-0" style="margin: 0;">Size: <span class="fw-medium">M</span></p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ orderz.product.price|apply_discount:orderz.product.discount }}</td>
+                                <td>{{ orderz.quantity }}</td>
+                                <td>
+                                    <div class="text-warning fs-15" style="font-size: 1.25rem;">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </td>
+                                <td class="fw-medium text-end" style="font-weight: 500;">
+                                
+                           {{ orderz.product.price|multiply:orderz.quantity|apply_discount:orderz.product.discount }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr class="border-top-dashed" style="border-top: 2px dashed #ADD8E6; margin: 1rem 0;">
+                                <td colspan="3"></td>
+                                <td colspan="2" class="fw-medium p-0" style="font-weight: 500;">
+                                    <table class="table table-borderless mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <td>Sub Total :</td>
+                                                <td class="text-end">{{ total_price }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Discount <span class="text-muted">(VELZON15)</span> :</td>
+                                                <td class="text-end">-$53.99</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Shipping Charge :</td>
+                                                <td class="text-end">Free Shipping</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Estimated Tax :</td>
+                                                <td class="text-end">$44.99</td>
+                                            </tr>
+                                            <tr class="border-top border-top-dashed">
+                                                <hr>
+                                                <th scope="row">Total (USD) :</th>
+                                                <th class="text-end">$ {{ total_price }}</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="card">
+    <div class="card-header" style="background-color: #f8f9fa; border-bottom: 1px solid #ddd; padding: 1rem;">
+        <div class="d-sm-flex align-items-center">
+            <h5 class="card-title flex-grow-6 mb-0" style="margin: 0; font-size: 1.25rem;">Order Status</h5>
+
+            <div class="flex-shrink-0 mt-2 mt-sm-0">
+                <a href="javascript:void(0);" class="btn btn-soft-info btn-sm mt-2 mt-sm-0" style="color: #17a2b8; background-color: #e9f7fb; border-color: #d7eff7; padding: 0.375rem 0.75rem; font-size: 0.875rem;">
+                    <i class="fas fa-map-pin align-bottom me-1"></i> Change Address
+                </a>
+                <a href="javascript:void(0);" class="btn btn-soft-danger btn-sm mt-2 mt-sm-0" style="color: #dc3545; background-color: #f8d7da; border-color: #f5c6cb; padding: 0.375rem 0.75rem; font-size: 0.875rem;">
+                    <i class="fas fa-archive align-bottom me-1"></i> Cancel Order
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" style="padding: 1rem;">
+        <div class="profile-timeline">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item border-0">
+                    <div class="accordion-header" id="headingOne">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="display: flex; align-items: center; text-decoration: none;">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-xs">
+                                    <div class="avatar-title bg-success rounded-circle" style="width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; background-color: #28a745;">
+                                        <i class="fas fa-shopping-bag" style="color: #fff;"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fs-15 mb-0 fw-semibold" style="margin: 0; font-size: 1rem; font-weight: 600;">Order Placed - <span class="fw-normal" style="font-weight: 400;">Wed, 15 Dec 2021</span></h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body ms-2 ps-5 pt-0">
+                            <h6 class="mb-1" style="margin: 0.5rem 0;">An order has been placed.</h6>
+                            <p class="text-muted" style="color: #6c757d;">Wed, 15 Dec 2021 - 05:34PM</p>
+
+                            <h6 class="mb-1" style="margin: 0.5rem 0;">Seller has processed your order.</h6>
+                            <p class="text-muted mb-0" style="color: #6c757d;">Thu, 16 Dec 2021 - 5:48AM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-top-dashed" style="border-top: 2px dashed #ADD8E6; margin: 1rem 0;"></div>
+                <div class="accordion-item border-0">
+                    <div class="accordion-header" id="headingTwo">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="display: flex; align-items: center; text-decoration: none;">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-xs">
+                                    <div class="avatar-title bg-success rounded-circle" style="width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; background-color: #28a745;">
+                                        <i class="fas fa-gift" style="color: #fff;"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fs-15 mb-1 fw-semibold" style="margin: 0; font-size: 1rem; font-weight: 600;">Packed - <span class="fw-normal" style="font-weight: 400;">Thu, 16 Dec 2021</span></h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body ms-2 ps-5 pt-0">
+                            <h6 class="mb-1" style="margin: 0.5rem 0;">Your Item has been picked up by courier partner</h6>
+                            <p class="text-muted mb-0" style="color: #6c757d;">Fri, 17 Dec 2021 - 9:45AM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-top-dashed" style="border-top: 2px dashed #ADD8E6; margin: 1rem 0;"></div>
+                <div class="accordion-item border-0">
+                    <div class="accordion-header" id="headingThree">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="display: flex; align-items: center; text-decoration: none;">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-xs">
+                                    <div class="avatar-title bg-success rounded-circle" style="width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; background-color: #28a745;">
+                                        <i class="fas fa-truck" style="color: #fff;"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fs-15 mb-1 fw-semibold" style="margin: 0; font-size: 1rem; font-weight: 600;">Shipping - <span class="fw-normal" style="font-weight: 400;">Thu, 16 Dec 2021</span></h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body ms-2 ps-5 pt-0">
+                            <h6 class="fs-14" style="margin: 0.5rem 0;">RQK Logistics - MFDS1400457854</h6>
+                            <h6 class="mb-1" style="margin: 0.5rem 0;">Your item has been shipped.</h6>
+                            <p class="text-muted mb-0" style="color: #6c757d;">Sat, 18 Dec 2021 - 4.54PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-top-dashed" style="border-top: 2px dashed #ADD8E6; margin: 1rem 0;"></div>
+                <div class="accordion-item border-0">
+                    <div class="accordion-header" id="headingFour">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="display: flex; align-items: center; text-decoration: none;">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-xs">
+                                    <div class="avatar-title bg-light text-success rounded-circle" style="width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa;">
+                                        <i class="fas fa-truck-loading" style="color: #28a745;"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fs-14 mb-0 fw-semibold" style="margin: 0; font-size: 1rem; font-weight: 600;">Out For Delivery</h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="border-top-dashed" style="border-top: 2px dashed #ADD8E6; margin: 1rem 0;"></div>
+                <div class="accordion-item border-0">
+                    <div class="accordion-header" id="headingFive">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="display: flex; align-items: center; text-decoration: none;">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-xs">
+                                    <div class="avatar-title bg-light text-success rounded-circle" style="width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa;">
+                                        <i class="fas fa-box" style="color: #28a745;"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fs-14 mb-0 fw-semibold" style="margin: 0; font-size: 1rem; font-weight: 600;">Delivered</h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+                
+
+                <!-- Right side content -->
+                <div class="col-xl-3" style="position: -webkit-sticky; position: sticky; top: 0;">
+                    <!-- Logistics Details Card -->
+                    <div class="card" style="border: 1px solid #ddd; border-radius: 0.5rem; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="background-color: #f8f9fa; border-bottom: 1px solid #ddd; padding: 1rem;">
+                            <div class="d-flex">
+                                <h5 class="card-title flex-grow-1 mb-0"><i class="mdi mdi-truck-fast-outline align-middle me-1 text-muted"></i> Logistics Details</h5>
+                                <div class="flex-shrink-0">
+                                    <a href="javascript:void(0);" class="badge bg-primary-subtle text-primary fs-12">Track Order</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <lord-icon src="https://cdn.lordicon.com/zzjjvkam.json" trigger="loop" style="width:80px;height:80px"></lord-icon>
+                                <h5 class="fs-17 mt-2">RQK Logistics</h5>
+                                <p class="text-muted mb-0">ID: {{order.tracking_no}}</p>
+                                <p class="text-muted mb-0">Payment Mode:{{order.payment_mode}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <!-- Customer Details Card -->
+                    <div class="card" style="border: 1px solid #ddd; border-radius: 0.5rem; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="background-color: #f8f9fa; border-bottom: 1px solid #ddd; padding: 1rem;">
+                            <div class="d-flex">
+                                <h5 class="card-title flex-grow-1 mb-0">Customer Details</h5>
+                                <div class="flex-shrink-0">
+                                    <a href="javascript:void(0);" class="link-secondary" style="text-decoration: none; color: #6c757d;">View Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" style="padding: 1rem;">
+                            <ul class="list-unstyled mb-0 vstack gap-3">
+                                <li>
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0">
+                                            <img src="{% static "assets/img/nophoto..jpg" %} " alt="" class="avatar-sm rounded" style="width: 50px; height: 50px; object-fit: cover;">
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="fs-15 mb-1">{{order.fname}}</h6>
+                                            <p class="text-muted mb-0">Customer</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-envelope me-2 align-middle text-muted fs-16"></i> {{order.email}}
+                                </li>
+                                <li>
+                                    <i class="fas fa-phone-alt me-2 align-middle text-muted fs-16"></i>+(91) {{order.phone}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <!-- Billing Address Card -->
+                    <div class="card" style="border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                        <div class="card-header" style="background-color: #f8f9fa; border-bottom: 1px solid #ddd; padding: 1rem;">
+                            <h5 class="card-title mb-0" style="margin: 0; font-size: 1.25rem;">
+                                <i class="fas fa-map-pin align-middle me-1" style="color: #6c757d;"></i> Billing Address
+                            </h5>
+                        </div>
+                        <div class="card-body" style="padding: 1rem;">
+                            <ul class="list-unstyled vstack gap-2 mb-0">
+                                <li class="fw-medium fs-15" style="font-weight: 500; font-size: 1.125rem;">Street:  S V Lane, Chickpett</li>
+                                <li style="font-size: 1rem;">State/province/area: Karnataka</li>
+                                <li style="font-size: 1rem;">Phone number:+91-9852287041</li>
+                                <li style="font-size: 1rem;">Zip code: 560053</li>
+                                <li style="font-size: 1rem;">Bangalore</li>
+
+                         </ul>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <!-- Shipping Address Card -->
+                    <div class="card" style="border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                        <div class="card-header" style="background-color: #f8f9fa; border-bottom: 1px solid #ddd; padding: 1rem;">
+                            <h5 class="card-title mb-0" style="margin: 0; font-size: 1.25rem;">
+                                <i class="fas fa-map-marker-alt align-middle me-1" style="color: #6c757d;"></i> Shipping Address
+                            </h5>
+                        </div>
+                        <div class="card-body" style="padding: 1rem;">
+                            <ul class="list-unstyled vstack gap-2 mb-0">
+                                <li class="fw-medium fs-15" style="font-weight: 500; font-size: 1.125rem;">{{order.address}}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <!-- Payment Details Card -->
+                    <div class="card" style="border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                        <div class="card-header" style="background-color: #f8f9fa; border-bottom: 1px solid #ddd; padding: 1rem;">
+                            <h5 class="card-title mb-0" style="margin: 0; font-size: 1.25rem;">
+                                <i class="fas fa-credit-card align-bottom me-1" style="color: #6c757d;"></i> Payment Details
+                            </h5>
+                        </div>
+                        <div class="card-body" style="padding: 1rem;">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="flex-shrink-0">
+                                    <p class="text-muted mb-0" style="margin: 0; color: #6c757d;">Transactions:</p>
+                                </div>
+                                <div class="flex-grow-1 ms-2">
+                                    <h6 class="mb-0" style="margin: 0; font-size: 1rem;">#{{order.payment_id}}</h6>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="flex-shrink-0">
+                                    <p class="text-muted mb-0" style="margin: 0; color: #6c757d;">Payment Method:</p>
+                                </div>
+                                <div class="flex-grow-1 ms-2">
+                                    <h6 class="mb-0" style="margin: 0; font-size: 1rem;">{{order.payment_mode}}</h6>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="flex-shrink-0">
+                                    <p class="text-muted mb-0" style="margin: 0; color: #6c757d;">Card Holder Name:</p>
+                                </div>
+                                <div class="flex-grow-1 ms-2">
+                                    <h6 class="mb-0" style="margin: 0; font-size: 1rem;">{{order.fname}}</h6>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="flex-shrink-0">
+                                    <p class="text-muted mb-0" style="margin: 0; color: #6c757d;">Card Number:</p>
+                                </div>
+                                <div class="flex-grow-1 ms-2">
+                                    <h6 class="mb-0" style="margin: 0; font-size: 1rem;">xxxx xxxx xxxx 2456</h6>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                    <p class="text-muted mb-0" style="margin: 0; color: #6c757d;">Total Amount:</p>
+                                </div>
+                                <div class="flex-grow-1 ms-2">
+                                    <h6 class="mb-0" style="margin: 0; font-size: 1rem;">{{order.amount}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end col -->
+                 <br>
+                 
+            </div>
+
+            <!-- end row -->
+
+        </div><!-- container-fluid -->
+    </div><!-- End Page-content -->
+    <br>
+    <br>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</div>
+<!-- ============================================================== -->
+<!-- End right Content here -->
+<!-- ============================================================== -->
+
+{% endblock content %}

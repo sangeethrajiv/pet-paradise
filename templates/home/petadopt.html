@@ -1,0 +1,725 @@
+{% extends "home/base4.html" %}
+{% block title %}Pet Adopt{% endblock title %}
+{% load static %}
+{% block content %}
+    <!-- main-area -->
+    <main class="fix">
+        <!-- banner-area -->
+        <section class="banner__area-three banner__bg-three" data-background="{% static "assets/img/banner/h3_banner_bg.jpg" %} ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-10">
+                        <div class="banner__content-three">
+                            <span class="sub-title" data-aos="fade-up">Find your new pet from our animal shelters.</span>
+                            <h2 class="title" data-aos="fade-up" data-aos-delay="400">Adopt Your Pretty <img src="{% static "assets/img/banner/h3_banner_title_img.png" %}" alt="">Friend</h2>
+                            <div class="banner__search-wrap-two" data-aos="fade-up" data-aos-delay="600">
+                                <form action="{% url "petadoption" %}"  method="Post" class="banner__search-form-two">
+                                    {% csrf_token %}
+                                    <div class="select-grp">
+                                        <label><i class="flaticon-placeholder"></i></label>
+                                        <select name="location" class="orderby">
+                                            <option value="Select Location">Select Location</option>
+                                            <option value="Trivandirum ">Trivandirum</option>
+                                            <option value="Kollam ">Kollam</option>
+                                            <option value="Alappuzha">Alappuzha</option>
+                                            <option value="kottayam">Kottayam</option>
+                                            <option value="Ernakulam">Ernakulam</option>
+                                            <option value="Thrissur">Thrissur</option>
+                                            <option value="Kozhikode">Kozhikode</option>
+                                            <option value="Malappuram">Malappuram</option>
+                                            <option value="Kannur">Kannur</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-grp">
+                                        <input type="text" placeholder="What are you looking for . . .">
+                                        <button type="submit">Search<i class="flaticon-loupe"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="banner__pet-wrap" data-aos="fade-up" data-aos-delay="800">
+                                <ul class="list-wrap">
+                                    <li>
+                                        <div class="icon">
+                                            <i class="flaticon-dog"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h6 class="title">Dogs <span>(2,590)</span></h6>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="flaticon-cat-face"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h6 class="title">Cats <span>(1,217)</span></h6>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="flaticon-paw"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h6 class="title">Others Pet <span>(1,120)</span></h6>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3">
+                        <div class="banner__img-three">
+                            <img src="{% static "assets/img/banner/h3_banner_img.png" %}" alt="img" data-aos="fade-left" data-aos-delay="1000">
+                            <img src="{% static "assets/img/banner/h3_banner_img_shape.png" %}" alt="shape" class="shape-one" data-aos="fade-up" data-aos-delay="800">
+                            <img src="{% static "assets/img/banner/h3_banner_shape02.png" %}" alt="shape" class="shape-two ribbonRotate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="banner__shape-wrap-three">
+                <img src="{% static "assets/img/banner/h3_banner_shape01.png" %}" alt="shape" data-aos="fade-down-right" data-aos-delay="600">
+            </div>
+        </section>
+        <!-- banner-area-end -->
+<!-- about-area -->
+<section class="about__area-three">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-md-7">
+                <div class="about__img-three">
+                    <img src="{% static 'assets/img/images/h3_about_img01.png' %}" alt="img">
+                    <div class="customer__review customer__review-two" data-aos="fade-up" data-aos-delay="400">
+                        <div class="customer__review-img">
+                            <ul class="list-wrap">
+                                <li><img src="{% static 'assets/img/images/author_01.png' %}" alt=""></li>
+                                <li><img src="{% static 'assets/img/images/author_02.png' %}" alt=""></li>
+                                <li><img src="{% static 'assets/img/images/author_03.png' %}" alt=""></li>
+                                <li><img src="{% static 'assets/img/images/author_04.png' %}" ></li>
+                            </ul>
+                        </div>
+                        <div class="customer__review-content">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span>4.7 (1,567 Reviews)</span>
+                        </div>
+                    </div>
+
+
+            <div class="healthy-pets healthy-pets-two aos-init aos-animate" data-aos="zoom-in" data-aos-delay="400">
+                        
+                        <div class="icon">
+                            <img src="{% static 'assets/img/icon/pet_icon01.svg' %}" alt="" class="injectable">
+                        </div>
+                                <div class="content">
+                                    <h6 class="circle rotateme"><span style="transform: rotate(0deg);">B</span><span style="transform: rotate(14.5deg);">E</span><span style="transform: rotate(29deg);">T</span><span style="transform: rotate(43.5deg);">T</span><span style="transform: rotate(58deg);">E</span><span style="transform: rotate(72.5deg);">R</span> <span style="transform: rotate(87deg);">-</span> <span style="transform: rotate(101.5deg);">H</span><span style="transform: rotate(116deg);">E</span><span style="transform: rotate(130.5deg);">A</span><span style="transform: rotate(145deg);">L</span><span style="transform: rotate(159.5deg);">T</span><span style="transform: rotate(174deg);">H</span><span style="transform: rotate(188.5deg);">Y</span> <span style="transform: rotate(203deg);">-</span> <span style="transform: rotate(217.5deg);">P</span><span style="transform: rotate(232deg);">E</span><span style="transform: rotate(246.5deg);">T</span><span style="transform: rotate(261deg);">S</span> <span style="transform: rotate(275.5deg);">-</span> <span style="transform: rotate(290deg);">L</span><span style="transform: rotate(304.5deg);">O</span><span style="transform: rotate(319deg);">V</span><span style="transform: rotate(333.5deg);">E</span> <span style="transform: rotate(348deg);">-</span></h6>
+                                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-5 order-0 order-lg-3">
+                <div class="about__video-wrap">
+                    <img src="{% static 'assets/img/images/h3_about_img02.png' %}" alt="img">
+                    <a href="https://www.youtube.com/watch?v=XdFfCPK5ycw" class="popup-video play-btn"><i class="fas fa-play"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="about__content-three">
+                    <div class="section__title mb-10">
+                        <span class="sub-title">WE LOVE OUR JOB!
+                            <strong class="shake">
+                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/pet_icon02.svg" class="injectable">
+<path d="M13.4698 10.3934C14.5316 10.7921 15.7693 10.0008 16.2343 8.62072C16.6992 7.24061 16.2091 5.79916 15.1473 5.39432C14.0856 4.99562 12.8478 5.78689 12.3829 7.167C11.9243 8.55325 12.4081 9.9947 13.4698 10.3934Z" fill="currentcolor"></path>
+<path d="M10.6049 5.63968C11.6981 5.79302 12.7222 4.6644 12.8855 3.11254C13.0489 1.56068 12.3012 0.17443 11.2018 0.0149505C10.1086 -0.138395 9.08446 0.99023 8.92111 2.54209C8.75148 4.10008 9.50541 5.48633 10.6049 5.63968Z" fill="currentcolor"></path>
+<path d="M0.175492 8.62072C0.640418 10.0008 1.87812 10.7982 2.93991 10.3934C4.0017 9.9947 4.49176 8.54712 4.02683 7.167C3.56191 5.78689 2.3242 4.98949 1.26241 5.39432C0.200623 5.79916 -0.289433 7.24061 0.175492 8.62072Z" fill="currentcolor"></path>
+<path d="M3.52421 3.11254C3.69385 4.6644 4.71794 5.79916 5.81114 5.63968C6.90434 5.48633 7.65828 4.10008 7.49492 2.54209C7.33157 0.990231 6.30748 -0.144529 5.21428 0.0149505C4.11479 0.17443 3.36086 1.56068 3.52421 3.11254Z" fill="currentcolor"></path>
+<path d="M2.88337 14.8282C3.55562 16.1408 5.20799 16.7481 6.38287 16.2205C6.57764 16.1285 6.61533 16.1408 7.3567 15.7912C7.59545 15.6808 7.84676 15.601 8.20488 15.601C8.57556 15.601 8.82059 15.6808 9.05305 15.7912C9.79442 16.1408 9.82583 16.1285 10.0269 16.2205C11.2018 16.7419 12.8541 16.1347 13.5264 14.8282C14.5442 12.8408 12.4018 11.3687 11.9683 10.9516C11.0635 10.0744 10.9756 9.18503 10.8876 8.78633C10.5295 7.22834 9.26667 6.63336 8.20488 6.60269C7.14309 6.63949 5.88025 7.22834 5.52213 8.78633C5.43417 9.18503 5.34621 10.0683 4.44149 10.9516C4.00798 11.3748 1.86556 12.8408 2.88337 14.8282Z" fill="currentcolor"></path>
+</svg>
+                            </strong>
+                        </span>
+                        <h2 class="title">Adopt Pets And Save Their Lives</h2>
+                    </div>
+                    <p>We will work with you to develop individualised care plans including management  chronic diseases. We are committed to being the network providing healthcare centered care that inspires.</p>
+                    <a href="{% url 'about' %}" class="btn">Contact With Us <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+</svg></a>
+                    <div class="shape">
+                        <img src="{% static 'assets/img/images/h3_about_shape.png' %}" alt="shape" class="ribbonRotate">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- about-area-end -->
+
+<!-- brand-area -->
+<div class="brand__area-three">
+    <div class="container">
+        <div class="swiper brand-active-two">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img01.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img02.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img03.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img04.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img05.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img06.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img07.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img03.png' %}" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- brand-area-end -->
+
+<!-- animal-area -->
+<section class="animal__area-two">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-8">
+                <div class="section__title white-title text-center mb-40">
+                    <h2 class="title">Available Pets For Adoption</h2>
+                    <p>We will work with you to develop individualised care plans, including <br> management chronic diseases.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item animal__item-two shine-animate-item">
+                    <div class="animal__thumb animal__thumb-two shine-animate">
+                        <a href="{% url "petadoption" %}"><img src="{% static 'assets/img/shop/shop_img01.jpg' %}" alt="img"></a>
+                        <a href="{% url "petadoption" %}" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content animal__content-two">
+                        <h4 class="title"><a href="{% url "petadoption" %}">Cute French Bulldog</a></h4>
+                        <div class="pet-info">
+                            <ul class="list-wrap">
+                                <li>Gender: <span>Male</span></li>
+                                <li>Breed: <span>French</span></li>
+                            </ul>
+                        </div>
+                        <div class="location">
+                            <i class="flaticon-placeholder"></i>
+                            <span>Bakersfield, Alappuzha</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item animal__item-two shine-animate-item">
+                    <div class="animal__thumb animal__thumb-two shine-animate">
+                        <a href="{% url "petadoption" %}"><img src="{% static 'assets/img/shop/shop_img02.jpg' %}" alt="img"></a>
+                        <a href="{% url "petadoption" %}" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content animal__content-two">
+                        <h4 class="title"><a href="{% url "petadoption" %}">Purebred Pussycat</a></h4>
+                        <div class="pet-info">
+                            <ul class="list-wrap">
+                                <li>Gender: <span>Female</span></li>
+                                <li>Breed: <span>Germany</span></li>
+                            </ul>
+                        </div>
+                        <div class="location">
+                            <i class="flaticon-placeholder"></i>
+                            <span>Central Park, New York</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item animal__item-two shine-animate-item">
+                    <div class="animal__thumb animal__thumb-two shine-animate">
+                        <a href="{% url "petadoption" %}"><img src="{% static 'assets/img/shop/shop_img03.jpg' %}" alt="img"></a>
+                        <a href="{% url "petadoption" %}" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content animal__content-two">
+                        <h4 class="title"><a href="{% url "petadoption" %}">Italian Rabbit</a></h4>
+                        <div class="pet-info">
+                            <ul class="list-wrap">
+                                <li>Gender: <span>Male</span></li>
+                                <li>Breed: <span>Italy</span></li>
+                            </ul>
+                        </div>
+                        <div class="location">
+                            <i class="flaticon-placeholder"></i>
+                            <span>Birmingham, Alabama</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item animal__item-two shine-animate-item">
+                    <div class="animal__thumb animal__thumb-two shine-animate">
+                        <a href="{% url "petadoption" %}"><img src="{% static 'assets/img/shop/shop_img04.jpg' %}" alt="img"></a>
+                        <a href="{% url "petadoption" %}" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content animal__content-two">
+                        <h4 class="title"><a href="{% url "petadoption" %}">Macaw Russian</a></h4>
+                        <div class="pet-info">
+                            <ul class="list-wrap">
+                                <li>Gender: <span>Male</span></li>
+                                <li>Breed: <span>Canada</span></li>
+                            </ul>
+                        </div>
+                        <div class="location">
+                            <i class="flaticon-placeholder"></i>
+                            <span>Anchorage, Alaska</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="animal__shape-wrap">
+        <img src="{% static 'assets/img/images/adoption_shape01.png' %}" alt="shape" class="rotateme">
+        <img src="{% static 'assets/img/images/adoption_shape02.png' %}" alt="shape" data-aos="fade-down-left" data-aos-delay="400">
+    </div>
+</section>
+<!-- animal-area-end -->
+
+<!-- choose-area -->
+<section class="choose__area">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 col-md-10">
+                <div class="choose__img">
+                    <img src="{% static 'assets/img/images/choose_img.png' %}" alt="img">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="choose__content">
+                    <div class="section__title mb-15">
+                        <span class="sub-title">Why Choose Us
+                            <strong class="shake">
+                              <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/pet_icon02.svg" class="injectable">
+<path d="M13.4698 10.3934C14.5316 10.7921 15.7693 10.0008 16.2343 8.62072C16.6992 7.24061 16.2091 5.79916 15.1473 5.39432C14.0856 4.99562 12.8478 5.78689 12.3829 7.167C11.9243 8.55325 12.4081 9.9947 13.4698 10.3934Z" fill="currentcolor"></path>
+<path d="M10.6049 5.63968C11.6981 5.79302 12.7222 4.6644 12.8855 3.11254C13.0489 1.56068 12.3012 0.17443 11.2018 0.0149505C10.1086 -0.138395 9.08446 0.99023 8.92111 2.54209C8.75148 4.10008 9.50541 5.48633 10.6049 5.63968Z" fill="currentcolor"></path>
+<path d="M0.175492 8.62072C0.640418 10.0008 1.87812 10.7982 2.93991 10.3934C4.0017 9.9947 4.49176 8.54712 4.02683 7.167C3.56191 5.78689 2.3242 4.98949 1.26241 5.39432C0.200623 5.79916 -0.289433 7.24061 0.175492 8.62072Z" fill="currentcolor"></path>
+<path d="M3.52421 3.11254C3.69385 4.6644 4.71794 5.79916 5.81114 5.63968C6.90434 5.48633 7.65828 4.10008 7.49492 2.54209C7.33157 0.990231 6.30748 -0.144529 5.21428 0.0149505C4.11479 0.17443 3.36086 1.56068 3.52421 3.11254Z" fill="currentcolor"></path>
+<path d="M2.88337 14.8282C3.55562 16.1408 5.20799 16.7481 6.38287 16.2205C6.57764 16.1285 6.61533 16.1408 7.3567 15.7912C7.59545 15.6808 7.84676 15.601 8.20488 15.601C8.57556 15.601 8.82059 15.6808 9.05305 15.7912C9.79442 16.1408 9.82583 16.1285 10.0269 16.2205C11.2018 16.7419 12.8541 16.1347 13.5264 14.8282C14.5442 12.8408 12.4018 11.3687 11.9683 10.9516C11.0635 10.0744 10.9756 9.18503 10.8876 8.78633C10.5295 7.22834 9.26667 6.63336 8.20488 6.60269C7.14309 6.63949 5.88025 7.22834 5.52213 8.78633C5.43417 9.18503 5.34621 10.0683 4.44149 10.9516C4.00798 11.3748 1.86556 12.8408 2.88337 14.8282Z" fill="currentcolor"></path>
+</svg>
+                            </strong>
+                        </span>
+                        <h2 class="title">We thrive on building a <br> healthy community <br> for all Pets.</h2>
+                    </div>
+                    <p>Duis aute irure dolor in reprehenderit in voWe care for the growing needs of our community. We build systems for providing health services for individuals, families and populations.</p>
+                    <div class="why__list-box mb-30">
+                        <ul class="list-wrap">
+                            <li>
+                                <div class="why__list-box-item">
+                                    <div class="why__list-box-item-top">
+                                        <div class="icon">
+                                            <img src="{% static 'assets/img/icon/check_icon.svg' %}" alt="" class="injectable">
+                                        </div>
+                                        <h4 class="title">More Experience</h4>
+                                    </div>
+                                    <p>Be confident in the treatment plan and your doctor’s abilities.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="why__list-box-item">
+                                    <div class="why__list-box-item-top">
+                                        <div class="icon">
+                                            <img src="{% static 'assets/img/icon/check_icon.svg' %}" alt="" class="injectable">
+                                        </div>
+                                        <h4 class="title">Affordable Pricing</h4>
+                                    </div>
+                                    <p>Be confident in the treatment plan and your doctor’s abilities.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="" class="btn">Contact With Us <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+</svg></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="choose__shape-wrap">
+        <img src="{% static 'assets/img/images/choose_shape01.png' %}" alt="shape" class="ribbonRotate">
+        <img src="{% static 'assets/img/images/choose_shape02.png' %}" alt="shape" data-aos="fade-right" data-aos-delay="400">
+    </div>
+</section>
+<!-- choose-area-end -->
+
+<!-- discover-area -->
+<section class="discover__area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-8">
+                <div class="section__title text-center mb-40">
+                    <span class="sub-title">Discover Our Cities
+                        <strong class="shake">
+                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/pet_icon02.svg" class="injectable">
+<path d="M13.4698 10.3934C14.5316 10.7921 15.7693 10.0008 16.2343 8.62072C16.6992 7.24061 16.2091 5.79916 15.1473 5.39432C14.0856 4.99562 12.8478 5.78689 12.3829 7.167C11.9243 8.55325 12.4081 9.9947 13.4698 10.3934Z" fill="currentcolor"></path>
+<path d="M10.6049 5.63968C11.6981 5.79302 12.7222 4.6644 12.8855 3.11254C13.0489 1.56068 12.3012 0.17443 11.2018 0.0149505C10.1086 -0.138395 9.08446 0.99023 8.92111 2.54209C8.75148 4.10008 9.50541 5.48633 10.6049 5.63968Z" fill="currentcolor"></path>
+<path d="M0.175492 8.62072C0.640418 10.0008 1.87812 10.7982 2.93991 10.3934C4.0017 9.9947 4.49176 8.54712 4.02683 7.167C3.56191 5.78689 2.3242 4.98949 1.26241 5.39432C0.200623 5.79916 -0.289433 7.24061 0.175492 8.62072Z" fill="currentcolor"></path>
+<path d="M3.52421 3.11254C3.69385 4.6644 4.71794 5.79916 5.81114 5.63968C6.90434 5.48633 7.65828 4.10008 7.49492 2.54209C7.33157 0.990231 6.30748 -0.144529 5.21428 0.0149505C4.11479 0.17443 3.36086 1.56068 3.52421 3.11254Z" fill="currentcolor"></path>
+<path d="M2.88337 14.8282C3.55562 16.1408 5.20799 16.7481 6.38287 16.2205C6.57764 16.1285 6.61533 16.1408 7.3567 15.7912C7.59545 15.6808 7.84676 15.601 8.20488 15.601C8.57556 15.601 8.82059 15.6808 9.05305 15.7912C9.79442 16.1408 9.82583 16.1285 10.0269 16.2205C11.2018 16.7419 12.8541 16.1347 13.5264 14.8282C14.5442 12.8408 12.4018 11.3687 11.9683 10.9516C11.0635 10.0744 10.9756 9.18503 10.8876 8.78633C10.5295 7.22834 9.26667 6.63336 8.20488 6.60269C7.14309 6.63949 5.88025 7.22834 5.52213 8.78633C5.43417 9.18503 5.34621 10.0683 4.44149 10.9516C4.00798 11.3748 1.86556 12.8408 2.88337 14.8282Z" fill="currentcolor"></path>
+</svg>
+                        </strong>
+                    </span>
+                    <h2 class="title">Find Pets by state or province</h2>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse <br> amily and deserves ets are the best care.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row gutter-24">
+            <div class="col-lg-6">
+                <div class="discover__item">
+                    <div class="discover__item-img">
+                        <img src="{% static 'assets/img/images/discover_img01.jpg' %}" alt="img">
+                    </div>
+                    <div class="discover__item-content">
+                        <h2 class="title"><a href="">New York </a></h2>
+                        <span>50 Pets</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="discover__item">
+                    <div class="discover__item-img">
+                        <img src="{% static 'assets/img/images/discover_img02.jpg' %}" alt="img">
+                    </div>
+                    <div class="discover__item-content">
+                        <h2 class="title"><a href="">Kollam </a></h2>
+                        <span>19 Pets</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="discover__item">
+                    <div class="discover__item-img">
+                        <img src="{% static 'assets/img/images/discover_img03.jpg' %}" alt="img">
+                    </div>
+                    <div class="discover__item-content">
+                        <h2 class="title"><a href="">Alappuzha</a></h2>
+                        <span>22 Pets</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="discover__item">
+                    <div class="discover__item-img">
+                        <img src="{% static 'assets/img/images/discover_img04.jpg' %}" alt="img">
+                    </div>
+                    <div class="discover__item-content">
+                        <h2 class="title"><a href="">Ernakulam </a></h2>
+                        <span>10 Pets</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="discover__item">
+                    <div class="discover__item-img">
+                        <img src="{% static 'assets/img/images/discover_img05.jpg' %}" alt="img">
+                    </div>
+                    <div class="discover__item-content">
+                        <h2 class="title"><a href="">kottayam </a></h2>
+                        <span>20 Pets</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="discover__shape">
+        <img src="{% static 'assets/img/images/discover_shape.png' %}" alt="shape" class="ribbonRotate">
+    </div>
+</section>
+<!-- discover-area-end -->
+<!-- cta-area -->
+<section class="cta__area fix">
+    <div class="container">
+        <div class="row align-items-end justify-content-center">
+            <div class="col-lg-7">
+                <div class="cta__content">
+                    <h2 class="title">Pets are not just animals, they are a part of your family</h2>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse We understand that your furry friend is a treasured member.</p>
+                    <a href="" class="btn">Read More <img src="{% static 'assets/img/icon/right_arrow.svg' %}" alt="" class="injectable"></a>
+                    <div class="shape">
+                        <img src="{% static 'assets/img/images/cta_shape01.png' %}" alt="shape" data-aos="fade-up-right" data-aos-delay="400">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-8">
+                <div class="cta__img">
+                    <img src="{% static 'assets/img/images/cta_img.png' %}" alt="img">
+                    <div class="cta__img-shape">
+                        <img src="{% static 'assets/img/images/cta_shape02.png' %}" alt="shape" data-aos="fade-down-left" data-aos-delay="400">
+                        <img src="{% static 'assets/img/images/cta_shape03.png' %}" alt="shape" data-aos="fade-up" data-aos-delay="800">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- cta-area-end -->
+
+<!-- testimonial-area -->
+<section class="testimonial__area-three">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-10">
+                <div class="testimonial__img-two">
+                    <div class="testimonial__img-mask-two">
+                        <img src="{% static 'assets/img/images/h3_testimonial_img.jpg' %}" alt="img">
+                    </div>
+                    <div class="review__box review__box-two">
+                        <div class="review__box-shape">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 146 109" fill="none" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/images/review_shape.svg" class="injectable">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M77.5386 1.47895C105.717 -3.01927 125.529 15.7883 138.061 35.6721C148.783 52.684 149.671 73.9803 133.264 89.8938C116.117 106.524 89.36 111.535 65.789 105.768C34.356 98.0772 -2.09217 85.3979 1.04594 57.5441C4.39778 27.7934 41.6519 7.20764 77.5386 1.47895Z" fill="currentcolor"></path>
+</svg>
+                        </div>
+
+                        <div class="review__box-content">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="23" viewBox="0 0 50 23" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/star.svg" class="injectable">
+<path d="M7.1552 20.8085L10.4247 22.8776C11.0234 23.2568 11.7561 22.6962 11.5985 21.9873L10.7319 18.0964L13.6232 15.475C14.1511 14.9969 13.8675 14.0901 13.1742 14.0324L9.36898 13.6944L7.88 10.0179C7.61214 9.35016 6.69826 9.35016 6.4304 10.0179L4.94141 13.6862L1.13622 14.0242C0.442934 14.0819 0.159317 14.9886 0.68716 15.4668L3.57847 18.0882L2.71187 21.9791C2.5543 22.688 3.28698 23.2485 3.88573 22.8693L7.1552 20.8085Z" fill="currentcolor"></path>
+<path d="M25 17.2692L30.0004 20.4337C30.9161 21.0137 32.0367 20.1563 31.7957 19.0721L30.4703 13.1213L34.8923 9.11211C35.6996 8.38088 35.2659 6.99404 34.2055 6.90579L28.3858 6.38888L26.1086 0.765909C25.6989 -0.255303 24.3012 -0.255303 23.8915 0.765909L21.6143 6.37627L15.7945 6.89318C14.7342 6.98144 14.3005 8.36827 15.1077 9.09951L19.5298 13.1087L18.2044 19.0595C17.9634 20.1437 19.0839 21.001 19.9997 20.4211L25 17.2692Z" fill="currentcolor"></path>
+<path d="M42.8449 20.8085L46.1144 22.8776C46.7131 23.2568 47.4458 22.6962 47.2882 21.9873L46.4216 18.0964L49.3129 15.475C49.8408 14.9969 49.5572 14.0901 48.8639 14.0324L45.0587 13.6944L43.5697 10.0179C43.3018 9.35016 42.388 9.35016 42.1201 10.0179L40.6311 13.6862L36.8259 14.0242C36.1326 14.0819 35.849 14.9886 36.3769 15.4668L39.2682 18.0882L38.4016 21.9791C38.244 22.688 38.9767 23.2485 39.5754 22.8693L42.8449 20.8085Z" fill="currentcolor"></path>
+</svg>
+                            <h2 class="title">1500+</h2>
+                            <span>Reviews</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-6">
+                <div class="testimonial__content-three">
+                    <div class="section__title mb-40">
+                        <span class="sub-title">Testimonials
+                            <strong class="shake">
+                               <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/pet_icon02.svg" class="injectable">
+<path d="M13.4698 10.3934C14.5316 10.7921 15.7693 10.0008 16.2343 8.62072C16.6992 7.24061 16.2091 5.79916 15.1473 5.39432C14.0856 4.99562 12.8478 5.78689 12.3829 7.167C11.9243 8.55325 12.4081 9.9947 13.4698 10.3934Z" fill="currentcolor"></path>
+<path d="M10.6049 5.63968C11.6981 5.79302 12.7222 4.6644 12.8855 3.11254C13.0489 1.56068 12.3012 0.17443 11.2018 0.0149505C10.1086 -0.138395 9.08446 0.99023 8.92111 2.54209C8.75148 4.10008 9.50541 5.48633 10.6049 5.63968Z" fill="currentcolor"></path>
+<path d="M0.175492 8.62072C0.640418 10.0008 1.87812 10.7982 2.93991 10.3934C4.0017 9.9947 4.49176 8.54712 4.02683 7.167C3.56191 5.78689 2.3242 4.98949 1.26241 5.39432C0.200623 5.79916 -0.289433 7.24061 0.175492 8.62072Z" fill="currentcolor"></path>
+<path d="M3.52421 3.11254C3.69385 4.6644 4.71794 5.79916 5.81114 5.63968C6.90434 5.48633 7.65828 4.10008 7.49492 2.54209C7.33157 0.990231 6.30748 -0.144529 5.21428 0.0149505C4.11479 0.17443 3.36086 1.56068 3.52421 3.11254Z" fill="currentcolor"></path>
+<path d="M2.88337 14.8282C3.55562 16.1408 5.20799 16.7481 6.38287 16.2205C6.57764 16.1285 6.61533 16.1408 7.3567 15.7912C7.59545 15.6808 7.84676 15.601 8.20488 15.601C8.57556 15.601 8.82059 15.6808 9.05305 15.7912C9.79442 16.1408 9.82583 16.1285 10.0269 16.2205C11.2018 16.7419 12.8541 16.1347 13.5264 14.8282C14.5442 12.8408 12.4018 11.3687 11.9683 10.9516C11.0635 10.0744 10.9756 9.18503 10.8876 8.78633C10.5295 7.22834 9.26667 6.63336 8.20488 6.60269C7.14309 6.63949 5.88025 7.22834 5.52213 8.78633C5.43417 9.18503 5.34621 10.0683 4.44149 10.9516C4.00798 11.3748 1.86556 12.8408 2.88337 14.8282Z" fill="currentcolor"></path>
+</svg>
+                            </strong>
+                        </span>
+                        <h2 class="title">Don't Just Take it From Us, <br> Hear What Our Clients Say:</h2>
+                    </div>
+                    <div class="swiper testimonial-active-three">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="testimonial__item-three">
+                                    <div class="testimonial__item-three-top">
+                                        <div class="testimonial__author-three">
+                                            <img src="{% static 'assets/img/images/h3_testi_author01.png' %}" alt="img" >
+                                        </div>
+                                        <div class="content">
+                                            <p>“ Duis aute irure dolor in reprehenderit in voluptate velitesse We understand that your irure dolor in reprehenderit in voluptate just about you ”</p>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial__item-three-bottom">
+                                        <div class="testimonial__icon-three">
+                                            <img src='{% static 'assets/img/icon/quote.svg' %}' alt="" class="injectable">
+                                        </div>
+                                        <div class="testimonial__author-info">
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <h4 class="title">Brooklyn Simon</h4>
+                                            <span>Designer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="testimonial__item-three">
+                                    <div class="testimonial__item-three-top">
+                                        <div class="testimonial__author-three">
+                                            <img src="{% static 'assets/img/images/h3_testi_author01.png' %}" alt="img">
+                                        </div>
+                                        <div class="content">
+                                            <p>“ Duis aute irure dolor in reprehenderit in voluptate velitesse We understand that your irure dolor in reprehenderit in voluptate just about you ”</p>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial__item-three-bottom">
+                                        <div class="testimonial__icon-three">
+                                            <img src="{% static 'assets/img/icon/quote.svg' %}" alt="" class="injectable">
+                                        </div>
+                                        <div class="testimonial__author-info">
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <h4 class="title">Brooklyn Simon</h4>
+                                            <span>Designer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial__nav-wrap-two">
+                        <button class="testimonial-button-prev"><img src="{% static 'assets/img/icon/right_arrow03.svg' %}" alt="" class="injectable"></button>
+                        <button class="testimonial-button-next"><img src="{% static 'assets/img/icon/right_arrow03.svg' %}" alt="" class="injectable"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="testimonial__shape-wrap-three">
+        <img src="{% static 'assets/img/images/h3_testimonial_shape.png' %}" alt="shape" data-aos="fade-down-left" data-aos-delay="400">
+    </div>
+</section>
+<!-- testimonial-area-end -->
+
+<!-- blog-post-area -->
+<section class="blog__post-area-three">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="section__title mb-40">
+                    <span class="sub-title">News & Blogs
+                        <strong class="shake">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/pet_icon02.svg" class="injectable">
+<path d="M13.4698 10.3934C14.5316 10.7921 15.7693 10.0008 16.2343 8.62072C16.6992 7.24061 16.2091 5.79916 15.1473 5.39432C14.0856 4.99562 12.8478 5.78689 12.3829 7.167C11.9243 8.55325 12.4081 9.9947 13.4698 10.3934Z" fill="currentcolor"></path>
+<path d="M10.6049 5.63968C11.6981 5.79302 12.7222 4.6644 12.8855 3.11254C13.0489 1.56068 12.3012 0.17443 11.2018 0.0149505C10.1086 -0.138395 9.08446 0.99023 8.92111 2.54209C8.75148 4.10008 9.50541 5.48633 10.6049 5.63968Z" fill="currentcolor"></path>
+<path d="M0.175492 8.62072C0.640418 10.0008 1.87812 10.7982 2.93991 10.3934C4.0017 9.9947 4.49176 8.54712 4.02683 7.167C3.56191 5.78689 2.3242 4.98949 1.26241 5.39432C0.200623 5.79916 -0.289433 7.24061 0.175492 8.62072Z" fill="currentcolor"></path>
+<path d="M3.52421 3.11254C3.69385 4.6644 4.71794 5.79916 5.81114 5.63968C6.90434 5.48633 7.65828 4.10008 7.49492 2.54209C7.33157 0.990231 6.30748 -0.144529 5.21428 0.0149505C4.11479 0.17443 3.36086 1.56068 3.52421 3.11254Z" fill="currentcolor"></path>
+<path d="M2.88337 14.8282C3.55562 16.1408 5.20799 16.7481 6.38287 16.2205C6.57764 16.1285 6.61533 16.1408 7.3567 15.7912C7.59545 15.6808 7.84676 15.601 8.20488 15.601C8.57556 15.601 8.82059 15.6808 9.05305 15.7912C9.79442 16.1408 9.82583 16.1285 10.0269 16.2205C11.2018 16.7419 12.8541 16.1347 13.5264 14.8282C14.5442 12.8408 12.4018 11.3687 11.9683 10.9516C11.0635 10.0744 10.9756 9.18503 10.8876 8.78633C10.5295 7.22834 9.26667 6.63336 8.20488 6.60269C7.14309 6.63949 5.88025 7.22834 5.52213 8.78633C5.43417 9.18503 5.34621 10.0683 4.44149 10.9516C4.00798 11.3748 1.86556 12.8408 2.88337 14.8282Z" fill="currentcolor"></path>
+</svg>
+                        </strong>
+                    </span>
+                    <h2 class="title">Our Recent Articles</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="view__all-btn text-end mb-40">
+                    <a href="" class="btn">See All Posts  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+</svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="blog__post-item-three shine-animate-item">
+                    <div class="blog__post-thumb-three shine-animate">
+                        <a href=""><img src="{% static 'assets/img/blog/h2_blog_post01.jpg' %}" alt="img"></a>
+                        <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                            <li><a href="">Pet</a></li>
+                            <li><a href="">Medical</a></li>
+                        </ul>
+                    </div>
+                    <div class="blog__post-content-three">
+                        <div class="blog__post-meta">
+                            <ul class="list-wrap">
+                                <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                            </ul>
+                        </div>
+                        <h2 class="title"><a href="">Understanding Zoonotic and Safeguarding Your Health</a></h2>
+                        <p>Duis aute irure dolor in reprehenderit innera voWe care for the growing needs of our community and build systems.</p>
+                        <a href="" class="btn btn-two">Read More <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+</svg>alt="" class="injectable"</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="blog__post-item-three shine-animate-item">
+                    <div class="blog__post-thumb-three shine-animate">
+                        <a href=""><img src="{% static 'assets/img/blog/h2_blog_post02.jpg' %}" alt="img"></a>
+                        <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                            <li><a href="">Pet Love</a></li>
+                        </ul>
+                    </div>
+                    <div class="blog__post-content-three">
+                        <div class="blog__post-meta">
+                            <ul class="list-wrap">
+                                <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                            </ul>
+                        </div>
+                        <h2 class="title"><a href="">How to Spot, Treat, and Prevent Hot Spots in Pets</a></h2>
+                        <p>Duis aute irure dolor in reprehenderit innera voWe care for the growing needs of our community and build systems.</p>
+                        <a href="" class="btn btn-two">Read More <img src="{% static 'assets/img/icon/right_arrow.svg' %}" alt="" class="injectable"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="blog__post-item-three shine-animate-item">
+                    <div class="blog__post-thumb-three shine-animate">
+                        <a href=""><img src="{% static 'assets/img/blog/h2_blog_post03.jpg' %}" alt="img"></a>
+                        <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                            <li><a href="">Pet</a></li>
+                            <li><a href="">Care</a></li>
+                        </ul>
+                    </div>
+                    <div class="blog__post-content-three">
+                        <div class="blog__post-meta">
+                            <ul class="list-wrap">
+                                <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                            </ul>
+                        </div>
+                        <h2 class="title"><a href="">3 Signs It’s Time for the First Pet Dental Cleaning</a></h2>
+                        <p>Duis aute irure dolor in reprehenderit innera voWe care for the growing needs of our community and build systems.</p>
+                        <a href="" class="btn btn-two">Read More <img src="{% static 'assets/img/icon/right_arrow.svg' %}" alt="" class="injectable"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blog__shape-wrap-three">
+        <img src="{% static 'assets/img/blog/blog_shape01.png' %}" alt="img" data-aos="fade-up-right" data-aos-delay="400">
+    </div>
+</section>
+<!-- blog-post-area-end -->
+
+
+    </main>
+    <!-- main-area-end -->
+
+{% endblock content %}

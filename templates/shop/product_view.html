@@ -1,0 +1,440 @@
+{% extends "home/base2.html" %}    
+{% load static %}
+ {% block title %}Products Details{% endblock title %}
+{% block content %}
+
+{% load products_tag %}
+<!-- main-area -->
+<main class="fix">
+
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb__area fix">
+        <div class="container">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <div class="breadcrumb__content">
+                        <h3 class="title">Products Details</h3>
+                        <nav class="breadcrumb">
+                            <span property="itemListElement" typeof="ListItem">
+                                <a href="{% url "home" %}">Home</a>
+                            </span>
+                            <span class="breadcrumb-separator"><i class="flaticon-right-arrow-angle"></i></span>
+                            <span property="itemListElement" typeof="ListItem">All Products</span>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="breadcrumb__img">
+                        <img src="{% static 'assets/img/images/breadcrumb_img.png' %}" alt="img" data-aos="fade-left" data-aos-delay="800">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="breadcrumb__shape-wrap">
+            <img src="{% static 'assets/img/images/breadcrumb_shape01.png' %}" alt="img" data-aos="fade-down-right" data-aos-delay="400">
+            <img src="{% static 'assets/img/images/breadcrumb_shape02.png' %}" alt="img" data-aos="fade-up-left" data-aos-delay="400">
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+<!-- product-details-area -->
+<section class="product__details-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+ <div class="product__details-images-wrap">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane show active" id="itemOne-tab-pane" role="tabpanel" aria-labelledby="itemOne-tab" tabindex="0">
+                            <a href="{{ product.featured_image}}" class="popup-image">
+                                <img src="{{ product.featured_image}}" style="width:630px;height:590px;" alt="">
+                            </a>
+                        </div>
+                        {% for img in product.additional_image_set.all %}
+                        <div class="tab-pane" id="item{{ forloop.counter }}-tab-pane" role="tabpanel" aria-labelledby="item{{ forloop.counter }}-tab" tabindex="0">
+                            <a href="{{ img.image}}" class="popup-image">
+                                <img src="{{ img.image}}" style="width:630px;height:590px;" alt="img">
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="itemOne-tab" data-bs-toggle="tab" data-bs-target="#itemOne-tab-pane" type="button" role="tab" aria-controls="itemOne-tab-pane" aria-selected="true">
+                                <img src="{{ product.featured_image}}" alt="img">
+                            </button>
+                        </li>
+                        {% for img in product.additional_image_set.all %}
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="item{{ forloop.counter }}-tab" data-bs-toggle="tab" data-bs-target="#item{{ forloop.counter }}-tab-pane" type="button" role="tab" aria-controls="item{{ forloop.counter }}-tab-pane" aria-selected="false">
+                                <img src="{{ img.image}}" alt="img">
+                            </button>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product__details-content">
+                    <span class="tag">Cat Food</span>
+                    <h2 class="title">{{product.title|truncatechars:80}}</h2>
+                    <div class="product__reviews-wrap">
+                        <div class="product__reviews">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span>(2 Reviews)</span>
+                        </div>
+                        <div class="product__code">
+                            <span>SKU: <strong>CAT4502</strong></span>
+                        </div>
+                    </div>
+                    <h4 class="price"><del style="color: lightgray;">₹{{product.price}}</del> <span>{% discount_money product.price product.discount %}</span><br><span style="color: black; font-size: 17px;"> ({{ product.discount }}% off/- Discount)</span></h4>
+                    <p> {{product.description|safe}}  </p>
+                    <div class="product__size-wrap">
+                        <span class="size-title">Size:</span>
+                        <ul class="list-wrap">
+                            <li>
+                                <button>250mg</button>
+                            </li>
+                            <li>
+                                <button>500mg</button>
+                            </li>
+                            <li>
+                                <button>1kg</button>
+                            </li>
+                        </ul>
+                    </div>
+<form method="post" action="{% url 'add_to_cart' %}">
+    {% csrf_token %}
+    <input type="hidden" name="product_id" value="{{ product.id }}">
+    <div class="product__details-qty">
+        <div class="cart-plus-minus">
+            <input type="number" name="quantity" value="1" min="1">
+        </div>
+        <button type="submit" id="btnCart" class="add-btn">Add To Cart</button>
+    </div>
+    </form>
+    <form method="post" action="{% url 'checkbuy' %}">
+           {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <button type="submit"  id="rzp-button1" class="btn border-btn">Buy it Now</button>
+  
+ </form>
+                    <div class="product__wishlist-wrap">
+                        <a href=""><i class="flaticon-love"></i>Add To Wishlist</a>
+                        <a href=""><i class="flaticon-exchange"></i>Compare To Other</a>
+                    </div>
+                    <div class="product__details-bottom">
+                        <ul class="list-wrap">
+                            <li class="product__details-category">
+                                <span class="title">Categories:</span>
+                                <a href="">Cat,</a>
+                                <a href="">Food,</a>
+                                <a href="">Care</a>
+                            </li>
+                            <li class="product__details-tags">
+                                <span class="title">Tags:</span>
+                                <a href="">Food Pet,</a>
+                                <a href="">Pet Essentials</a>
+                            </li>
+                            <li class="product__details-social">
+                                <span class="title">Share :</span>
+                                <ul class="list-wrap">
+                                    <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                    <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="product__details-checkout">
+                        <span class="title">Guaranteed Safe Checkout</span>
+                        <img src="{% static 'assets/img/products/card.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-12">
+                <div class="product-desc-wrap">
+                    <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description-tab-pane" type="button" role="tab" aria-controls="description-tab-pane" aria-selected="true">Description</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews-tab-pane" type="button" role="tab" aria-controls="reviews-tab-pane" aria-selected="false" tabindex="-1">Reviews</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="additional-info-tab" data-bs-toggle="tab" data-bs-target="#additional-info-tab-pane" type="button" role="tab" aria-controls="additional-info-tab-pane" aria-selected="false" tabindex="-1">Additional Information</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent2">
+                        <div class="tab-pane fade active show" id="description-tab-pane" role="tabpanel" aria-labelledby="description-tab" tabindex="0">
+                            {{ product.product_information|safe }}
+                        </div>
+                        <div class="tab-pane fade" id="reviews-tab-pane" role="tabpanel" aria-labelledby="reviews-tab" tabindex="0">
+                            <div class="product-desc-review">
+                                <div class="product-desc-review-title mb-15">
+                                    <h5 class="title">Customer Reviews (0)</h5>
+                                </div>
+                                <div class="left-rc">
+                                    <p>No reviews yet</p>
+                                </div>
+                                <div class="right-rc">
+                                    <a href="#">Write a review</a>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="tab-pane fade" id="additional-info-tab-pane" role="tabpanel" aria-labelledby="additional-info-tab" tabindex="0">
+                        <div class="box-container">
+                            {% if additional_info %}
+                       <div style="overflow-x:auto;">
+                            <table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 18px; text-align: left; border: 1px solid #ddd;">
+                                <thead>
+                                    <tr>
+                                        <th style="padding: 12px; border: 1px solid #ddd; background-color: #f2f2f2;">Title</th>
+                                        <th style="padding: 12px; border: 1px solid #ddd; background-color: #f2f2f2;">Specification</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for info in additional_info %}
+                                    <tr style="cursor: pointer;" onmouseover="this.style.backgroundColor='#f5f5f5';" onmouseout="this.style.backgroundColor='';">
+                                        <td style="padding: 12px; border: 1px solid #ddd;">{{ info.title }}</td>
+                                        <td style="padding: 12px; border: 1px solid #ddd;">{{ info.spec }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                            {% else %}
+                                <p>No additional information available.</p>
+                            {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+<div class="related-product-area">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section__title-two mb-20">
+                                <h2 class="title">Related Products <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/images/title_shape.svg" class="injectable">
+<path d="M11.697 3.35785C11.8595 4.07894 11.7813 4.86172 11.5835 5.61122C11.3382 6.54061 10.8205 7.6516 9.88535 8.03492C8.73139 8.51822 7.45976 7.74582 6.97208 6.67674C6.58633 5.82914 6.59256 4.83321 6.70248 3.93051C6.82823 2.96784 7.14909 1.99514 7.86276 1.35707C9.45709 -0.0656691 11.3834 1.62921 11.697 3.35785Z" fill="currentcolor"></path>
+<path d="M3.8015 2.76885C5.10209 4.16079 5.12035 6.64396 4.0498 8.14815C3.78963 8.52628 3.39589 8.80286 2.93801 8.8363C2.48012 8.86973 2.0416 8.58673 1.74633 8.24707C1.17777 7.60603 0.801699 6.60021 0.648846 5.7209C0.475794 4.67506 0.700865 3.57913 1.26076 2.67297C1.42952 2.39813 1.62816 2.1316 1.92258 1.98829C2.27677 1.86162 2.67312 1.93978 3.00795 2.12954C3.28301 2.30267 3.55017 2.50578 3.8015 2.76885Z" fill="currentcolor"></path>
+<path d="M17.128 6.47901C15.8274 6.18126 14.4502 6.53806 13.3823 7.3028C12.4736 7.95091 11.2791 9.19533 11.5321 10.4244C11.7729 11.4569 12.7413 11.9196 13.6913 12.0875C15.6072 12.3634 17.8457 11.5384 18.94 9.94428C19.5139 9.1064 19.4489 8.38029 18.8901 7.58103C18.441 6.97327 17.8232 6.64036 17.128 6.47901Z" fill="currentcolor"></path>
+<path d="M17.1265 14.7496C17.2162 14.7745 17.3357 14.8078 17.4253 14.8328C18.6504 15.1738 19.8491 16.3443 18.8497 17.5787C17.8126 18.8347 12.6847 17.1174 13.4485 15.56C13.5338 15.3585 13.6928 15.2419 13.8818 15.1336C14.8205 14.4938 16.035 14.5101 17.1265 14.7496Z" fill="currentcolor"></path>
+</svg>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product__item-wrap">
+                        <div class="swiper product-active swiper-initialized swiper-horizontal swiper-backface-hidden">
+                            <div class="swiper-wrapper" id="swiper-wrapper-9c3eb6647e1e10ebd" aria-live="polite">
+                                <div class="swiper-slide swiper-slide-active" style="width: 242px; margin-right: 20px;" role="group" aria-label="1 / 6" data-swiper-slide-index="0">
+                                    <div class="product__item">
+                                        <div class="product__thumb">
+                                            <a href=""><img src="{%static 'assets/img/products/products_img01.jpg' %}" alt="img"></a>
+                                            <div class="product__action">
+                                                <a href=""><i class="flaticon-love"></i></a>
+                                                <a href=""><i class="flaticon-loupe"></i></a>
+                                                <a href=""><i class="flaticon-exchange"></i></a>
+                                            </div>
+                                            <div class="sale-wrap">
+                                                <span>New</span>
+                                            </div>
+                                            <div class="product__add-cart">
+                                                <a href="" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product__content">
+                                            <div class="product__reviews">
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span>(2 Reviews)</span>
+                                            </div>
+                                            <h4 class="title"><a href="">Dog Harness-Neoprene Comfort Liner-Orange and ...</a></h4>
+                                            <h3 class="price">$12.00 <del>$25.00</del></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide swiper-slide-next" style="width: 242px; margin-right: 20px;" role="group" aria-label="2 / 6" data-swiper-slide-index="1">
+                                    <div class="product__item">
+                                        <div class="product__thumb">
+                                            <a href=""><img src="{% static 'assets/img/products/products_img02.jpg' %}" alt="img"></a>
+                                            <div class="product__action">
+                                                <a href=""><i class="flaticon-love"></i></a>
+                                                <a href=""><i class="flaticon-loupe"></i></a>
+                                                <a href=""><i class="flaticon-exchange"></i></a>
+                                            </div>
+                                            <div class="sale-wrap sale-wrap-two">
+                                                <span>Sale!</span>
+                                            </div>
+                                            <div class="product__add-cart">
+                                                <a href="" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product__content">
+                                            <div class="product__reviews">
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span>(2 Reviews)</span>
+                                            </div>
+                                            <h4 class="title"><a href="">Arm &amp; Hammer Super Deodori zing Dog Shampoo, Pet Wash</a></h4>
+                                            <h3 class="price">$20.00 <del>$30.00</del></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" style="width: 242px; margin-right: 20px;" role="group" aria-label="3 / 6" data-swiper-slide-index="2">
+                                    <div class="product__item">
+                                        <div class="product__thumb">
+                                           <a href=""><img src="{% static 'assets/img/products/products_img03.jpg' %}" alt="img"></a>
+                                            <div class="product__action">
+                                                <a href=""><i class="flaticon-love"></i></a>
+                                                <a href=""><i class="flaticon-loupe"></i></a>
+                                                <a href=""><i class="flaticon-exchange"></i></a>
+                                            </div>
+                                            <div class="product__add-cart">
+                                                <a href="" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product__content">
+                                            <div class="product__reviews">
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span>(2 Reviews)</span>
+                                            </div>
+                                            <h4 class="title"><a href="">Milk-Bone Brushing Chews Daily Dental Dog Treats ...</a></h4>
+                                            <h3 class="price">$36.00 <del>$56.00</del></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" style="width: 242px; margin-right: 20px;" role="group" aria-label="4 / 6" data-swiper-slide-index="3">
+                                    <div class="product__item">
+                                        <div class="product__thumb">
+                                            <a href=""><img src="{% static 'assets/img/products/products_img04.jpg' %}" alt="img"></a>
+                                            <div class="product__action">
+                                                <a href=""><i class="flaticon-love"></i></a>
+                                                <a href=""><i class="flaticon-loupe"></i></a>
+                                                <a href=""><i class="flaticon-exchange"></i></a>
+                                            </div>
+                                            <div class="sale-wrap sale-wrap-two">
+                                                <span>Sale!</span>
+                                            </div>
+                                            <div class="product__add-cart">
+                                                <a href="" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product__content">
+                                            <div class="product__reviews">
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span>(2 Reviews)</span>
+                                            </div>
+                                            <h4 class="title"><a href="">Two Door Top Load Plastic Kennel &amp; Pet Carrier, Blue 19”</a></h4>
+                                            <h3 class="price">$18.00 <del>$33.00</del></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" style="width: 242px; margin-right: 20px;" role="group" aria-label="5 / 6" data-swiper-slide-index="4">
+                                    <div class="product__item">
+                                        <div class="product__thumb">
+                                        <a href=""><img src="{% static 'assets/img/products/products_img05.jpg' %}" alt="img"></a>
+                                            <div class="product__action">
+                                                <a href=""><i class="flaticon-love"></i></a>
+                                                <a href=""><i class="flaticon-loupe"></i></a>
+                                                <a href=""><i class="flaticon-exchange"></i></a>
+                                            </div>
+                                            <div class="sale-wrap">
+                                                <span>New</span>
+                                            </div>
+                                            <div class="product__add-cart">
+                                                <a href="" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product__content">
+                                            <div class="product__reviews">
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span>(2 Reviews)</span>
+                                            </div>
+                                            <h4 class="title"><a href="">The Kitten House with Mat Sleeping Bed House</a></h4>
+                                            <h3 class="price">$19.00 <del>$28.00</del></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" style="width: 242px; margin-right: 20px;" role="group" aria-label="6 / 6" data-swiper-slide-index="5">
+                                    <div class="product__item">
+                                        <div class="product__thumb">
+                                            <a href=""><img src="{% static 'assets/img/products/products_img07.jpg' %}" alt="img">
+                                            <div class="product__action">
+                                                <a href=""><i class="flaticon-love"></i></a>
+                                                <a href=""><i class="flaticon-loupe"></i></a>
+                                                <a href=""><i class="flaticon-exchange"></i></a>
+                                            </div>
+                                            <div class="sale-wrap sale-wrap-two">
+                                                <span>Sale!</span>
+                                            </div>
+                                            <div class="product__add-cart">
+                                                <a href="" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product__content">
+                                            <div class="product__reviews">
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span>(2 Reviews)</span>
+                                            </div>
+                                            <h4 class="title"><a href="">Two Door Top Load Plastic Kennel &amp; Pet Carrier, Blue 19”</a></h4>
+                                            <h3 class="price">$18.00 <del>$33.00</del></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                        <div class="product__nav-wrap">
+                            <button class="product-button-prev" tabindex="0" aria-label="Previous slide" aria-controls="swiper-wrapper-9c3eb6647e1e10ebd"><i class="flaticon-left-chevron"></i></button>
+                            <button class="product-button-next" tabindex="0" aria-label="Next slide" aria-controls="swiper-wrapper-9c3eb6647e1e10ebd"><i class="flaticon-right-arrow-angle"></i></button>
+                        </div>
+                    </div>
+             </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

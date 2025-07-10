@@ -1,0 +1,140 @@
+{% extends "home/base2.html" %}
+{% load static %}
+{% block title %}Team details{% endblock title %}
+{% block content %}
+
+    <!-- main-area -->
+    <main class="fix">
+
+        <!-- breadcrumb-area -->
+        <section class="breadcrumb__area fix">
+            <div class="container">
+                <div class="row align-items-end">
+                    <div class="col-lg-8">
+                        <div class="breadcrumb__content">
+                            <h3 class="title">Team Details</h3>
+                            <nav class="breadcrumb">
+                                <span property="itemListElement" typeof="ListItem">
+                                    <a href="">Home</a>
+                                </span>
+                                <span class="breadcrumb-separator"><i class="flaticon-right-arrow-angle"></i></span>
+                                <span property="itemListElement" typeof="ListItem">Pages</span>
+                                <span class="breadcrumb-separator"><i class="flaticon-right-arrow-angle"></i></span>
+                                <span property="itemListElement" typeof="ListItem">Team Details</span>
+
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="breadcrumb__img">
+                            <img src="{% static "assets/img/images/breadcrumb_img.png" %}" alt="img" data-aos="fade-left" data-aos-delay="800">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="breadcrumb__shape-wrap">
+                <img src="{% static "assets/img/images/breadcrumb_shape01.png" %}" alt="img" data-aos="fade-down-right" data-aos-delay="400">
+                <img src="{% static "assets/img/images/breadcrumb_shape02.png" %}" alt="img" data-aos="fade-up-left" data-aos-delay="400">
+            </div>
+        </section>
+        <!-- breadcrumb-area-end -->
+
+        <!-- team-details-area -->
+        <section class="team__details-area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 col-md-8">
+                        <div class="team__details-img">
+                            <img src="{% static "assets/img/team/team_details.jpg" %}" alt="img">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="team__details-content">
+                            <h2 class="name">Daria Andaloro</h2>
+                            <span>Veterinary Technician</span>
+                           <p>Daria has dedicated her career to providing top-notch care for pets, ensuring their health and well-being. With years of experience in veterinary technology, she brings a wealth of knowledge and compassion to our pet shop.</p>
+                            <div class="experience-wrap">
+                                <h4 class="title">Experience:</h4>
+                              <p>With over five years of hands-on experience in veterinary clinics and pet shops, Daria is skilled in animal care, medical procedures, and customer service. She is committed to helping pet owners understand their pets' needs and providing the best care possible.</p>
+                            </div>
+                            <div class="contact__info-wrap team__details-info">
+                                <h6 class="title">Information:</h6>
+                                <ul class="list-wrap">
+                                    <li>
+                                        <div class="icon">
+                                            <i class="flaticon-phone"></i>
+                                        </div>
+                                        <a href="tel:0123456789">+123 8989 444</a>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="flaticon-placeholder"></i>
+                                        </div>
+                                        369 C East Manstreet,<br>
+                                        Kollam City
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="flaticon-mail"></i>
+                                        </div>
+                                        <a href="mailto:petspaaradise@gmail.com">petspaaradise@gmail.com</a>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-share-alt"></i>
+                                        </div>
+                                        <ul class="list-wrap contact__social">
+                                            <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                            <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="contact__form-wrap team__details-form">
+                                <form action="https://themedox.com/demo/petpal/assets/mail.php" method="POST" id="contact-form" class="contact__form">
+                                    <h2 class="title">Post a comment</h2>
+                                    <span>Your email address will not be published. Required fields are marked *</span>
+                                    <div class="row gutter-20">
+                                        <div class="col-md-6">
+                                            <div class="form-grp">
+                                                <input name="name" type="text" placeholder="Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-grp">
+                                                <input name="email" type="email" placeholder="E-mail">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-grp">
+                                                <input name="website" type="url" placeholder="Website">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-grp">
+                                                <textarea name="message" placeholder="Message"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn">Send Us Message <img src="{% static "assets/img/icon/right_arrow.svg" %}" alt="" class="injectable"></button>
+                                </form>
+                                <p class="ajax-response mb-0"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- team-details-area-end -->
+
+    </main>
+    <!-- main-area-end -->
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,274 @@
+{% extends "home/base2.html" %}
+{% load static %}
+{% block title %}Our Blog{% endblock title %}
+{% block content %}
+    <main>
+        <!-- breadcrumb-area -->
+        <section class="breadcrumb__area fix">
+            <div class="container">
+                <div class="row align-items-end">
+                    <div class="col-lg-8">
+                        <div class="breadcrumb__content">
+                            <h3 class="title">Our Latest Blogs</h3>
+                            <nav class="breadcrumb">
+                                <span property="itemListElement" typeof="ListItem">
+                                    <a href="">Home</a>
+                                </span>
+                                <span class="breadcrumb-separator"><i class="flaticon-right-arrow-angle"></i></span>
+                                <span property="itemListElement" typeof="ListItem">Pages</span>
+                                <span class="breadcrumb-separator"><i class="flaticon-right-arrow-angle"></i></span>
+                                <span property="itemListElement" typeof="ListItem">All Blogs</span>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="breadcrumb__img">
+                            <img src="{% static "assets/img/images/breadcrumb_img.png" %}" alt="img" data-aos="fade-left" data-aos-delay="800">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="breadcrumb__shape-wrap">
+                <img src="{% static "assets/img/images/breadcrumb_shape01.png" %}" alt="img" data-aos="fade-down-right" data-aos-delay="400">
+                <img src="{% static "assets/img/images/breadcrumb_shape02.png" %}" alt="img" data-aos="fade-up-left" data-aos-delay="400">
+            </div>
+        </section>
+        <!-- breadcrumb-area-end -->
+
+        <!-- blog-area -->
+        <section class="blog__area pt-100 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-8 order-0 order-lg-2">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="blog__post-item-three blog__post-item-five shine-animate-item">
+                                    <div class="blog__post-thumb-three blog__post-thumb-five shine-animate">
+                                        <a href=""><img src="{% static "assets/img/blog/blog_img01.jpg" %}" alt="img"></a>
+                                        <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                                            <li><a href="">Pet</a></li>
+                                            <li><a href="">Medical</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="blog__post-content-three">
+                                        <div class="blog__post-meta">
+                                            <ul class="list-wrap">
+                                                <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                                <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                                            </ul>
+                                        </div>
+                                        <h2 class="title"><a href="">3 Signs It’s Time for the First Pets Dental Cleaning</a></h2>
+                                        <p>Duis aute irure dolor in reprehenderit innera voeWe care for the growing needs of our comm unietye build systems.</p>
+                                        <a href="" class="btn">Read More <img src="{% static "assets/img/icon/right_arrow.svg" %}" alt="" class="injectable"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="blog__post-item-three blog__post-item-five shine-animate-item">
+                                    <div class="blog__post-thumb-three blog__post-thumb-five shine-animate">
+                                        <a href=""><img src="{% static "assets/img/blog/blog_img02.jpg" %}" alt="img"></a>
+                                        <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                                            <li><a href="">Pet</a></li>
+                                            <li><a href="">Grooming</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="blog__post-content-three">
+                                        <div class="blog__post-meta">
+                                            <ul class="list-wrap">
+                                                <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                                <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                                            </ul>
+                                        </div>
+                                        <h2 class="title"><a href="">Understanding Zoonotic and Safeguarding Your Health</a></h2>
+                                        <p>Duis aute irure dolor in reprehenderit innera voeWe care for the growing needs of our comm unietye build systems.</p>
+                                        <a href="" class="btn">Read More <img src="{% static "assets/img/icon/right_arrow.svg" %}" alt="" class="injectable"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="blog__post-item-three blog__post-item-five shine-animate-item">
+                                    <div class="blog__post-thumb-three blog__post-thumb-five shine-animate">
+                                        <a href=""><img src="{% static "assets/img/blog/blog_img03.jpg" %}" alt="img"></a>
+                                        <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                                            <li><a href="">Health</a></li>
+                                            <li><a href="">Medical</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="blog__post-content-three">
+                                        <div class="blog__post-meta">
+                                            <ul class="list-wrap">
+                                                <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                                <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                                            </ul>
+                                        </div>
+                                        <h2 class="title"><a href="">How to Spot, Treat, and Prevent Hot Spots in Pets</a></h2>
+                                        <p>Duis aute irure dolor in reprehenderit innera voeWe care for the growing needs of our comm unietye build systems.</p>
+                                        <a href="" class="btn">Read More <img src="{% static "assets/img/icon/right_arrow.svg" %}" alt="" class="injectable"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="blog__post-item-three blog__post-item-five shine-animate-item">
+                                    <div class="blog__post-thumb-three blog__post-thumb-five shine-animate">
+                                        <a href=""><img src="{% static "assets/img/blog/blog_img04.jpg" %}" alt="img"></a>
+                                        <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                                            <li><a href="">Dog Love</a></li>
+                                            <li><a href="">Pet</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="blog__post-content-three">
+                                        <div class="blog__post-meta">
+                                            <ul class="list-wrap">
+                                                <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                                <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                                            </ul>
+                                        </div>
+                                        <h2 class="title"><a href="">Clean indoor air as important in controlling asthma</a></h2>
+                                        <p>Duis aute irure dolor in reprehenderit innera voeWe care for the growing needs of our comm unietye build systems.</p>
+                                        <a href="" class="btn">Read More <img src="{% static "assets/img/icon/right_arrow.svg" %}" alt="" class="injectable"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="blog__post-item-three blog__post-item-five shine-animate-item">
+                                    <div class="blog__post-thumb-three blog__post-thumb-five shine-animate">
+                                        <a href=""><img src="{% static "assets/img/blog/blog_img05.jpg" %}" alt="img"></a>
+                                        <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                                            <li><a href="">Animals</a></li>
+                                            <li><a href="">Medical</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="blog__post-content-three">
+                                        <div class="blog__post-meta">
+                                            <ul class="list-wrap">
+                                                <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                                <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                                            </ul>
+                                        </div>
+                                        <h2 class="title"><a href="">How to Spot, Treat, and Prevent Hot Spots in Pets</a></h2>
+                                        <p>Duis aute irure dolor in reprehenderit innera voeWe care for the growing needs of our comm unietye build systems.</p>
+                                        <a href="" class="btn">Read More <img src="{% static "assets/img/icon/right_arrow.svg" %}" alt="" class="injectable"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="blog__post-item-three blog__post-item-five shine-animate-item">
+                                    <div class="blog__post-thumb-three blog__post-thumb-five shine-animate">
+                                        <a href=""><img src="{% static "assets/img/blog/blog_img06.jpg" %}" alt="img"></a>
+                                        <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                                            <li><a href="">Pet</a></li>
+                                            <li><a href="">Pet Love</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="blog__post-content-three">
+                                        <div class="blog__post-meta">
+                                            <ul class="list-wrap">
+                                                <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                                <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                                            </ul>
+                                        </div>
+                                        <h2 class="title"><a href="">A Complete Price Guide for the Shar Pei Breed</a></h2>
+                                        <p>Duis aute irure dolor in reprehenderit innera voeWe care for the growing needs of our comm unietye build systems.</p>
+                                        <a href="" class="btn">Read More <img src="{% static "assets/img/icon/right_arrow.svg" %}" alt="" class="injectable"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <nav class="pagination__wrap mt-50">
+                            <ul class="list-wrap">
+                                <li class="link-arrow"><a href="#"><img src="{% static "assets/img/icon/pagination_icon01.svg" %}" alt="" class="injectable"></a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="">2</a></li>
+                                <li><a href="">3</a></li>
+                                <li><a href="">4</a></li>
+                                <li class="link-arrow"><a href="#"><img src="{% static "assets/img/icon/pagination_icon02.svg" %}" alt="" class="injectable"></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-xl-3 col-lg-4">
+                    <aside class="blog-sidebar">
+                            <div class="blog-widget">
+                                <h4 class="widget-title">Search</h4>
+                                <div class="sidebar-search-form">
+                                    <form action="#">
+                                        <input type="text" placeholder="Type Keywords. . .">
+                                        <button type="submit"><i class="flaticon-loupe"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="blog-widget">
+                                <h4 class="widget-title">Categories</h4>
+                                <div class="sidebar-cat-list">
+                                    <ul class="list-wrap">
+                                        <li><a href="#">Animals (15)</a></li>
+                                        <li><a href="#">Pet Love (11)</a></li>
+                                        <li><a href="#">Grooming (05)</a></li>
+                                        <li><a href="#">Dog Care (07)</a></li>
+                                        <li><a href="#">pet Health (04)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="blog-widget">
+                                <h4 class="widget-title">Recent Post</h4>
+                                <div class="rc-post-wrap">
+                                    <div class="rc-post-item">
+                                        <div class="thumb">
+                                            <a href=""><img src="{% static "assets/img/blog/rc_post01.jpg" %}" alt="img"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title"><a href="">weuine easiure and praising</a></h4>
+                                            <span class="date"><i class="flaticon-calendar"></i>Sep 15, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="rc-post-item">
+                                        <div class="thumb">
+                                            <a href=""><img src="{% static "assets/img/blog/rc_post02.jpg" %}" alt="img"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title"><a href="">how to pursue pleasure rationally</a></h4>
+                                            <span class="date"><i class="flaticon-calendar"></i>Sep 15, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="rc-post-item">
+                                        <div class="thumb">
+                                            <a href=""><img src="{% static "assets/img/blog/rc_post03.jpg" %}" alt="img"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title"><a href="">there anyone who loves</a></h4>
+                                            <span class="date"><i class="flaticon-calendar"></i>Sep 15, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="rc-post-item">
+                                        <div class="thumb">
+                                            <a href=""><img src="{% static "assets/img/blog/rc_post04.jpg" %}" alt="img"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title"><a href="">New occasionally circumstances</a></h4>
+                                            <span class="date"><i class="flaticon-calendar"></i>Sep 15, 2024</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-widget">
+                                <h4 class="widget-title">Tags</h4>
+                                <div class="sidebar-tag-list">
+                                    <ul class="list-wrap">
+                                        <li><a href="#">Dogs</a></li>
+                                        <li><a href="#">Pet Care</a></li>
+                                        <li><a href="#">Cats</a></li>
+                                        <li><a href="#">Modern Lab</a></li>
+                                        <li><a href="#">Expert Vet</a></li>
+                                        <li><a href="#">Grooming</a></li>
+                                        <li><a href="#">Caring</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- blog-area-end -->
+    </main>
+
+{% endblock content %}

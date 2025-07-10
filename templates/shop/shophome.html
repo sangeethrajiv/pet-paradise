@@ -1,0 +1,1553 @@
+{% extends "shop/base3.html" %}
+{% load static %}
+{% block title %}Shop Home{% endblock title %}
+{% block content %}
+<style>
+
+        .coming-time {
+            display: inline-flex;
+            align-items: center;
+            background: var(--tg-color-white-default);
+            border-radius: 50px;
+            gap: 5px;
+            padding: 13px 15px;
+            min-width: 205px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .coming-time-wrap {
+            text-align: right;
+            margin-bottom: 30px;
+        }
+        .countdown-number {
+            color: darkblue;
+            font-weight: bold;
+        }
+        .countdown-label {
+            font-weight: bold;
+            color: darkgrey;
+        }
+        
+@media (max-width: 767.98px) {
+  .coming-time-wrap {
+    text-align: left;
+  }
+}
+.coming-time .time-count {
+  line-height: 1;
+  font-family: var(--tg-body-font-family);
+}
+.coming-time .time-count span {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--tg-theme-secondary);
+}
+.coming-time .time-count strong {
+  color: #AEAEAE;
+  margin-left: 3px;
+}
+
+</style>
+
+    <!-- main-area -->
+    <main class="fix">
+
+<!-- banner-area -->
+<section class="banner__area-four">
+    <div class="container">
+        <div class="row gutter-20">
+            <div class="col-lg-8">
+                <div class="swiper slider__active">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide slider__single">
+                            <div class="slider__bg" data-background="{% static 'assets/img/banner/h3_banner_slide01.jpg' %}"></div>
+                            <div class="slider__content">
+                                <h1 class="title">Pet Healthy Food <br> & Accessories</h1>
+                                <h4 class="sub-title">Delicious Food Made With Love</h4>
+                                <a href="{% url 'shop' %}" class="btn">Shop Now <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+</svg></a>
+                                <div class="discount__shape">
+                                    <img src="{% static 'assets/img/banner/sale.svg' %}" alt="" class="injectable">
+                                    <h2 class="title">30% <span>Flat Sale!</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide slider__single">
+                            <div class="slider__bg" data-background="{% static 'assets/img/banner/h3_banner_slide01.jpg' %}"></div>
+                            <div class="slider__content">
+                                <h1 class="title">Pet Healthy Food <br> & Accessories</h1>
+                                <h4 class="sub-title">Delicious Food Made With Love</h4>
+                                <a href="{% url 'shop' %}" class="btn">Shop Now <img src="{% static 'assets/img/icon/right_arrow.svg' %}" alt="" class="injectable"></a>
+                                <div class="discount__shape">
+                                    <img src="{% static 'assets/img/banner/sale.svg' %}" alt="" class="injectable">
+                                    <h2 class="title">50% <span>Flat Sale!</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="banner__post-item-wrap">
+                    <div class="banner__post-item shine-animate-item">
+                        <div class="banner__post-thumb shine-animate">
+                            <img src="{% static 'assets/img/banner/h3_banner_img01.jpg' %}" alt="img">
+                        </div>
+                        <div class="banner__post-content">
+                            <h2 class="title">The Best Quality House <span>
+                                <strong>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 42" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0952 2.41842C18.5987 1.09323 22.1904 0.607768 25.8799 0.378947C29.7051 0.141712 49.0312 0.123062 52.6628 1.05552C57.0727 2.1878 62.9146 2.42124 64.8207 6.374C66.7564 10.3881 62.3819 15.0531 61.5901 19.5685C60.9204 23.3881 62.1249 27.2823 60.5219 30.8902C58.8022 34.7608 56.2758 38.8903 52.2619 40.5639C48.2685 42.2289 28.5024 39.5356 24.2541 39.5109C20.1671 39.4871 16.0887 41.3434 12.1742 40.4213C7.68366 39.3634 2.26479 38.0084 0.524582 33.9207C-1.24656 29.7604 3.05097 25.1169 3.70387 20.525C4.27715 16.493 1.88863 12.1607 4.12361 8.60819C6.35856 5.05573 11.107 3.92693 15.0952 2.41842Z" fill="#FFAD0E" />
+                                    </svg>
+                                    15%
+                                </strong>
+                                Off For Your Pet</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="banner__post-item-two shine-animate-item">
+                        <div class="banner__post-thumb shine-animate">
+                            <img src="{% static 'assets/img/banner/h3_banner_img02.jpg' %}" alt="img">
+                        </div>
+                        <div class="banner__post-content-two">
+                            <h2 class="title">For Your <br> Pet Basket</h2>
+                            <a href="{% url 'shop' %}" class="btn">Shop Now <img src="{% static 'assets/img/icon/right_arrow.svg' %}" alt="" class="injectable"></a>
+                        </div>
+                        <div class="discount__shape-two">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 74" fill="none" preserveAspectRatio="none">
+                                <path d="M150 0H0C7.59494 63.3462 56.3291 75.6203 79.7468 73.8391C135.57 69.9528 149.842 22.9938 150 0Z" fill="#FF3489" />
+                            </svg>
+                            <h2 class="title">12% <span>Off</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- banner-area-end -->
+
+<!-- features-area -->
+<section class="features__area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+                <div class="features__item">
+                    <div class="features__icon">
+                        <img src="{% static 'assets/img/icon/features_icon01.svg' %}" alt="" class="injectable">
+                    </div>
+                    <div class="features__content">
+                        <h4 class="title">Free Shipping</h4>
+                        <p>for orders over  ₹200</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+                <div class="features__item">
+                    <div class="features__icon">
+                        <img src="{% static 'assets/img/icon/features_icon02.svg' %}" alt="" class="injectable">
+                    </div>
+                    <div class="features__content">
+                        <h4 class="title">Money Guarantee</h4>
+                        <p>30 days for an exchange</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+                <div class="features__item">
+                    <div class="features__icon">
+                        <img src="{% static 'assets/img/icon/features_icon03.svg' %}" alt="" class="injectable">
+                    </div>
+                    <div class="features__content">
+                        <h4 class="title">100% Return Policy</h4>
+                        <p>Any Time Return Product</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+                <div class="features__item">
+                    <div class="features__icon">
+                        <img src="{% static 'assets/img/icon/features_icon04.svg' %}" alt="" class="injectable">
+                    </div>
+                    <div class="features__content">
+                        <h4 class="title">Best Deal Offer</h4>
+                        <p>Grab Your Gear and Go</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- features-area-end -->
+
+<!-- divider-area -->
+<div class="divider-area">
+    <div class="container">
+        <div class="divider-wrap"></div>
+    </div>
+</div>
+<!-- divider-area-end -->
+
+        <!-- product-area -->
+        <section class="product__area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-7">
+                        <div class="section__title-two mb-25">
+                            <h2 class="title">Featured Products <img src="{% static "assets/img/images/title_shape.svg" %}" alt="" class="injectable"></h2>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="product__tab-wrap mb-25">
+                            <ul class="nav nav-tabs" id="productTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-tab-pane" type="button" role="tab" aria-controls="all-tab-pane" aria-selected="true">All</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="best-tab" data-bs-toggle="tab" data-bs-target="#best-tab-pane" type="button" role="tab" aria-controls="best-tab-pane" aria-selected="false">Best Seller</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="sale-tab" data-bs-toggle="tab" data-bs-target="#sale-tab-pane" type="button" role="tab" aria-controls="sale-tab-pane" aria-selected="false">Sale</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tab-content product__item-wrap" id="productTabContent">
+                            <div class="tab-pane fade show active" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab" tabindex="0">
+                                <div class="swiper product-active">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img01.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap">
+                                                        <span>New</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Dog Harness-Neoprene Comfort Liner-Orange and ...</a></h4>
+                                                    <h3 class="price"> ₹12.00 <del> ₹25.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img02.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap sale-wrap-two">
+                                                        <span>Sale!</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Arm & Hammer Super Deodori zing Dog Shampoo, Pet Wash</a></h4>
+                                                    <h3 class="price"> ₹20.00 <del> ₹30.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img03.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Milk-Bone Brushing Chews Daily Dental Dog Treats ...</a></h4>
+                                                    <h3 class="price"> ₹36.00 <del> ₹56.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img04.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap sale-wrap-two">
+                                                        <span>Sale!</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Two Door Top Load Plastic Kennel & Pet Carrier, Blue 19”</a></h4>
+                                                    <h3 class="price"> ₹18.00 <del> ₹33.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img05.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap">
+                                                        <span>New</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">The Kitten House with Mat Sleeping Bed House</a></h4>
+                                                    <h3 class="price"> ₹19.00 <del> ₹28.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img04.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap sale-wrap-two">
+                                                        <span>Sale!</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Two Door Top Load Plastic Kennel & Pet Carrier, Blue 19”</a></h4>
+                                                    <h3 class="price"> ₹18.00 <del> ₹33.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product__nav-wrap">
+                                    <button class="product-button-prev"><i class="flaticon-left-chevron"></i></button>
+                                    <button class="product-button-next"><i class="flaticon-right-arrow-angle"></i></button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="best-tab-pane" role="tabpanel" aria-labelledby="best-tab" tabindex="0">
+                                <div class="swiper product-active">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img01.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap">
+                                                        <span>New</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Dog Harness-Neoprene Comfort Liner-Orange and ...</a></h4>
+                                                    <h3 class="price"> ₹12.00 <del> ₹25.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img02.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap sale-wrap-two">
+                                                        <span>Sale!</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Arm & Hammer Super Deodori zing Dog Shampoo, Pet Wash</a></h4>
+                                                    <h3 class="price"> ₹20.00 <del> ₹30.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img03.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Milk-Bone Brushing Chews Daily Dental Dog Treats ...</a></h4>
+                                                    <h3 class="price"> ₹36.00 <del> ₹56.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img04.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap sale-wrap-two">
+                                                        <span>Sale!</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Two Door Top Load Plastic Kennel & Pet Carrier, Blue 19”</a></h4>
+                                                    <h3 class="price"> ₹18.00 <del> ₹33.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img05.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap">
+                                                        <span>New</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">The Kitten House with Mat Sleeping Bed House</a></h4>
+                                                    <h3 class="price"> ₹19.00 <del> ₹28.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img04.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap sale-wrap-two">
+                                                        <span>Sale!</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Two Door Top Load Plastic Kennel & Pet Carrier, Blue 19”</a></h4>
+                                                    <h3 class="price"> ₹18.00 <del> ₹33.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product__nav-wrap">
+                                    <button class="product-button-prev"><i class="flaticon-left-chevron"></i></button>
+                                    <button class="product-button-next"><i class="flaticon-right-arrow-angle"></i></button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="sale-tab-pane" role="tabpanel" aria-labelledby="sale-tab" tabindex="0">
+                                <div class="swiper product-active">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img01.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap">
+                                                        <span>New</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Dog Harness-Neoprene Comfort Liner-Orange and ...</a></h4>
+                                                    <h3 class="price"> ₹12.00 <del> ₹25.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img02.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap sale-wrap-two">
+                                                        <span>Sale!</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Arm & Hammer Super Deodori zing Dog Shampoo, Pet Wash</a></h4>
+                                                    <h3 class="price"> ₹20.00 <del> ₹30.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img03.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Milk-Bone Brushing Chews Daily Dental Dog Treats ...</a></h4>
+                                                    <h3 class="price"> ₹36.00 <del> ₹56.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img04.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap sale-wrap-two">
+                                                        <span>Sale!</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Two Door Top Load Plastic Kennel & Pet Carrier, Blue 19”</a></h4>
+                                                    <h3 class="price"> ₹18.00 <del> ₹33.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img05.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap">
+                                                        <span>New</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">The Kitten House with Mat Sleeping Bed House</a></h4>
+                                                    <h3 class="price"> ₹19.00 <del> ₹28.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product__item">
+                                                <div class="product__thumb">
+                                                    <a href="{% url 'shop' %}"><img src="a{% static "assets/img/products/products_img04.jpg" %}" alt="img"></a>
+                                                    <div class="product__action">
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                                        <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                                                    </div>
+                                                    <div class="sale-wrap sale-wrap-two">
+                                                        <span>Sale!</span>
+                                                    </div>
+                                                    <div class="product__add-cart">
+                                                        <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product__content">
+                                                    <div class="product__reviews">
+                                                        <div class="rating">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>(2 Reviews)</span>
+                                                    </div>
+                                                    <h4 class="title"><a href="{% url 'shop' %}">Two Door Top Load Plastic Kennel & Pet Carrier, Blue 19”</a></h4>
+                                                    <h3 class="price"> ₹18.00 <del> ₹33.00</del></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product__nav-wrap">
+                                    <button class="product-button-prev"><i class="flaticon-left-chevron"></i></button>
+                                    <button class="product-button-next"><i class="flaticon-right-arrow-angle"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- product-area-end -->
+<!-- category-area -->
+<section class="category__area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="section__title-two mb-30">
+                    <h2 class="title">Shop by Category <img src="{% static 'assets/img/images/title_shape.svg' %}" alt="" class="injectable"></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="view-all-btn">
+                    <a href="{% url 'shop' %}">See All Categories <i class="flaticon-right-arrow-angle"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-2 row-cols-lg-6 row-cols-md-4 row-cols-sm-3 justify-content-center">
+            <div class="col">
+                <div class="category__item">
+                    <a href="{% url 'shop' %}">
+                        <img src="{% static 'assets/img/category/category_img01.png' %}" alt="">
+                        <span class="name">Beds</span>
+                        <strong>15 Items</strong>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="category__item">
+                    <a href="{% url 'shop' %}">
+                        <img src="{% static 'assets/img/category/category_img02.png' %}" alt="">
+                        <span class="name">Pet Toys</span>
+                        <strong>10 Items</strong>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="category__item">
+                    <a href="{% url 'shop' %}">
+                        <img src="{% static 'assets/img/category/category_img03.png' %}" alt="">
+                        <span class="name">Dog Food</span>
+                        <strong>19 Items</strong>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="category__item">
+                    <a href="{% url 'shop' %}">
+                        <img src="{% static 'assets/img/category/category_img04.png' %}" alt="">
+                        <span class="name">Cat Food</span>
+                        <strong>15 Items</strong>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="category__item">
+                    <a href="{% url 'shop' %}">
+                        <img src="{% static 'assets/img/category/category_img05.png' %}" alt="">
+                        <span class="name">Pharmacy</span>
+                        <strong>30 Items</strong>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="category__item">
+                    <a href="{% url 'shop' %}">
+                        <img src="{% static 'assets/img/category/category_img06.png' %}" alt="">
+                        <span class="name">Accessories</span>
+                        <strong>22 Items</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- category-area-end -->
+
+<!-- ad-banner-area -->
+<div class="ad-banner-area pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="ad-banner-img">
+                    <a href="#">
+                        <img src="{% static 'assets/img/images/advertisement.jpg' %}" alt="img">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ad-banner-area-end -->
+
+<!-- product-area-two -->
+<section class="product__area-two">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="section__title-two mb-20">
+                    <h2 class="title">Hot Sale Products <img src="{% static 'assets/img/images/title_shape.svg' %}" alt="" class="injectable"></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="coming-time-wrap">
+                    <div class="coming-time" data-countdown="2024/4/30" id="countdown"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container custom-container-two">
+        <div class="product__item-wrap-two">
+            <div class="row gutter-20 row-cols-1 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 justify-content-center">
+                <div class="col">
+                    <div class="product__item">
+                        <div class="product__thumb">
+                            <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/products_img06.jpg' %}" alt="img"></a>
+                            <div class="product__action">
+                                <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                            </div>
+                            <div class="sale-wrap sale-wrap-two">
+                                <span>Sale!</span>
+                            </div>
+                            <div class="product__add-cart">
+                                <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="product__content">
+                            <div class="product__reviews">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>(2 Reviews)</span>
+                            </div>
+                            <h4 class="title"><a href="{% url 'shop' %}">Dog Puzzle Toys, Squeaky Treat Dispensing Dog</a></h4>
+                            <h3 class="price"> ₹18.00 <del> ₹33.00</del></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product__item">
+                        <div class="product__thumb">
+                            <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/products_img07.jpg' %}" alt="img"></a>
+                            <div class="product__action">
+                                <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                            </div>
+                            <div class="sale-wrap sale-wrap-two">
+                                <span>Sale!</span>
+                            </div>
+                            <div class="product__add-cart">
+                                <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="product__content">
+                            <div class="product__reviews">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>(2 Reviews)</span>
+                            </div>
+                            <h4 class="title"><a href="{% url 'shop' %}">Zesty Paws Calming Puppy Bites Stress Relief for Dogs, 60 Count</a></h4>
+                            <h3 class="price"> ₹16.00 <del> ₹50.00</del></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product__item">
+                        <div class="product__thumb">
+                            <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/products_img08.jpg' %}" alt="img"></a>
+                            <div class="product__action">
+                                <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                            </div>
+                            <div class="sale-wrap sale-wrap-two">
+                                <span>Sale!</span>
+                            </div>
+                            <div class="product__add-cart">
+                                <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="product__content">
+                            <div class="product__reviews">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>(2 Reviews)</span>
+                            </div>
+                            <h4 class="title"><a href="{% url 'shop' %}">Hartz Groomer's Best Extra Gentle Puppy Shampoo, 18oz.</a></h4>
+                            <h3 class="price"> ₹30.00 <del> ₹88.00</del></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product__item">
+                        <div class="product__thumb">
+                            <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/products_img09.jpg' %}" alt="img"></a>
+                            <div class="product__action">
+                                <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                            </div>
+                            <div class="sale-wrap sale-wrap-two">
+                                <span>Sale!</span>
+                            </div>
+                            <div class="product__add-cart">
+                                <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="product__content">
+                            <div class="product__reviews">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>(2 Reviews)</span>
+                            </div>
+                            <h4 class="title"><a href="{% url 'shop' %}">The Kitten House with Mat Sleeping Bed House</a></h4>
+                            <h3 class="price"> ₹22.00 <del> ₹59.00</del></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product__item">
+                        <div class="product__thumb">
+                            <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/products_img10.jpg' %}" alt="img"></a>
+                            <div class="product__action">
+                                <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
+                                <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>
+                                <a href="{% url 'shop' %}"><i class="flaticon-exchange"></i></a>
+                            </div>
+                            <div class="sale-wrap sale-wrap-two">
+                                <span>Sale!</span>
+                            </div>
+                            <div class="product__add-cart">
+                                <a href="{% url 'shop' %}" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="product__content">
+                            <div class="product__reviews">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>(2 Reviews)</span>
+                            </div>
+                            <h4 class="title"><a href="{% url 'shop' %}">Dog Harness-Neoprene Comfort Liner-Orange and Comfort</a></h4>
+                            <h3 class="price"> ₹11.00 <del> ₹48.00</del></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product__shape-wrap">
+        <img src="{% static 'assets/img/products/products_shape01.png' %}" alt="shape" class="ribbonRotate">
+        <img src="{% static 'assets/img/products/products_shape02.png' %}" alt="shape" data-aos="fade-up-right" data-aos-delay="400">
+    </div>
+</section>
+<!-- product-area-two-end -->
+ <!-- features-area -->
+<section class="features__area-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="features__item-two">
+                    <div class="features__thumb">
+                        <img src="{% static 'assets/img/images/features_img01.jpg' %}" alt="img">
+                    </div>
+                    <div class="features__content-two">
+                        <h2 class="title">30% <span>Sale!</span></h2>
+                        <strong>Free Shipping</strong>
+                        <a href="{% url 'shop' %}" class="btn shop-btn">Shop Now <img src="{% static 'assets/img/icon/right_arrow.svg' %}" alt="" class="injectable"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="features__item-two">
+                    <div class="features__thumb">
+                        <img src="{% static 'assets/img/images/features_img02.jpg' %}" alt="img">
+                    </div>
+                    <div class="features__content-two features__content-three">
+                        <h2 class="title">Best Premium</h2>
+                        <strong>Cat Food</strong>
+                        <a href="{% url 'shop' %}" class="btn shop-btn">Shop Now <img src="{% static 'assets/img/icon/right_arrow.svg' %}" alt="" class="injectable"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- features-area-end -->
+
+<!-- product-area -->
+<section class="product__area-three">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product__inner-wrap">
+                    <div class="row align-items-center">
+                        <div class="col-sm-8">
+                            <div class="section__title-two mb-20">
+                                <h2 class="title">Hot Sale Products <img src="{% static 'assets/img/images/title_shape.svg' %}" alt="" class="injectable"></h2>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="view-all-btn">
+                                <a href="{% url 'shop' %}">See All <i class="flaticon-right-arrow-angle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-12 col-md-6">
+                            <div class="product__item product__item-two">
+                                <div class="product__thumb product__thumb-two">
+                                    <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/h_products_img01.jpg' %}" alt="img"></a>
+                                    <div class="sale-wrap">
+                                        <span>New</span>
+                                    </div>
+                                </div>
+                                <div class="product__content">
+                                    <div class="product__reviews">
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span>(2 Reviews)</span>
+                                    </div>
+                                    <h4 class="title"><a href="{% url 'shop' %}">IAMS Minichunks Chicken & Whole Grains Dry Dog Food</a></h4>
+                                    <h3 class="price"> ₹11.00 <del> ₹48.00</del></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-12 col-md-6">
+                            <div class="product__item-three">
+                                <div class="product__thumb-three">
+                                    <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/latest_products_img01.jpg' %}" alt="img"></a>
+                                </div>
+                                <div class="product__content product__content-three">
+                                    <h2 class="title"><a href="{% url 'shop' %}">TrustyPup Dragon Squeaky Plush Chew</a></h2>
+                                    <h3 class="price"> ₹47.00 <del> ₹82.00</del></h3>
+                                </div>
+                            </div>
+                            <div class="product__item-three">
+                                <div class="product__thumb-three">
+                                    <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/latest_products_img02.jpg' %}" alt="img"></a>
+                                </div>
+                                <div class="product__content product__content-three">
+                                    <h2 class="title"><a href="{% url 'shop' %}">Vital Pet Life Salmon Oil for Dogs and Cats</a></h2>
+                                    <h3 class="price"> ₹12.00</h3>
+                                </div>
+                            </div>
+                            <div class="product__item-three">
+                                <div class="product__thumb-three">
+                                    <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/latest_products_img03.jpg' %}" alt="img"></a>
+                                </div>
+                                <div class="product__content product__content-three">
+                                    <h2 class="title"><a href="{% url 'shop' %}">Dog Harness Neoprene Comfort Liner</a></h2>
+                                    <h3 class="price"> ₹30.00 <del> ₹48.00</del></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product__inner-wrap">
+                    <div class="row align-items-center">
+                        <div class="col-sm-8">
+                            <div class="section__title-two mb-20">
+                                <h2 class="title">Latest Products <img src="{% static 'assets/img/images/title_shape.svg' %}" alt="" class="injectable"></h2>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="view-all-btn">
+                                <a href="{% url 'shop' %}">See All <i class="flaticon-right-arrow-angle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-12 col-md-6">
+                            <div class="product__item product__item-two">
+                                <div class="product__thumb product__thumb-two">
+                                    <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/h_products_img02.jpg' %}" alt="img"></a>
+                                    <div class="sale-wrap sale-wrap-two">
+                                        <span>Sale!</span>
+                                    </div>
+                                </div>
+                                <div class="product__content">
+                                    <div class="product__reviews">
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span>(2 Reviews)</span>
+                                    </div>
+                                    <h4 class="title"><a href="{% url 'shop' %}">Pro-Sense Multivitamin, 90ct For Your Lovely Dog</a></h4>
+                                    <h3 class="price"> ₹15.00 <del> ₹28.00</del></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-12 col-md-6">
+                            <div class="product__item-three">
+                                <div class="product__thumb-three">
+                                    <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/latest_products_img04.jpg' %}" alt="img"></a>
+                                </div>
+                                <div class="product__content product__content-three">
+                                    <h2 class="title"><a href="{% url 'shop' %}">Pet Grooming Glove for Dogs & Cats</a></h2>
+                                    <h3 class="price"> ₹12.00 <del> ₹20.00</del></h3>
+                                </div>
+                            </div>
+                            <div class="product__item-three">
+                                <div class="product__thumb-three">
+                                    <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/latest_products_img05.jpg' %}" alt="img"></a>
+                                </div>
+                                <div class="product__content product__content-three">
+                                    <h2 class="title"><a href="{% url 'shop' %}">Beloved Pets For Playing Toy</a></h2>
+                                    <h3 class="price"> ₹25.00</h3>
+                                </div>
+                            </div>
+                            <div class="product__item-three">
+                                <div class="product__thumb-three">
+                                    <a href="{% url 'shop' %}"><img src="{% static 'assets/img/products/latest_products_img06.jpg' %}" alt="img"></a>
+                                </div>
+                                <div class="product__content product__content-three">
+                                    <h2 class="title"><a href="{% url 'shop' %}">Zesty Paws Calming Puppy Bites</a></h2>
+                                    <h3 class="price"> ₹45.00 <del> ₹80.00</del></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- product-area-end -->
+
+<!-- testimonial-area -->
+<section class="testimonial__area-four">
+    <div class="container">
+        <div class="testimonial__item-wrap-four">
+            <div class="swiper testimonial-active-two">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial__item-four">
+                            <div class="testimonial__icon-four">
+                                <img src="{% static 'assets/img/icon/quote02.svg' %}" alt="" class="injectable">
+                            </div>
+                            <div class="testimonial__content-four">
+                                <h2 class="title">Pet Health Important</h2>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p>“ We understand that your furry friend is a cherished member of your family. Our expert team is dedicated to providing exceptional care and ensuring the highest standards of quality for your pet's health and well-being. ”</p>
+                            </div>
+                            <div class="testimonial__author-two testimonial__author-four">
+                                <div class="testimonial__author-thumb">
+                                    <img src="{% static 'assets/img/images/testi_author01.png' %}" alt="">
+                                </div>
+                                <div class="testimonial__author-content">
+                                    <h4 class="title">Uraney Jacke</h4>
+                                    <span>Business Study</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial__item-four">
+                            <div class="testimonial__icon-four">
+                                <img src="{% static 'assets/img/icon/quote02.svg' %}" alt="" class="injectable">
+                            </div>
+                            <div class="testimonial__content-four">
+                                <h2 class="title">Pet Health Important</h2>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p>“ Duis aute irure dolor in repreerit in voluptate velitesse We understand that your furry aute irure dolor in repreerit in voluptate just about the best thing you can do. dolor in repreerit in voluptate understand that you ”</p>
+                            </div>
+                            <div class="testimonial__author-two testimonial__author-four">
+                                <div class="testimonial__author-thumb">
+                                    <img src="{% static 'assets/img/images/testi_author01.png' %}" alt="">
+                                </div>
+                                <div class="testimonial__author-content">
+                                    <h4 class="title">Uraney Jacke</h4>
+                                    <span>Business Study</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial__nav-wrap">
+                <button class="testimonial-button-prev"><img src="{% static 'assets/img/icon/right_arrow03.svg' %}" alt="" class="injectable"></button>
+                <button class="testimonial-button-next"><img src="{% static 'assets/img/icon/right_arrow03.svg' %}" alt="" class="injectable"></button>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- testimonial-area-end -->
+
+<!-- brand-area -->
+<div class="brand__area-four">
+    <div class="container">
+        <div class="brand__title">
+            <h5 class="title">Trusted By The World’s Best</h5>
+        </div>
+        <div class="swiper brand-active">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img01.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img02.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img03.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img04.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img05.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img06.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img07.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img03.png' %}" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- brand-area-end -->
+
+<!-- blog-post-area -->
+<section class="blog__post-area-four">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="section__title-two mb-20">
+                    <h2 class="title">Latest News & Updates <img src="{% static 'assets/img/images/title_shape.svg' %}" alt="" class="injectable"></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="view-all-btn">
+                    <a href="{% url 'shop' %}">See All <i class="flaticon-right-arrow-angle"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="blog__post-item-four shine-animate-item">
+                    <div class="blog__post-thumb-four shine-animate">
+                        <a href="{% url 'shop' %}"><img src="{% static 'assets/img/blog/h4_blog_post01.jpg' %}" alt="img"></a>
+                        <ul class="list-wrap blog__post-tag blog__post-tag-three">
+                            <li><a href="{% url 'shop' %}">Pet</a></li>
+                        </ul>
+                    </div>
+                    <div class="blog__post-content-four">
+                        <div class="blog__post-meta">
+                            <ul class="list-wrap">
+                                <li><i class="flaticon-calendar"></i>25th Aug</li>
+                                <li><i class="flaticon-user"></i>by <a href="{% url 'shop' %}">admin</a></li>
+                            </ul>
+                        </div>
+                        <h2 class="title"><a href="{% url 'shop' %}">10 Things You Didn’t Know about The Shinese</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="blog__post-item-four shine-animate-item">
+                    <div class="blog__post-thumb-four shine-animate">
+                        <a href="{% url 'shop' %}"><img src="{% static 'assets/img/blog/h4_blog_post02.jpg' %}" alt="img"></a>
+                        <ul class="list-wrap blog__post-tag blog__post-tag-three">
+                            <li><a href="{% url 'shop' %}">Care</a></li>
+                        </ul>
+                    </div>
+                    <div class="blog__post-content-four">
+                        <div class="blog__post-meta">
+                            <ul class="list-wrap">
+                                <li><i class="flaticon-calendar"></i>25th Aug</li>
+                                <li><i class="flaticon-user"></i>by <a href="{% url 'shop' %}">admin</a></li>
+                            </ul>
+                        </div>
+                        <h2 class="title"><a href="{% url 'shop' %}">A Complete Price Guide for the Shar Pei Breed</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="blog__post-item-four shine-animate-item">
+                    <div class="blog__post-thumb-four shine-animate">
+                        <a href="{% url 'shop' %}"><img src="{% static 'assets/img/blog/h4_blog_post03.jpg' %}" alt="img"></a>
+                        <ul class="list-wrap blog__post-tag blog__post-tag-three">
+                            <li><a href="{% url 'shop' %}">Pet Health</a></li>
+                        </ul>
+                    </div>
+                    <div class="blog__post-content-four">
+                        <div class="blog__post-meta">
+                            <ul class="list-wrap">
+                                <li><i class="flaticon-calendar"></i>25th Aug</li>
+                                <li><i class="flaticon-user"></i>by <a href="{% url 'shop' %}">admin</a></li>
+                            </ul>
+                        </div>
+                        <h2 class="title"><a href="{% url 'shop' %}">Comparing the Blue vs. Lilac French Bulldog</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="blog__post-item-four shine-animate-item">
+                    <div class="blog__post-thumb-four shine-animate">
+                        <a href="{% url 'shop' %}"><img src="{% static 'assets/img/blog/h4_blog_post04.jpg' %}" alt="img"></a>
+                        <ul class="list-wrap blog__post-tag blog__post-tag-three">
+                            <li><a href="{% url 'shop' %}">Cat</a></li>
+                        </ul>
+                    </div>
+                    <div class="blog__post-content-four">
+                        <div class="blog__post-meta">
+                            <ul class="list-wrap">
+                                <li><i class="flaticon-calendar"></i>25th Aug</li>
+                                <li><i class="flaticon-user"></i>by <a href="{% url 'shop' %}">admin</a></li>
+                            </ul>
+                        </div>
+                        <h2 class="title"><a href="{% url 'shop' %}">Five Things You Didn’t Know about the Red</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blog__shape-wrap-four">
+        <img src="{% static 'assets/img/blog/h4_blog_shape01.png' %}" alt="img" data-aos="fade-down-left" data-aos-delay="400">
+        <img src="{% static 'assets/img/blog/h4_blog_shape02.png' %}" alt="img" data-aos="fade-up-right" data-aos-delay="400">
+    </div>
+</section>
+<!-- blog-post-area-end -->
+
+    </main>
+    <!-- main-area-end -->
+
+       <script>
+        function initializeCountdown(element) {
+            const now = new Date();
+            const targetDate = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000); // 3 days from now
+            element.setAttribute('data-countdown', targetDate);
+
+            const countdownDate = targetDate.getTime();
+
+            const updateCountdown = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                element.innerHTML = 
+                    `<span class="countdown-number">${days}</span><span class="countdown-label">d</span> ` +
+                    `<span class="countdown-number">${hours}</span><span class="countdown-label">h</span> ` +
+                    `<span class="countdown-number">${minutes}</span><span class="countdown-label">m</span> ` +
+                    `<span class="countdown-number">${seconds}</span><span class="countdown-label">s</span>`;
+
+                if (distance < 0) {
+                    clearInterval(updateCountdown);
+                    element.innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const countdownElement = document.getElementById('countdown');
+            initializeCountdown(countdownElement);
+        });
+    </script>
+
+{% endblock content %}

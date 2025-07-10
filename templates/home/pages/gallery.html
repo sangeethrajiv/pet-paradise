@@ -1,0 +1,148 @@
+{% extends "home/base2.html" %}
+{% load static %}
+{% block title %}Gallery{% endblock title %}
+{% block content %}
+
+{% load static %}
+
+<!-- main-area -->
+<main class="fix">
+
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb__area fix">
+        <div class="container">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <div class="breadcrumb__content">
+                        <h3 class="title">Our Gallery</h3>
+                        <nav class="breadcrumb">
+                            <span property="itemListElement" typeof="ListItem">
+                                <a href="">Home</a>
+                            </span>
+                            <span class="breadcrumb-separator"><i class="flaticon-right-arrow-angle"></i></span>
+                            <span property="itemListElement" typeof="ListItem">Pages</span>
+                            <span class="breadcrumb-separator"><i class="flaticon-right-arrow-angle"></i></span>
+                            <span property="itemListElement" typeof="ListItem">Gallery</span>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="breadcrumb__img">
+                        <img src="{% static 'assets/img/images/breadcrumb_img.png' %}" alt="img" data-aos="fade-left" data-aos-delay="800">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="breadcrumb__shape-wrap">
+            <img src="{% static 'assets/img/images/breadcrumb_shape01.png' %}" alt="img" data-aos="fade-down-right" data-aos-delay="400">
+            <img src="{% static 'assets/img/images/breadcrumb_shape02.png' %}" alt="img" data-aos="fade-up-left" data-aos-delay="400">
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+    <!-- gallery-area -->
+    <div class="gallery__area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery__item">
+                        <div class="gallery__img">
+                            <img src="{% static 'assets/img/gallery/gallery_img01.jpg' %}" alt="img">
+                        </div>
+                        <a href="{% static 'assets/img/gallery/gallery_img01.jpg' %}" class="popup-image">
+                            <img src="{% static 'assets/img/icon/popup_icon.svg' %}" alt="" class="injectable">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery__item">
+                        <div class="gallery__img">
+                            <img src="{% static 'assets/img/gallery/gallery_img02.jpg' %}" alt="img">
+                        </div>
+                        <a href="{% static 'assets/img/gallery/gallery_img02.jpg' %}" class="popup-image">
+                            <img src="{% static 'assets/img/icon/popup_icon.svg' %}" alt="" class="injectable">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery__item">
+                        <div class="gallery__img">
+                            <img src="{% static 'assets/img/gallery/gallery_img03.jpg' %}" alt="img">
+                        </div>
+                        <a href="{% static 'assets/img/gallery/gallery_img03.jpg' %}" class="popup-image">
+                            <img src="{% static 'assets/img/icon/popup_icon.svg' %}" alt="" class="injectable">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery__item">
+                        <div class="gallery__img">
+                            <img src="{% static 'assets/img/gallery/gallery_img04.jpg' %}" alt="img">
+                        </div>
+                        <a href="{% static 'assets/img/gallery/gallery_img04.jpg' %}" class="popup-image">
+                            <img src="{% static 'assets/img/icon/popup_icon.svg' %}" alt="" class="injectable">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery__item">
+                        <div class="gallery__img">
+                            <img src="{% static 'assets/img/gallery/gallery_img05.jpg' %}" alt="img">
+                        </div>
+                        <a href="{% static 'assets/img/gallery/gallery_img05.jpg' %}" class="popup-image">
+                            <img src="{% static 'assets/img/icon/popup_icon.svg' %}" alt="" class="injectable">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery__item">
+                        <div class="gallery__img">
+                            <img src="{% static 'assets/img/gallery/gallery_img06.jpg' %}" alt="img">
+                        </div>
+                        <a href="{% static 'assets/img/gallery/gallery_img06.jpg' %}" class="popup-image">
+                            <img src="{% static 'assets/img/icon/popup_icon.svg' %}" alt="" class="injectable">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery__item">
+                        <div class="gallery__img">
+                            <img src="{% static 'assets/img/gallery/gallery_img07.jpg' %}" alt="img">
+                        </div>
+                        <a href="{% static 'assets/img/gallery/gallery_img07.jpg' %}" class="popup-image">
+                            <img src="{% static 'assets/img/icon/popup_icon.svg' %}" alt="" class="injectable">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery__item">
+                        <div class="gallery__img">
+                            <img src="{% static 'assets/img/gallery/gallery_img08.jpg' %}" alt="img">
+                        </div>
+                        <a href="{% static 'assets/img/gallery/gallery_img08.jpg' %}" class="popup-image">
+                            <img src="{% static 'assets/img/icon/popup_icon.svg' %}" alt="" class="injectable">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery__item">
+                        <div class="gallery__img">
+                            <img src="{% static 'assets/img/gallery/gallery_img09.jpg' %}" alt="img">
+                        </div>
+                        <a href="{% static 'assets/img/gallery/gallery_img09.jpg' %}" class="popup-image">
+                            <img src="{% static 'assets/img/icon/popup_icon.svg' %}" alt="" class="injectable">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- gallery-area-end -->
+
+</main>
+<!-- main-area-end -->
+
+
+
+
+{% endblock content %}

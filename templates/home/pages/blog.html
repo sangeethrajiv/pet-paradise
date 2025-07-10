@@ -1,0 +1,292 @@
+{% extends "home/base2.html" %}
+{% load static %}
+{% block title %}Blog{% endblock title %}
+{% block content %}
+
+<main>
+
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb__area fix">
+        <div class="container">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <div class="breadcrumb__content">
+                        <h3 class="title">Blog Details</h3>
+                        <nav class="breadcrumb">
+                            <span property="itemListElement" typeof="ListItem">
+                                <a href="{% static '' %}">Home</a>
+                            </span>
+                            <span class="breadcrumb-separator"><i class="flaticon-right-arrow-angle"></i></span>
+                                <span property="itemListElement" typeof="ListItem">Pages</span>
+                            <span class="breadcrumb-separator"><i class="flaticon-right-arrow-angle"></i></span>
+                            <span property="itemListElement" typeof="ListItem">Blog Details</span>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="breadcrumb__img">
+                        <img src="{% static 'assets/img/images/breadcrumb_img.png' %}" alt="img" data-aos="fade-left" data-aos-delay="800">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="breadcrumb__shape-wrap">
+            <img src="{% static 'assets/img/images/breadcrumb_shape01.png' %}" alt="img" data-aos="fade-down-right" data-aos-delay="400">
+            <img src="{% static 'assets/img/images/breadcrumb_shape02.png' %}" alt="img" data-aos="fade-up-left" data-aos-delay="400">
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+    <!-- blog-details-area -->
+    <section class="blog__details-area pt-100 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-lg-8 order-0 order-lg-2">
+                    <div class="blog__details-wrap">
+                        <div class="blog__details-thumb">
+                            <img src="{% static 'assets/img/blog/blog_details_img.jpg' %}" alt="img">
+                        </div>
+                        <div class="blog__details-content">
+                            <h2 class="title">How Smashing Magazine Uses TinaCMS To Manage Appoint Editorial Workflow</h2>
+                            <div class="blog__post-meta">
+                                <ul class="list-wrap">
+                                    <li><i class="flaticon-user"></i>by <a href="{% static '' %}">admin</a></li>
+                                    <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                    <li>
+                                        <i class="fas fa-tags"></i>
+                                        <a href="{% static '' %}">Pet,</a>
+                                        <a href="{% static '' %}">Medical</a>
+                                    </li>
+                                    <li><i class="far fa-comment-alt"></i><a href="{% static '' %}">05 Comments</a></li>
+                                </ul>
+                            </div>
+                            <p>When an unknown printer took ar galley offer type year anddey scrambled  make type aewer specimen awebook bethas survived not only five when annery unknown printer.eed a little help from our friends from time to time.Although we offer the one-stop convenience.</p>
+                            <p>Eed a little help from our friends from time to time. Although we offer the one-stop convenience of annery integrated range of legal, financial services under one roof.eed a little help from our friends from time to time. Although we offer the one-stop convenience.</p>
+                            <blockquote>
+                                <p>“ urabitur varius eros rutrum consequat Mauris aewa sollicitudin enim condimentum luctus enim justo non molestie nisl ”</p>
+                            </blockquote>
+                            <h4 class="title-two">Rediscovering The Joy Of Design</h4>
+                            <p>When an unknown printer took a galley of type and scrambled it to make a type specimen bookhas a not awertolw only five centuries, but also the leap into electronic typesetting, remaining essentially unchan galley of type and scrambled it to make a type specimen book.</p>
+                            <div class="blog__details-inner-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-54">
+                                        <div class="content">
+                                            <h3 class="title-two">Revealing Images With CSS Mask Animations</h3>
+                                            <p>When an unknown printer took a galley type remaining essentially unchan galley of type and scrambled it to make a type specimen book.</p>
+                                            <ul class="list-wrap">
+                                                <li><i class="fas fa-arrow-right"></i>Medicare Advantage Plans</li>
+                                                <li><i class="fas fa-arrow-right"></i>Analysis & Research</li>
+                                                <li><i class="fas fa-arrow-right"></i>100% Secure Money Back</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-46">
+                                        <div class="thumb">
+                                            <img src="{% static 'assets/img/blog/blog_details_img02.jpg' %}" alt="">
+                                            <a href="https://www.youtube.com/watch?v=XdFfCPK5ycw" class="play-btn popup-video"><i class="fas fa-play"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>When an unknown printer took a galley of type and scrambled it to make a type specimen bookhas a not only five centuries, but also the leap into electronic typesetting, remaining essentially unchan galley of type and scrambled it to make a type specimen book.</p>
+                            <div class="blog__details-content-bottom">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <div class="post-tags">
+                                            <h5 class="title">Tags:</h5>
+                                            <ul class="list-wrap">
+                                                <li><a href="#">Dogs</a></li>
+                                                <li><a href="#">Pet Care</a></li>
+                                                <li><a href="#">Cats</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="blog-post-share">
+                                            <h5 class="title">Share:</h5>
+                                            <ul class="list-wrap">
+                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                                <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                                <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                                <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                                <li><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-avatar-wrap">
+                        <div class="blog-avatar-img">
+                            <a href=""><img src="{% static 'assets/img/blog/avatar.png' %}" alt="img"></a>
+                        </div>
+                        <div class="blog-avatar-info">
+                            <span class="designation">Author</span>
+                            <h4 class="name"><a href="#">Parker Willy</a></h4>
+                            <p>Finanappreciate your trust greatly Our clients choose dentace ducr emaining  essential yearl ow we are the best area Awaitingare really.</p>
+                        </div>
+                    </div>
+                    <div class="comments-wrap">
+                        <h3 class="comments-wrap-title">02 Comments</h3>
+                        <div class="latest-comments">
+                            <ul class="list-wrap">
+                                <li>
+                                    <div class="comments-box">
+                                        <div class="comments-avatar">
+                                            <img src="{% static 'assets/img/blog/comment01.png' %}" alt="img">
+                                        </div>
+                                        <div class="comments-text">
+                                            <div class="avatar-name">
+                                                <h6 class="name">Jessica Rose</h6>
+                                                <span class="date">December 27, 2023</span>
+                                            </div>
+                                            <p>Finanappreciate your trust greatly Our clients choose dentace ducts because know we are the best area Awaitingare really.</p>
+                                            <a href="#" class="reply-btn">Reply</a>
+                                        </div>
+                                    </div>
+                                    <ul class="children">
+                                        <li>
+                                            <div class="comments-box">
+                                                <div class="comments-avatar">
+                                                    <img src="{% static 'assets/img/blog/comment02.png' %}" alt="img">
+                                                </div>
+                                                <div class="comments-text">
+                                                    <div class="avatar-name">
+                                                        <h6 class="name">Parker Willy</h6>
+                                                        <span class="date">December 28, 2023</span>
+                                                    </div>
+                                                    <p>Finanappreciate your trust greatly Our clients choose dentace ducts because know we are the best area Awaitingare really.</p>
+                                                    <a href="#" class="reply-btn">Reply</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+<div class="comment-respond">
+                            <h3 class="comment-reply-title">Post a comment</h3>
+                            <form action="#" class="comment-form">
+                                <p class="comment-notes">Your email address will not be published. Required fields are marked *</p>
+                                <div class="form-grp">
+                                    <textarea name="comment" placeholder="Comment"></textarea>
+                                </div>
+                                <div class="row gutter-20">
+                                    <div class="col-md-4">
+                                        <div class="form-grp">
+                                            <input type="text" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-grp">
+                                            <input type="email" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-grp">
+                                            <input type="url" placeholder="Website">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-grp checkbox-grp">
+                                    <input type="checkbox" id="checkbox">
+                                    <label for="checkbox">Save my name, email, and website in this browser for the next time I comment.</label>
+                                </div>
+                                <button type="submit" class="btn">Read More <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+</svg></button>
+                            </form>
+                        </div>
+                </div>
+                    <div class="col-xl-3 col-lg-4">
+                        <aside class="blog-sidebar">
+                            <div class="blog-widget">
+                                <h4 class="widget-title">Search</h4>
+                                <div class="sidebar-search-form">
+                                    <form action="#">
+                                        <input type="text" placeholder="Type Keywords. . .">
+                                        <button type="submit"><i class="flaticon-loupe"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="blog-widget">
+                                <h4 class="widget-title">Categories</h4>
+                                <div class="sidebar-cat-list">
+                                    <ul class="list-wrap">
+                                        <li><a href="#">Animals (15)</a></li>
+                                        <li><a href="#">Pet Love (11)</a></li>
+                                        <li><a href="#">Grooming (05)</a></li>
+                                        <li><a href="#">Dog Care (07)</a></li>
+                                        <li><a href="#">pet Health (04)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="blog-widget">
+                                <h4 class="widget-title">Recent Post</h4>
+                                <div class="rc-post-wrap">
+                                    <div class="rc-post-item">
+                                        <div class="thumb">
+                                            <a href=""><img src="{% static "assets/img/blog/rc_post01.jpg" %}" alt="img"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title"><a href="">weuine easiure and praising</a></h4>
+                                            <span class="date"><i class="flaticon-calendar"></i>Sep 15, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="rc-post-item">
+                                        <div class="thumb">
+                                            <a href=""><img src="{% static "assets/img/blog/rc_post02.jpg" %}" alt="img"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title"><a href="">how to pursue pleasure rationally</a></h4>
+                                            <span class="date"><i class="flaticon-calendar"></i>Sep 15, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="rc-post-item">
+                                        <div class="thumb">
+                                            <a href=""><img src="{% static "assets/img/blog/rc_post03.jpg" %}" alt="img"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title"><a href="">there anyone who loves</a></h4>
+                                            <span class="date"><i class="flaticon-calendar"></i>Sep 15, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="rc-post-item">
+                                        <div class="thumb">
+                                            <a href=""><img src="{% static "assets/img/blog/rc_post04.jpg" %}"alt="img"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title"><a href="">New occasionally circumstances</a></h4>
+                                            <span class="date"><i class="flaticon-calendar"></i>Sep 15, 2024</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-widget">
+                                <h4 class="widget-title">Tags</h4>
+                                <div class="sidebar-tag-list">
+                                    <ul class="list-wrap">
+                                        <li><a href="#">Dogs</a></li>
+                                        <li><a href="#">Pet Care</a></li>
+                                        <li><a href="#">Cats</a></li>
+                                        <li><a href="#">Modern Lab</a></li>
+                                        <li><a href="#">Expert Vet</a></li>
+                                        <li><a href="#">Grooming</a></li>
+                                        <li><a href="#">Caring</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+            </div>
+        </div>
+    </section>
+    <!-- blog-details-area-end -->
+
+</main>
+<!-- main-area-end -->
+
+{% endblock content %}

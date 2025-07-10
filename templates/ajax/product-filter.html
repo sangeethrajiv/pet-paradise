@@ -1,0 +1,78 @@
+{% comment %} {% load products_tag %}
+{% load static %}
+
+{% if is_error %}
+    <!-- Error Area -->
+    <section class="error__area" style="padding: 60px 0; text-align: center;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="error__img">
+                        <img src="{% static 'assets/img/images/error_img.png' %}" alt="Error Image" style="max-width: 100%; height: auto;">
+                    </div>
+                    <div class="error__content">
+                        <h2 class="title" style="font-size: 36px; margin-bottom: 20px;">OOPS! Nothing Was Found</h2>
+                        <p style="font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
+                            Oops! It seems there is no page here. It might have been moved or deleted. <br>
+                            <a href="{% url 'home' %}" style="color: #007bff; text-decoration: underline;">Back To Home</a>
+                        </p>
+                        <a href="{% url 'home' %}" class="btn" style="font-size: 16px; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none;">
+                            Back To Home Page
+                            <img src="{% static 'assets/img/icon/right_arrow.svg' %}" alt="Right Arrow" class="injectable" style="margin-left: 10px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Error Area End -->
+{% else %}
+    <!-- Product Listing -->
+<div class="col-lg-12">
+    <div id="product-container" class="row gutter-20 row-cols-1 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2">
+        {% for pro in products %}
+        <div class="col">
+            <div class="product__item">
+                <div class="product__thumb">
+                    <a href="{% url 'product_details' pro.slug %}">
+                        <img src="{{ pro.featured_image }}" alt="{{ pro.title }}" style="width: 217.5px; height: 233.76px;">
+                    </a>
+                    <div class="product__action">
+                        <a href="#"><i class="flaticon-love"></i></a>
+                        <a href="#"><i class="flaticon-loupe"></i></a>
+                        <a href="#"><i class="flaticon-exchange"></i></a>
+                    </div>
+                    <div class="sale-wrap">
+                        <span>New</span>
+                    </div>
+                    <div class="product__add-cart">
+                        <form method="post" action="{% url 'shop_add_to_cart' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="product_id" value="{{ pro.id }}">
+                            <button type="submit" id="liveToastBtn" class="btn"><i class="flaticon-shopping-bag"></i>Add To Cart</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="product__content">
+                    <div class="product__reviews">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <span class="review" style="font-size: 12px;">(02 Reviews)</span>
+                    <h4 class="title"><a href="{% url 'product_details' pro.slug %}">{{ pro.title|truncatechars:40 }}</a></h4>
+                    <h3 class="price"><del>₹{{ pro.price }}</del> <span>{% discount_money pro.price pro.discount %}</span></h3>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Product Listing End -->
+     </div>
+
+ {% endcomment %}

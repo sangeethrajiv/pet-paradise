@@ -1,0 +1,974 @@
+{% extends "home/base4.html" %}
+{% load static %}
+{% block title %} Pet Breed{% endblock title %}
+{% block content %}
+    <!-- main-area -->
+    <main class="fix">
+
+        <!-- banner-area -->
+        <section class="banner__area-two">
+            <div class="banner__bg-two" data-background="{% static "assets/img/banner/h2_banner_bg.jpg" %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-10">
+                            <div class="banner__content-two">
+                                <span class="sub-title" data-aos="fade-up">Let's get started. Search pets for your home</span>
+                                <h2 class="title" data-aos="fade-up" data-aos-delay="400">Easy Way to Find Your <br> Perfect Pets Breed</h2>
+                                <div class="banner__radio-wrap" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="dog">
+                                        <label class="form-check-label" for="dog">
+                                            Dog
+                                        </label> 
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="cat">
+                                        <label class="form-check-label" for="cat">
+                                            Cat
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="pet">
+                                        <label class="form-check-label" for="pet">
+                                            Other Pet
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="banner__search-wrap" data-aos="fade-up" data-aos-delay="800">
+                             <form action="{% url "petshop" %}"  method="Post" class="banner__search-form">
+                                    {% csrf_token %}
+                                        <div class="select-grp">
+                                            <select name="pet_type" class="orderby">
+                                                <option value="Select Breed">Select Breed</option>
+                                                <option value="Cat">Cat</option>
+                                                <option value="Dog">Dog</option>
+                                                <option value="Dog">Other Pet</option>
+                                            </select>
+                                        </div>
+                                        <div class="select-grp select-grp-two">
+                                            <select name="male" class="orderby">
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-grp">
+                                            <input type="text" placeholder="What are you looking for . . .">
+                                            <button type="submit"><i class="flaticon-loupe"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="banner__img-two">
+                                <img src="{% static "assets/img/banner/h2_banner_img.png" %}" alt="img" data-aos="fade-left" data-aos-delay="400">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner__shape-wrap-two">
+                    <img src="{% static "assets/img/banner/h2_banner_shape01.png" %}" alt="shape" data-aos="fade-right" data-aos-delay="600">
+                    <img src="{% static "assets/img/banner/h2_banner_shape02.png" %}" alt="shape" data-aos="fade-up-left" data-aos-delay="600">
+                </div>
+            </div>
+        </section>
+        <!-- banner-area-end -->
+
+<!-- brand-area -->
+<div class="brand__area-two">
+    <div class="container">
+        <div class="swiper brand-active">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img01.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img02.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img03.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img04.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img05.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img06.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img07.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="brand__item brand__item-two">
+                        <img src="{% static 'assets/img/brand/h2_brand_img03.png' %}" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- brand-area-end -->
+
+<!-- about-area -->
+<section class="about__area-two">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-xl-6 col-lg-7 col-md-9">
+                <div class="about__img-two">
+                    <div class="mask-img-wrap" data-aos="fade-right" data-aos-delay="200">
+                        <div class="mask-img">
+                            <img src="{% static 'assets/img/images/h2_about_img01.jpg' %}" alt="img">
+                        </div>
+                        <div class="shape">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 399 538" fill="none" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/images/h2_about_img_shape.svg" class="injectable">
+<path class="animation-dashed" d="M2.38438 414.494L2.38423 414.495C2.16676 415.868 1.97535 417.241 1.80977 418.613L1.01552 418.517C0.679303 421.303 0.448681 424.086 0.32127 426.861L1.12043 426.897C0.992749 429.678 0.969494 432.451 1.04823 435.209L0.248547 435.232C0.328503 438.033 0.512951 440.82 0.799297 443.586L1.59504 443.504C1.88139 446.27 2.27043 449.015 2.75953 451.733L1.97218 451.875C2.46794 454.63 3.06581 457.358 3.76313 460.053L4.53764 459.853C5.23371 462.542 6.02961 465.198 6.92265 467.814L6.16557 468.072C7.06932 470.72 8.07185 473.326 9.17048 475.886L9.90565 475.571C11.0003 478.121 12.1911 480.625 13.4751 483.075L12.7666 483.446C14.0639 485.921 15.4559 488.342 16.9397 490.703L17.617 490.277C19.0922 492.624 20.6588 494.911 22.3139 497.13L21.6726 497.608C23.3412 499.846 25.0993 502.016 26.944 504.112L27.5446 503.583C29.3726 505.66 31.2864 507.664 33.283 509.588L32.7279 510.164C34.7339 512.097 36.8231 513.95 38.9927 515.717L39.4979 515.096C41.6379 516.839 43.8568 518.497 46.1517 520.064L45.7006 520.725C47.995 522.292 50.365 523.768 52.8078 525.148L53.2014 524.452C54.4031 525.131 55.6226 525.786 56.8596 526.417C58.0101 527.005 59.1733 527.57 60.3486 528.113L60.013 528.84C62.3729 529.93 64.7815 530.932 67.2345 531.839L67.5122 531.089C69.9285 531.983 72.3881 532.786 74.8869 533.492L74.6693 534.262C77.1661 534.968 79.7019 535.579 82.2723 536.091L82.4285 535.306C84.9498 535.808 87.5048 536.214 90.0895 536.519L89.9957 537.313C92.5664 537.617 95.1662 537.822 97.7914 537.924L97.8225 537.124C99.1096 537.175 100.403 537.2 101.702 537.2L105.776 537.2L105.776 538L113.924 538L113.924 537.2L122.072 537.2L122.072 538L130.22 538L130.22 537.2L138.369 537.2L138.369 538L146.517 538L146.517 537.2L154.665 537.2L154.665 538L162.813 538L162.813 537.2L170.961 537.2L170.961 538L179.11 538L179.11 537.2L187.258 537.2L187.258 538L195.406 538L195.406 537.2L203.554 537.2L203.554 538L211.702 538L211.702 537.2L219.85 537.2L219.85 538L227.999 538L227.999 537.2L236.147 537.2L236.147 538L244.295 538L244.295 537.2L252.443 537.2L252.443 538L260.591 538L260.591 537.2L268.74 537.2L268.74 538L276.888 538L276.888 537.2L285.036 537.2L285.036 538L293.184 538L293.184 537.2L297.258 537.2C298.65 537.2 300.035 537.172 301.411 537.115L301.444 537.915C304.258 537.799 307.04 537.568 309.787 537.226L309.688 536.432C312.456 536.087 315.187 535.628 317.877 535.06L318.043 535.842C320.789 535.262 323.493 534.568 326.152 533.766L325.921 533C328.582 532.197 331.196 531.284 333.761 530.266L334.056 531.009C336.656 529.977 339.205 528.837 341.699 527.595L341.342 526.879C343.823 525.643 346.248 524.305 348.614 522.869L349.029 523.553C351.415 522.105 353.74 520.558 356 518.918L355.53 518.271C356.65 517.458 357.753 516.622 358.84 515.764C359.888 514.933 360.917 514.083 361.926 513.214L362.448 513.82C364.494 512.059 366.462 510.222 368.348 508.316L367.78 507.753C369.662 505.852 371.463 503.881 373.181 501.845L373.793 502.362C375.531 500.303 377.185 498.18 378.753 495.998L378.103 495.531C379.662 493.362 381.136 491.135 382.522 488.854L383.206 489.27C384.603 486.971 385.912 484.619 387.131 482.22L386.418 481.858C387.627 479.479 388.747 477.054 389.776 474.587L390.514 474.895C391.549 472.415 392.492 469.895 393.343 467.339L392.584 467.086C393.425 464.556 394.175 461.992 394.831 459.398L395.607 459.594C396.265 456.991 396.83 454.36 397.299 451.705L396.511 451.566C396.975 448.942 397.345 446.295 397.618 443.632L398.414 443.713C398.689 441.045 398.867 438.36 398.949 435.663L398.149 435.639C398.23 432.978 398.215 430.306 398.103 427.628L398.902 427.594C398.79 424.916 398.581 422.233 398.274 419.549L397.479 419.64C397.328 418.316 397.152 416.992 396.953 415.668L396.952 415.665L396.441 412.195L397.232 412.078L396.209 405.137L395.418 405.254L394.394 398.313L395.186 398.196L394.163 391.255L393.371 391.372L392.348 384.43L393.14 384.314L392.117 377.373L391.325 377.489L390.302 370.548L391.093 370.432L390.07 363.491L389.279 363.607L388.768 360.139L2.38438 414.494ZM2.38438 414.494L3.02449 410.423L2.2342 410.299L3.51442 402.158L4.3047 402.282L5.58488 394.14L4.7946 394.016L6.07481 385.874L6.8651 385.999L8.14531 377.857L7.35502 377.733L8.63521 369.591L9.42549 369.715L10.0654 365.646C10.2374 364.567 10.401 363.276 10.5564 361.796L9.76076 361.712C9.99049 359.524 10.2041 356.904 10.4016 353.911L11.1998 353.963C11.358 351.567 11.5058 348.934 11.6432 346.096L10.8442 346.057C10.9627 343.609 11.0736 341.008 11.1769 338.273L11.9763 338.303C12.0711 335.795 12.1594 333.174 12.2413 330.457L11.4417 330.433C11.5181 327.9 11.5889 325.283 11.6542 322.594L12.454 322.613C12.5158 320.07 12.5726 317.463 12.6245 314.803L11.8246 314.787C11.8745 312.228 11.9198 309.619 11.9606 306.969L12.7606 306.982C12.8002 304.408 12.8355 301.797 12.8665 299.156L12.0666 299.147C12.097 296.563 12.1232 293.952 12.1453 291.321L12.9453 291.328C12.9672 288.735 12.985 286.123 12.9989 283.5L12.1989 283.496C12.2126 280.896 12.2225 278.284 12.2284 275.669L13.0284 275.671C13.0344 273.063 13.0365 270.451 13.0347 267.842L12.2346 267.843C12.2328 265.228 12.2272 262.616 12.2176 260.016L13.0176 260.014C13.008 257.39 12.9943 254.778 12.9768 252.185L12.1768 252.19C12.159 249.559 12.1372 246.948 12.1113 244.365L12.9112 244.357C12.8848 241.716 12.8541 239.105 12.8191 236.531L12.0192 236.542C11.9833 233.892 11.9428 231.283 11.8979 228.723L12.6978 228.709C12.6512 226.048 12.5997 223.441 12.5434 220.898L11.7436 220.916C11.6841 218.228 11.6193 215.611 11.549 213.079L12.3487 213.057C12.2733 210.339 12.1918 207.718 12.104 205.209L11.3045 205.237C11.2089 202.501 11.1058 199.898 10.9955 197.45L11.7947 197.414C11.6668 194.576 11.529 191.943 11.3814 189.547L10.5829 189.596C10.3983 186.6 10.1984 183.978 9.98318 181.791L10.7793 181.713C10.6334 180.23 10.4799 178.939 10.3184 177.862L9.79894 174.391L9.00774 174.509L7.9689 167.568L8.76009 167.45L7.72125 160.509L6.93005 160.627L5.8912 153.686L6.6824 153.568L5.64355 146.627L4.85235 146.745L3.8135 139.804L4.60467 139.686L3.56582 132.745L2.77465 132.863L1.7358 125.922L2.52697 125.803L2.00778 122.334L2.38438 414.494ZM389.103 356.209C388.888 354.022 388.688 351.4 388.503 348.404L387.705 348.453C387.557 346.057 387.419 343.424 387.291 340.586L388.09 340.55C387.98 338.102 387.877 335.499 387.781 332.763L386.982 332.791C386.894 330.282 386.813 327.661 386.737 324.943L387.537 324.921C387.467 322.389 387.402 319.772 387.342 317.084L386.543 317.102C386.486 314.559 386.435 311.952 386.388 309.291L387.188 309.277C387.143 306.717 387.103 304.108 387.067 301.458L386.267 301.469C386.232 298.895 386.201 296.284 386.175 293.643L386.975 293.635C386.949 291.052 386.927 288.441 386.909 285.81L386.109 285.815C386.092 283.222 386.078 280.61 386.068 277.986L386.868 277.983C386.859 275.383 386.853 272.772 386.851 270.157L386.051 270.158C386.049 267.549 386.052 264.937 386.057 262.329L386.857 262.331C386.863 259.716 386.873 257.104 386.887 254.505L386.087 254.5C386.101 251.877 386.119 249.265 386.141 246.672L386.941 246.679C386.963 244.048 386.989 241.437 387.019 238.853L386.219 238.844C386.25 236.203 386.286 233.592 386.325 231.018L387.125 231.031C387.166 228.381 387.211 225.772 387.261 223.213L386.461 223.197C386.513 220.537 386.57 217.93 386.632 215.387L387.432 215.406C387.497 212.717 387.568 210.1 387.644 207.567L386.845 207.543C386.927 204.826 387.015 202.205 387.11 199.697L387.909 199.727C388.012 196.992 388.123 194.391 388.242 191.943L387.443 191.904C387.58 189.066 387.728 186.433 387.886 184.037L388.684 184.089C388.882 181.096 389.095 178.476 389.325 176.288L388.53 176.204C388.685 174.724 388.848 173.434 389.021 172.354C389.021 172.354 389.021 172.354 389.021 172.354L389.66 168.284L390.451 168.409L391.731 160.267L390.941 160.143L392.221 152.001L393.011 152.126L394.291 143.984L393.501 143.86L394.781 135.718L395.572 135.842L396.852 127.701L396.061 127.577L396.701 123.507C396.701 123.507 396.701 123.507 396.701 123.506C396.915 122.133 397.103 120.76 397.265 119.387L398.06 119.481C398.389 116.694 398.613 113.91 398.734 111.135L397.934 111.1C398.056 108.318 398.073 105.545 397.989 102.786L398.788 102.762C398.702 99.9604 398.513 97.1739 398.221 94.4079L397.426 94.4917C397.135 91.7258 396.741 88.9807 396.248 86.2624L397.035 86.1195C396.535 83.3646 395.933 80.6371 395.232 77.943L394.458 78.1444C393.759 75.4553 392.96 72.7998 392.064 70.1843L392.821 69.9251C391.914 67.2784 390.909 64.6722 389.809 62.113L389.074 62.4291C387.977 59.879 386.784 57.3759 385.499 54.9263L386.207 54.5546C384.908 52.0796 383.515 49.6587 382.03 47.2984L381.353 47.7244C379.876 45.3777 378.309 43.0915 376.653 40.8723L377.294 40.3939C375.625 38.1565 373.866 35.9866 372.021 33.8907L371.42 34.4193C369.592 32.3422 367.677 30.3384 365.68 28.4145L366.236 27.8383C364.229 25.9052 362.14 24.052 359.97 22.285L359.464 22.9053C357.324 21.1623 355.105 19.504 352.81 17.9367L353.261 17.2761C350.966 15.7091 348.596 14.2323 346.153 12.8519L345.759 13.5485C344.557 12.8694 343.338 12.2139 342.1 11.5826L342.1 11.5826C340.95 10.9954 339.787 10.4299 338.611 9.88676L338.947 9.16056C336.587 8.06998 334.178 7.06856 331.725 6.16078L331.448 6.91106C329.032 6.01686 326.572 5.21429 324.073 4.5077L324.291 3.73788C321.794 3.03183 319.258 2.42083 316.688 1.90915L316.532 2.69376C314.01 2.19187 311.455 1.78632 308.871 1.48122L308.964 0.686738C306.394 0.383303 303.794 0.178431 301.169 0.0760999L301.138 0.875493C299.85 0.825321 298.557 0.799996 297.258 0.799996L293.184 0.799995L293.184 -4.62536e-06L285.036 -4.98153e-06L285.036 0.799995L276.888 0.799995L276.888 -5.3377e-06L268.74 -5.69386e-06L268.74 0.799994L260.591 0.799994L260.591 -6.05003e-06L252.443 -6.4062e-06L252.443 0.799994L244.295 0.799993L244.295 -6.76237e-06L236.147 -7.11854e-06L236.147 0.799993L227.999 0.799993L227.999 -7.47471e-06L219.85 -7.83087e-06L219.85 0.799992L211.702 0.799992L211.702 -8.18704e-06L203.554 -8.54321e-06L203.554 0.799991L195.406 0.799991L195.406 -8.89938e-06L187.258 -9.25555e-06L187.258 0.799991L179.11 0.79999L179.11 -9.61172e-06L170.961 -9.96788e-06L170.961 0.79999L162.813 0.79999L162.813 -1.03241e-05L154.665 -1.06802e-05L154.665 0.799989L146.517 0.799989L146.517 -1.10364e-05L138.369 -1.13926e-05L138.369 0.799989L130.221 0.799988L130.221 -1.17487e-05L122.072 -1.21049e-05L122.072 0.799988L113.924 0.799988L113.924 -1.24611e-05L105.776 -1.28172e-05L105.776 0.799987L101.702 0.799987C100.312 0.799987 98.9279 0.829134 97.5511 0.88683L97.5176 0.0875317C94.7082 0.205258 91.9272 0.440902 89.179 0.789498L89.2797 1.58314C86.5171 1.93358 83.7879 2.39911 81.097 2.9746L80.9297 2.19229C78.1882 2.77861 75.486 3.47815 72.8281 4.28557L73.0606 5.05102C70.4029 5.85837 67.7897 6.77449 65.226 7.79397L64.9304 7.05059C62.3312 8.08418 59.7826 9.22313 57.2896 10.4619L57.6455 11.1783C55.1624 12.4122 52.7347 13.7459 50.3677 15.1739L49.9544 14.4889C47.563 15.9317 45.2332 17.4698 42.9701 19.0978L43.4372 19.7472C42.314 20.5552 41.2073 21.3854 40.1178 22.2373C39.0708 23.0678 38.043 23.9176 37.0347 24.7858L36.5127 24.1796C34.4672 25.9409 32.5009 27.7775 30.6157 29.6838L31.1846 30.2464C29.3039 32.148 27.5045 34.1196 25.788 36.1553L25.1764 35.6396C23.4403 37.6985 21.7885 39.8223 20.2227 42.0051L20.8727 42.4714C19.3163 44.6411 17.8454 46.8696 16.4618 49.1511L15.7777 48.7363C14.3834 51.0355 13.0771 53.3879 11.8606 55.7876L12.5742 56.1494C11.3681 58.5285 10.2509 60.9546 9.22436 63.4217L8.48575 63.1144C7.45389 65.5943 6.513 68.1152 5.66479 70.6712L6.42407 70.9232C5.58459 73.4529 4.83651 76.0173 4.18161 78.6107L3.40597 78.4148C2.74878 81.0172 2.18475 83.6484 1.71557 86.3026L2.50335 86.4419C2.03967 89.065 1.66928 91.7109 1.39389 94.3738L0.59814 94.2915C0.322261 96.959 0.141017 99.6435 0.0560868 102.339L0.855678 102.364C0.771846 105.025 0.782497 107.697 0.889216 110.374L0.0898694 110.406C0.19662 113.083 0.398799 115.767 0.698023 118.45L1.4931 118.361C1.64071 119.685 1.81216 121.009 2.00756 122.333L389.103 356.209ZM389.103 356.209L388.307 356.287C388.452 357.769 388.606 359.059 388.767 360.137L389.103 356.209Z" stroke="currentcolor" stroke-width="1.6" stroke-dasharray="8 8"></path>
+</svg>
+                        </div>
+                    </div>
+                    <div class="img-two" data-aos="fade-left" data-aos-delay="300">
+                        <img src="{% static 'assets/img/images/h2_about_img02.jpg' %}" alt="img">
+                    </div>
+                    <div class="customer__review customer__review-two" data-aos="fade-up" data-aos-delay="400">
+                        <div class="customer__review-img">
+                            <ul class="list-wrap">
+                                <li><img src="{% static 'assets/img/images/author_01.png' %}" alt=""></li>
+                                <li><img src="{% static 'assets/img/images/author_02.png' %}" alt=""></li>
+                                <li><img src="{% static 'assets/img/images/author_03.png' %}" alt=""></li>
+                                <li><img src="{% static 'assets/img/images/author_04.png' %}" alt=""></li>
+                            </ul>
+                        </div>
+                        <div class="customer__review-content">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span>4.7 (1,567 Reviews)</span>
+                        </div>
+                    </div>
+                    <div class="healthy-pets healthy-pets-two" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="icon">
+                            <img src="{% static 'assets/img/icon/pet_icon01.svg' %}" alt="" class="injectable">
+                        </div>
+                                <div class="content">
+                                    <h6 class="circle rotateme"><span style="transform: rotate(0deg);">B</span><span style="transform: rotate(14.5deg);">E</span><span style="transform: rotate(29deg);">T</span><span style="transform: rotate(43.5deg);">T</span><span style="transform: rotate(58deg);">E</span><span style="transform: rotate(72.5deg);">R</span> <span style="transform: rotate(87deg);">-</span> <span style="transform: rotate(101.5deg);">H</span><span style="transform: rotate(116deg);">E</span><span style="transform: rotate(130.5deg);">A</span><span style="transform: rotate(145deg);">L</span><span style="transform: rotate(159.5deg);">T</span><span style="transform: rotate(174deg);">H</span><span style="transform: rotate(188.5deg);">Y</span> <span style="transform: rotate(203deg);">-</span> <span style="transform: rotate(217.5deg);">P</span><span style="transform: rotate(232deg);">E</span><span style="transform: rotate(246.5deg);">T</span><span style="transform: rotate(261deg);">S</span> <span style="transform: rotate(275.5deg);">-</span> <span style="transform: rotate(290deg);">L</span><span style="transform: rotate(304.5deg);">O</span><span style="transform: rotate(319deg);">V</span><span style="transform: rotate(333.5deg);">E</span> <span style="transform: rotate(348deg);">-</span></h6>
+                                </div>
+                    </div>
+                    <div class="shape">
+                        <img src="{% static 'assets/img/images/h2_about_shape01.png' %}" alt="shape" data-aos="fade-up-right" data-aos-delay="600">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-5">
+                <div class="about__content-two">
+                    <div class="section__title mb-15">
+                        <span class="sub-title">WE LOVE OUR JOB!
+                            <strong class="shake">
+                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/pet_icon02.svg" class="injectable">
+<path d="M13.4698 10.3934C14.5316 10.7921 15.7693 10.0008 16.2343 8.62072C16.6992 7.24061 16.2091 5.79916 15.1473 5.39432C14.0856 4.99562 12.8478 5.78689 12.3829 7.167C11.9243 8.55325 12.4081 9.9947 13.4698 10.3934Z" fill="currentcolor"></path>
+<path d="M10.6049 5.63968C11.6981 5.79302 12.7222 4.6644 12.8855 3.11254C13.0489 1.56068 12.3012 0.17443 11.2018 0.0149505C10.1086 -0.138395 9.08446 0.99023 8.92111 2.54209C8.75148 4.10008 9.50541 5.48633 10.6049 5.63968Z" fill="currentcolor"></path>
+<path d="M0.175492 8.62072C0.640418 10.0008 1.87812 10.7982 2.93991 10.3934C4.0017 9.9947 4.49176 8.54712 4.02683 7.167C3.56191 5.78689 2.3242 4.98949 1.26241 5.39432C0.200623 5.79916 -0.289433 7.24061 0.175492 8.62072Z" fill="currentcolor"></path>
+<path d="M3.52421 3.11254C3.69385 4.6644 4.71794 5.79916 5.81114 5.63968C6.90434 5.48633 7.65828 4.10008 7.49492 2.54209C7.33157 0.990231 6.30748 -0.144529 5.21428 0.0149505C4.11479 0.17443 3.36086 1.56068 3.52421 3.11254Z" fill="currentcolor"></path>
+<path d="M2.88337 14.8282C3.55562 16.1408 5.20799 16.7481 6.38287 16.2205C6.57764 16.1285 6.61533 16.1408 7.3567 15.7912C7.59545 15.6808 7.84676 15.601 8.20488 15.601C8.57556 15.601 8.82059 15.6808 9.05305 15.7912C9.79442 16.1408 9.82583 16.1285 10.0269 16.2205C11.2018 16.7419 12.8541 16.1347 13.5264 14.8282C14.5442 12.8408 12.4018 11.3687 11.9683 10.9516C11.0635 10.0744 10.9756 9.18503 10.8876 8.78633C10.5295 7.22834 9.26667 6.63336 8.20488 6.60269C7.14309 6.63949 5.88025 7.22834 5.52213 8.78633C5.43417 9.18503 5.34621 10.0683 4.44149 10.9516C4.00798 11.3748 1.86556 12.8408 2.88337 14.8282Z" fill="currentcolor"></path>
+</svg>
+                            </strong>
+                        </span>
+                        <h2 class="title">We'll Make Your Pets <br> Really Happy</h2>
+                    </div>
+                    <p>We will work with you to develop individualised care plans, including management chronic diseases. We are committed to being the region’s premier healthcare network providing patient centered care that inspires.</p>
+                    <a href="{% url "about" %}" class="btn">Read More <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+</svg></a>
+                    <div class="shape">
+                        <img src="{% static 'assets/img/images/h2_about_shape02.png' %}" alt="shape" data-aos="fade-down-left" data-aos-delay="800">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- about-area-end -->
+
+<!-- animal-shop-area -->
+<section class="animal__area animal__bg" data-background="{% static 'assets/img/bg/shop_bg.jpg' %}">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="section__title white-title mb-40">
+                    <span class="sub-title">POPULAR BREEDS</span>
+                    <h2 class="title">See our most popular <br> pets Breed for sale</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="view__all-btn view__all-btn-two text-end mb-40">
+                    <a href="" class="btn">See More pets <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+</svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item shine-animate-item">
+                    <div class="animal__thumb shine-animate">
+                        <a href=""><img src="{% static 'assets/img/shop/shop_img01.jpg' %}" alt="img"></a>
+                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content">
+                        <span class="animal-code">ID: 2596-DG</span>
+                        <h4 class="title"><a href="">Cute French Bulldog</a></h4>
+                        <h4 class="price">$590.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item shine-animate-item">
+                    <div class="animal__thumb shine-animate">
+                        <a href=""><img src="{% static 'assets/img/shop/shop_img02.jpg' %}" alt="img"></a>
+                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content">
+                        <span class="animal-code">ID: 2019-CT</span>
+                        <h4 class="title"><a href="">purebred pussycat</a></h4>
+                        <h4 class="price">$45.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item shine-animate-item">
+                    <div class="animal__thumb shine-animate">
+                        <a href=""><img src="{% static 'assets/img/shop/shop_img03.jpg' %}" alt="img"></a>
+                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content">
+                        <span class="animal-code">ID: 5669-RB</span>
+                        <h4 class="title"><a href="">Italian Rabbit</a></h4>
+                        <h4 class="price">$20.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item shine-animate-item">
+                    <div class="animal__thumb shine-animate">
+                        <a href=""><img src="{% static 'assets/img/shop/shop_img04.jpg' %}" alt="img"></a>
+                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content">
+                        <span class="animal-code">ID: 2019-BR</span>
+                        <h4 class="title"><a href="">Macaw Russian</a></h4>
+                        <h4 class="price">$130.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item shine-animate-item">
+                    <div class="animal__thumb shine-animate">
+                        <a href=""><img src="{% static 'assets/img/shop/shop_img05.jpg' %}" alt="img"></a>
+                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content">
+                        <span class="animal-code">ID: 2060-CT</span>
+                        <h4 class="title"><a href="">Egypt Cat</a></h4>
+                        <h4 class="price">$590.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item shine-animate-item">
+                    <div class="animal__thumb shine-animate">
+                        <a href=""><img src="{% static 'assets/img/shop/shop_img06.jpg' %}" alt="img"></a>
+                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content">
+                        <span class="animal-code">ID: 2580-DG</span>
+                        <h4 class="title"><a href="">Australian Shepherd</a></h4>
+                        <h4 class="price">$45.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item shine-animate-item">
+                    <div class="animal__thumb shine-animate">
+                        <a href=""><img src="{% static 'assets/img/shop/shop_img07.jpg' %}" alt="img"></a>
+                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content">
+                        <span class="animal-code">ID: 2592-DG</span>
+                        <h4 class="title"><a href="">Beagle Britain</a></h4>
+                        <h4 class="price">$190.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="animal__item shine-animate-item">
+                    <div class="animal__thumb shine-animate">
+                        <a href=""><img src="{% static 'assets/img/shop/shop_img08.jpg' %}" alt="img"></a>
+                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                    </div>
+                    <div class="animal__content">
+                        <span class="animal-code">ID: 2552-DG</span>
+                        <h4 class="title"><a href="">Maltipoo USA</a></h4>
+                        <h4 class="price">$90.00</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- animal-area-end -->
+<!-- why-we-are-area -->
+<section class="why__we-are-area-two">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section__title text-center mb-40">
+                    <span class="sub-title">Why we are the best
+                        <strong class="shake">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/pet_icon02.svg" class="injectable">
+<path d="M13.4698 10.3934C14.5316 10.7921 15.7693 10.0008 16.2343 8.62072C16.6992 7.24061 16.2091 5.79916 15.1473 5.39432C14.0856 4.99562 12.8478 5.78689 12.3829 7.167C11.9243 8.55325 12.4081 9.9947 13.4698 10.3934Z" fill="currentcolor"></path>
+<path d="M10.6049 5.63968C11.6981 5.79302 12.7222 4.6644 12.8855 3.11254C13.0489 1.56068 12.3012 0.17443 11.2018 0.0149505C10.1086 -0.138395 9.08446 0.99023 8.92111 2.54209C8.75148 4.10008 9.50541 5.48633 10.6049 5.63968Z" fill="currentcolor"></path>
+<path d="M0.175492 8.62072C0.640418 10.0008 1.87812 10.7982 2.93991 10.3934C4.0017 9.9947 4.49176 8.54712 4.02683 7.167C3.56191 5.78689 2.3242 4.98949 1.26241 5.39432C0.200623 5.79916 -0.289433 7.24061 0.175492 8.62072Z" fill="currentcolor"></path>
+<path d="M3.52421 3.11254C3.69385 4.6644 4.71794 5.79916 5.81114 5.63968C6.90434 5.48633 7.65828 4.10008 7.49492 2.54209C7.33157 0.990231 6.30748 -0.144529 5.21428 0.0149505C4.11479 0.17443 3.36086 1.56068 3.52421 3.11254Z" fill="currentcolor"></path>
+<path d="M2.88337 14.8282C3.55562 16.1408 5.20799 16.7481 6.38287 16.2205C6.57764 16.1285 6.61533 16.1408 7.3567 15.7912C7.59545 15.6808 7.84676 15.601 8.20488 15.601C8.57556 15.601 8.82059 15.6808 9.05305 15.7912C9.79442 16.1408 9.82583 16.1285 10.0269 16.2205C11.2018 16.7419 12.8541 16.1347 13.5264 14.8282C14.5442 12.8408 12.4018 11.3687 11.9683 10.9516C11.0635 10.0744 10.9756 9.18503 10.8876 8.78633C10.5295 7.22834 9.26667 6.63336 8.20488 6.60269C7.14309 6.63949 5.88025 7.22834 5.52213 8.78633C5.43417 9.18503 5.34621 10.0683 4.44149 10.9516C4.00798 11.3748 1.86556 12.8408 2.88337 14.8282Z" fill="currentcolor"></path>
+</svg>
+                        </strong>
+                    </span>
+                    <h2 class="title">See How Petpal can Help</h2>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse <br> amily and deserves ets are the best care.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 col-sm-10">
+                        <div class="why__we-are-item">
+                            <div class="why__we-are-item-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="98" height="94" viewBox="0 0 98 94" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/why_icon01.svg" class="injectable">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M22.4814 18.9524C24.0495 28.3024 30.3697 35.022 36.5711 33.9698C42.7725 32.9177 46.5504 24.4763 44.9822 15.1263C43.414 5.77623 37.1176 -0.94337 30.8925 0.132722C24.6673 1.1849 20.9132 9.60233 22.4814 18.9524ZM40.0401 42.6742C29.253 48.5808 18.6085 61.6373 15.9949 71.8243C13.3337 82.2505 15.3533 93.5614 28.3501 93.9918C35.193 94.2071 44.3407 90.094 49.0214 90.094C53.7022 90.094 62.826 94.2071 69.669 93.9918C82.6657 93.5614 84.6853 82.2505 82.0242 71.8243C79.4106 61.6613 68.7898 48.6047 57.979 42.6742C50.8985 38.8242 47.0968 38.8242 40.0401 42.6742ZM96.8505 43.1525C94.1181 51.546 87.394 56.8786 81.8104 55.0373C76.2267 53.2199 73.922 44.9221 76.6544 36.5285C79.3868 28.135 86.1109 22.8263 91.6946 24.6437C97.2782 26.4611 99.5829 34.759 96.8505 43.1525ZM1.1448 43.1525C3.85346 51.546 10.5776 56.8786 16.1612 55.0373C21.7448 53.2199 24.0733 44.9221 21.3409 36.5285C18.6322 28.135 11.8844 22.8024 6.32451 24.6437C0.740882 26.4611 -1.58761 34.759 1.1448 43.1525ZM46.1702 82.6331H51.8489C53.4646 82.6331 54.7951 81.294 54.7951 79.6679V73.5939H60.8302C62.4459 73.5939 63.7764 72.2548 63.7764 70.6287V64.9134C63.7764 63.2874 62.4459 61.9482 60.8302 61.9482H54.7951V55.8743C54.7951 54.2482 53.4646 52.909 51.8489 52.909H46.1702C44.5545 52.909 43.2239 54.2482 43.2239 55.8743V61.9482H37.1889C35.5732 61.9482 34.2426 63.2874 34.2426 64.9134V70.6287C34.2426 72.2548 35.5732 73.5939 37.1889 73.5939H43.2239V79.6679C43.2002 81.294 44.5308 82.6331 46.1702 82.6331ZM75.5139 18.9524C73.9458 28.3024 67.6256 35.022 61.4242 33.9698C55.2228 32.9177 51.445 24.4763 53.0131 15.1263C54.5813 5.75231 60.9015 -0.94337 67.1029 0.108809C73.328 1.1849 77.0821 9.60233 75.5139 18.9524Z" fill="currentcolor"></path>
+</svg>
+                            </div>
+                            <div class="why__we-are-item-content">
+                                <h4 class="title">Health Guarantee</h4>
+                                <p>Duis aute irure dolor in reprehenderit voluptate velit essed eservesets are their health best care</p>
+                            </div>
+                            <div class="why__we-are-item-shape">
+                                <div class="shape-one">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 312 272" fill="none" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/images/why_item_shape01.svg" class="injectable">
+<path d="M88.7318 1.13948C0.327314 -5.59022 -5.48132 52.5469 2.66493 82.4566C9.89031 116.479 9.92571 142.432 9.04024 151.156C8.1902 156.39 4.43585 184.493 2.66493 197.89C-4.56043 255.092 42.5107 270.327 66.9495 270.795C118.377 262.57 192.154 267.368 222.614 270.795C298.268 280.516 313.639 229.046 311.868 202.096C301.243 166.952 304.253 127.01 307.087 111.432C312.187 85.6347 309.212 50.8335 307.087 36.6575C297.311 0.0182376 242.802 -2.28754 216.77 1.13948C178.518 10.1122 115.473 4.87813 88.7318 1.13948Z" fill="currentcolor"></path>
+</svg>
+                                </div>
+                                <div class="shape-two">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 336 292" fill="none" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/images/why_item_shape02.svg" class="injectable">
+<path class="animation-dashed" d="M95.9886 2.21488C1.35045 -4.96016 -4.86776 57.0243 3.8529 88.9133C11.5878 125.187 11.6257 152.858 10.6778 162.159C9.76777 167.739 5.74869 197.702 3.8529 211.985C-3.88194 272.973 46.5083 289.217 72.6703 289.715C127.724 280.946 206.703 286.061 239.311 289.715C320.299 300.079 336.755 245.203 334.859 216.47C323.484 179 326.707 136.415 329.74 119.806C335.2 92.3017 332.015 55.1975 329.74 40.0834C319.276 1.01944 260.923 -1.43893 233.055 2.21488C192.105 11.7814 124.615 6.20095 95.9886 2.21488Z" stroke="currentcolor" stroke-width="2" stroke-dasharray="7 7"></path>
+</svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-10">
+                        <div class="why__we-are-item">
+                            <div class="why__we-are-item-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="101" viewBox="0 0 100 101" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/why_icon02.svg" class="injectable">
+<g clip-path="url(#clip0_247_360--inject-15)">
+<path d="M98.7747 23.2511C97.4957 17.0427 94.0851 11.2873 89.2623 7.15727C84.4128 2.9473 78.1245 0.469287 71.703 0.176188C65.4413 -0.143556 59.1264 1.61504 53.9572 5.15887C49.0811 8.46289 45.2442 13.2857 43.1392 18.8013C42.8994 19.3875 42.7129 19.9737 42.553 20.5865C46.0968 14.1117 52.2519 9.10238 59.3129 6.94411C63.816 5.50526 68.6654 5.2921 73.3284 6.1181C74.7672 6.38456 76.1794 6.81088 77.5916 7.21056C77.5117 7.23721 77.4051 7.26385 77.3252 7.2905C78.1512 7.2905 78.8706 7.77011 79.6167 8.03657C82.7075 9.39548 85.5586 11.2873 87.9833 13.6054C92.8061 18.2151 96.0302 24.5034 96.7763 31.1381C97.2825 35.2148 96.8296 39.3715 95.6305 43.2884C99.0944 37.3198 100.16 30.019 98.7747 23.2511Z" fill="#C2A8C2"></path>
+<path d="M88.2759 77.1016C87.6897 72.5453 86.1176 68.0422 83.2932 64.3652C79.9626 59.9687 74.9799 56.8245 69.5442 55.8919C67.9455 55.6521 66.2669 55.5455 64.7481 54.9061C63.4158 54.0268 62.4566 52.6412 62.0835 51.0958C61.444 48.6178 61.8171 46.0332 62.1901 43.5551C62.2701 43.0755 62.1635 41.8232 62.4299 41.7965C66.6665 40.7574 70.9831 42.9956 75.2197 42.2495C78.3106 41.3969 79.7494 38.1728 80.7353 35.4017C77.6977 33.6697 74.5536 32.0443 71.8091 29.8328C70.0505 28.4739 69.9972 25.9959 68.5317 24.4238C67.759 23.3846 66.5067 22.7185 65.8672 21.6527C66.4001 17.8957 66.6932 13.9255 65.0145 10.3817C64.1352 12.1936 63.1494 13.9522 62.1102 15.6575C61.6572 13.6324 61.3108 11.5274 60.2184 9.74219C58.9127 13.1261 57.314 16.3769 55.6354 19.5743C52.9975 20.4003 51.3188 22.7451 49.5336 24.6636C46.123 28.4739 43.5384 33.35 43.2186 38.4925C42.0995 40.2245 40.8738 41.8498 39.808 43.6084C39.3817 44.3279 38.8488 44.9673 38.3958 45.6601C37.703 46.7526 37.2767 47.9516 36.7172 49.0974C36.051 50.4296 35.2783 51.7086 34.4523 52.9609C32.9868 55.1992 31.7345 57.5706 30.9351 60.1285C30.3489 62.0204 30.0825 63.9921 29.7894 65.9372C20.8898 75.1565 24.407 82.2175 24.407 82.2175C23.4211 81.4182 22.5951 80.4589 21.9823 79.3665C20.4369 76.7286 20.1704 73.5578 20.4369 70.5469C20.8365 66.2836 22.2221 62.0204 24.8866 58.6098C25.6061 57.7038 26.2988 56.7446 27.1248 55.9186C28.8568 54.0001 30.5088 51.9751 31.8677 49.7635C32.747 48.3247 33.5197 46.8059 33.8661 45.1539C34.0526 44.088 34.0793 42.9423 33.5197 41.9831C33.0668 41.4502 32.374 41.0505 31.6812 41.1571C30.9351 41.3169 30.5088 42.0364 30.2157 42.6758C29.4963 44.3012 28.9634 46.0332 28.0308 47.5519C26.965 49.2572 25.6327 50.7227 24.2205 52.1349C22.755 53.4939 21.3162 54.9327 20.0372 56.5048C18.8914 57.9436 18.0654 59.569 17.2661 61.221C15.0811 65.8839 14.042 71.1331 14.7348 76.2756C15.1877 79.6063 16.2002 82.9103 18.1454 85.6814C19.5842 88.1861 21.6892 90.2911 24.2471 91.6233C27.8176 93.5152 31.9476 94.0747 35.9444 93.8083C37.4099 93.9148 38.8754 94.1014 40.3676 94.1547C40.5807 95.6734 41.0604 97.1922 42.0729 98.3646C42.7124 99.1373 43.6183 99.6436 44.5509 99.99C46.0164 100.496 47.775 100.043 48.7609 98.8442C50.1464 97.1389 51.7451 95.407 53.9034 94.7942C56.035 94.208 58.22 94.8741 60.245 95.5136C64.0553 96.4195 67.9722 96.5794 71.8624 96.5527C77.9908 95.9932 83.7995 92.4493 86.8904 87.0936C88.569 84.0294 88.8355 80.4323 88.2759 77.1016ZM83.3465 82.4573C83.2932 83.8962 82.6537 85.2285 82.0143 86.4808C80.5754 89.2253 78.1773 91.4368 75.3263 92.6359C72.2887 93.9681 68.8781 94.2346 65.6007 93.8349C62.0835 93.5685 58.6729 92.2095 55.1291 92.5026C52.5978 92.6892 50.3596 94.1547 48.7342 96.0465C48.0947 96.8458 47.2421 97.512 46.2296 97.7784C45.8032 97.885 45.2437 97.9117 44.9239 97.5386C44.2312 96.7126 43.9381 95.5669 44.3377 94.5277C44.9239 92.929 46.3095 91.8099 47.6418 90.824C49.5069 89.4118 51.452 87.8664 53.8235 87.44C57.394 86.8005 61.0444 87.2269 64.6415 86.9338C67.2261 86.7739 69.8373 86.4808 72.342 85.7081C73.6743 85.2551 75.0065 84.6689 75.9924 83.6564C76.7918 82.857 77.2714 81.6846 77.1915 80.5389C76.2056 82.2975 74.5003 83.6031 72.5818 84.2426C70.7433 84.9087 68.7715 84.9887 66.8531 84.8554C63.4158 84.5623 60.0052 84.0561 56.5413 84.2692C55.8219 81.7379 55.9018 78.9402 56.9143 76.4888C57.7137 74.4105 59.0193 72.492 60.8578 71.213C62.1102 70.3337 63.5757 69.8275 65.0945 69.5876C65.8405 69.4544 66.5866 69.4811 67.3327 69.3478C64.7481 69.0547 62.0302 69.3212 59.7121 70.5469C57.4472 71.6926 55.7419 73.7976 54.836 76.1424C53.8768 78.4605 53.557 80.9919 53.5037 83.4965C51.2389 82.7238 46.3628 74.9967 45.6966 73.2647C45.2437 72.0657 45.0305 70.7867 45.0572 69.5077C45.0572 69.1613 45.0838 68.8149 45.1371 68.4685C45.1904 68.2021 45.2437 67.909 45.297 67.6425C45.3769 67.0297 45.4568 66.3103 45.5634 65.5908L45.7766 63.779C45.7766 63.7523 45.7766 63.7523 45.7766 63.7257C43.8315 62.42 41.6199 64.3385 39.5949 63.4059C38.3159 62.8997 37.8096 61.5141 37.1435 60.4216C37.9162 59.3025 38.529 58.0236 38.609 56.638C38.7689 54.6662 39.6215 52.8544 40.9271 51.3889C40.3409 49.8434 39.6482 48.3779 38.8488 46.9391C39.7281 47.019 40.634 47.099 41.4867 47.3388C42.1795 47.6852 42.9255 48.671 43.6716 47.8983C43.3519 46.9391 42.8189 46.0598 42.3127 45.2071C44.1246 45.447 45.4568 46.8592 47.2421 47.1256C49.9599 47.5786 52.358 49.1773 54.3031 51.0425C56.5147 53.2008 58.2466 55.812 59.4989 58.6631L59.5256 58.6364C59.6855 58.7163 59.872 58.7696 60.0318 58.8229C61.7105 59.3558 63.4691 59.4624 65.201 59.7555C68.4784 60.2618 71.7292 61.1944 74.5269 63.0329C76.9783 64.605 79.0033 66.8165 80.4955 69.2945C81.055 70.1738 81.3748 71.1864 81.7478 72.1722C83.0001 75.423 83.7196 78.9402 83.3465 82.4573Z" fill="currentcolor"></path>
+<path d="M15.428 16.4299C11.1114 18.6948 7.43436 22.0788 4.76982 26.1288C1.06612 31.6711 -0.559248 38.5456 0.160177 45.1803C0.240113 46.0063 0.373339 46.8323 0.559857 47.6583C1.59903 56.4779 10.8983 63.2991 13.8026 65.2442C14.3355 65.6705 14.6552 65.8571 14.6819 65.8038C9.24624 60.8744 5.88893 53.7601 5.43596 46.4593C5.08957 41.2368 6.20867 35.961 8.60675 31.3247C12.1772 24.3969 18.6787 18.9879 26.1927 16.8563C26.7789 16.6431 27.3917 16.5365 28.0312 16.5632C27.7914 16.5099 27.1253 16.6697 27.3384 16.2434L27.445 16.5099C30.9356 15.7105 34.5593 15.4174 38.1031 15.9237C39.1157 16.0036 40.1016 16.2701 41.0874 16.4299C41.1674 16.2168 41.2473 15.977 41.3272 15.7638C33.2271 11.9269 23.3416 12.1667 15.428 16.4299Z" fill="#C2A8C2"></path>
+</g>
+<defs>
+<clipPath id="clip0_247_360--inject-15">
+<rect width="99.3605" height="100" fill="white" transform="translate(0 0.149902)"></rect>
+</clipPath>
+</defs>
+</svg>
+                            </div>
+                            <div class="why__we-are-item-content">
+                                <h4 class="title">Ethical breeding</h4>
+                                <p>Duis aute irure dolor in reprehenderit voluptate velit essed eservesets are their health best care</p>
+                            </div>
+                            <div class="why__we-are-item-shape">
+                                <div class="shape-one">
+                                    <svg viewBox="0 0 312 272" fill="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/images/why_item_shape01.svg" class="injectable">
+<path d="M88.7318 1.13948C0.327314 -5.59022 -5.48132 52.5469 2.66493 82.4566C9.89031 116.479 9.92571 142.432 9.04024 151.156C8.1902 156.39 4.43585 184.493 2.66493 197.89C-4.56043 255.092 42.5107 270.327 66.9495 270.795C118.377 262.57 192.154 267.368 222.614 270.795C298.268 280.516 313.639 229.046 311.868 202.096C301.243 166.952 304.253 127.01 307.087 111.432C312.187 85.6347 309.212 50.8335 307.087 36.6575C297.311 0.0182376 242.802 -2.28754 216.77 1.13948C178.518 10.1122 115.473 4.87813 88.7318 1.13948Z" fill="currentcolor"></path>
+</svg>
+                                </div>
+                                <div class="shape-two">
+                                    <svg viewBox="0 0 336 292" fill="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/images/why_item_shape02.svg" class="injectable">
+<path class="animation-dashed" d="M95.9886 2.21488C1.35045 -4.96016 -4.86776 57.0243 3.8529 88.9133C11.5878 125.187 11.6257 152.858 10.6778 162.159C9.76777 167.739 5.74869 197.702 3.8529 211.985C-3.88194 272.973 46.5083 289.217 72.6703 289.715C127.724 280.946 206.703 286.061 239.311 289.715C320.299 300.079 336.755 245.203 334.859 216.47C323.484 179 326.707 136.415 329.74 119.806C335.2 92.3017 332.015 55.1975 329.74 40.0834C319.276 1.01944 260.923 -1.43893 233.055 2.21488C192.105 11.7814 124.615 6.20095 95.9886 2.21488Z" stroke="currentcolor" stroke-width="2" stroke-dasharray="7 7"></path>
+</svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-10">
+                        <div class="why__we-are-item">
+                            <div class="why__we-are-item-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="95" height="101" viewBox="0 0 95 101" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/why_icon03.svg" class="injectable">
+<path d="M69.5091 6.48091V94.5112C69.5091 97.4743 67.095 99.8761 64.1165 99.8761H19.1722C16.1937 99.8761 13.7795 97.4743 13.7795 94.5112V6.48091C13.7795 3.51771 16.1937 1.11597 19.1722 1.11597H64.1165C67.095 1.11597 69.5091 3.51771 69.5091 6.48091Z" fill="white"></path>
+<path d="M64.6809 7.23728V30.202L18.6079 20.2675V7.23728C18.6079 6.51207 19.2036 5.91943 19.9326 5.91943H63.364C64.0852 5.91943 64.6809 6.51207 64.6809 7.23728Z" fill="#F5E7F5"></path>
+<path d="M18.6079 73.7222L64.6809 83.6567V93.7627C64.6809 94.4879 64.0852 95.0806 63.3562 95.0806H19.9248C19.1958 95.0806 18.6001 94.4879 18.6001 93.7627V73.7222H18.6079Z" fill="#F5E7F5"></path>
+<path d="M50.8542 6.54334H32.4344C32.0895 6.54334 31.8152 6.26262 31.8152 5.92731C31.8152 5.5842 32.0974 5.31128 32.4344 5.31128H50.8463C51.1912 5.31128 51.4656 5.592 51.4656 5.92731C51.4734 6.26262 51.1912 6.54334 50.8542 6.54334Z" fill="#B196B1"></path>
+<path d="M13.7796 43.8874C13.4347 43.8874 13.1604 43.6067 13.1604 43.2714V6.48097C13.1604 3.18247 15.8567 0.5 19.1723 0.5H64.1165C67.4321 0.5 70.1363 3.18247 70.1363 6.48097V20.4002C70.1363 20.7433 69.8541 21.0162 69.5171 21.0162C69.1722 21.0162 68.8978 20.7355 68.8978 20.4002V6.48097C68.8978 3.86868 66.758 1.73986 64.1244 1.73986H19.1723C16.5465 1.73986 14.4067 3.86868 14.4067 6.48097V43.2636C14.3988 43.6067 14.1245 43.8874 13.7796 43.8874Z" fill="#B196B1"></path>
+<path d="M64.1165 100.5H19.1723C15.8567 100.5 13.1604 97.8175 13.1604 94.519V89.9261C13.1604 89.583 13.4426 89.31 13.7796 89.31C14.1245 89.31 14.3988 89.5908 14.3988 89.9261V94.519C14.3988 97.1313 16.5387 99.2601 19.1645 99.2601H64.1165C66.7502 99.2601 68.89 97.1313 68.89 94.519V84.4442C68.89 84.1011 69.1722 83.8281 69.5092 83.8281C69.8541 83.8281 70.1284 84.1089 70.1284 84.4442V94.519C70.1284 97.8175 67.4321 100.5 64.1165 100.5Z" fill="#B196B1"></path>
+<path d="M69.5091 49.2912C69.1642 49.2912 68.8899 49.0105 68.8899 48.6752V39.3489C68.8899 39.0058 69.1721 38.7329 69.5091 38.7329C69.854 38.7329 70.1283 39.0136 70.1283 39.3489V48.6674C70.1283 49.0105 69.854 49.2912 69.5091 49.2912Z" fill="#C0B0C0"></path>
+<path d="M20.152 86.9317C31.2817 86.9317 40.304 77.9557 40.304 66.8833C40.304 55.8109 31.2817 46.835 20.152 46.835C9.02236 46.835 0 55.8109 0 66.8833C0 77.9557 9.02236 86.9317 20.152 86.9317Z" fill="currentcolor"></path>
+<path d="M94.2856 69.9244L72.8246 55.6543V63.5224H52.5237V76.3265H72.8246V84.1945L94.2856 69.9244Z" fill="#F5E7F5"></path>
+<path d="M28.5075 60.7775L24.1416 62.2279C23.5537 60.5046 22.3153 59.639 20.4106 59.639C18.3805 59.639 17.3694 60.294 17.3694 61.6041C17.3694 62.1265 17.5575 62.5632 17.9416 62.9297C18.3178 63.2884 19.18 63.6081 20.5125 63.8733C22.7464 64.3177 24.3767 64.7778 25.4114 65.2301C26.446 65.6902 27.3239 66.4232 28.0293 67.4369C28.7426 68.4506 29.0953 69.5891 29.0953 70.8446C29.0953 72.8096 28.335 74.5174 26.8144 75.9522C25.2938 77.387 23.0364 78.1044 20.0422 78.1044C17.8005 78.1044 15.888 77.5975 14.3125 76.5838C12.737 75.5701 11.6945 74.0573 11.1929 72.061L15.9428 70.9927C16.4758 73.028 17.9572 74.0417 20.3949 74.0417C21.5706 74.0417 22.4407 73.8156 23.0207 73.3633C23.6007 72.911 23.8829 72.3729 23.8829 71.7413C23.8829 71.1019 23.6243 70.6106 23.0991 70.2597C22.5739 69.9088 21.5706 69.5813 20.0736 69.2694C17.2832 68.6924 15.3001 67.9126 14.1165 66.9144C12.933 65.9163 12.3372 64.4659 12.3372 62.5476C12.3372 60.6137 13.0427 58.9762 14.4614 57.6506C15.8801 56.3249 17.8005 55.6543 20.2225 55.6543C24.5178 55.6543 27.2847 57.362 28.5075 60.7775Z" fill="white"></path>
+<path d="M68.9292 81.7695C68.8273 81.7695 68.7254 81.7461 68.6392 81.6993C68.4354 81.5902 68.3099 81.3796 68.3099 81.1535V73.2854C68.3099 72.9423 68.5921 72.6694 68.9292 72.6694C69.274 72.6694 69.5484 72.9501 69.5484 73.2854V79.9916L89.2615 66.8834L69.5562 53.7751V60.4813C69.5562 60.8244 69.274 61.0973 68.937 61.0973H48.6361C48.2912 61.0973 48.0168 60.8166 48.0168 60.4813C48.0168 60.1382 48.299 59.8653 48.6361 59.8653H68.3178V52.6132C68.3178 52.3871 68.4432 52.1766 68.647 52.0674C68.8508 51.9582 69.0938 51.9738 69.2897 52.0986L90.7507 66.3687C90.9232 66.4857 91.0251 66.6806 91.0251 66.8834C91.0251 67.0939 90.9232 67.2811 90.7507 67.398L69.2897 81.6681C69.1722 81.7383 69.0546 81.7695 68.9292 81.7695Z" fill="#B196B1"></path>
+<path d="M63.6697 73.9015H52.5238C52.1789 73.9015 51.9045 73.6208 51.9045 73.2855C51.9045 72.9424 52.1867 72.6694 52.5238 72.6694H63.6697C64.0146 72.6694 64.2889 72.9502 64.2889 73.2855C64.2889 73.6286 64.0146 73.9015 63.6697 73.9015Z" fill="#B196B1"></path>
+<path d="M32.4346 29.8746L53.8956 44.1447V36.2767H85.5227V23.4726H53.8956V15.6045L32.4346 29.8746Z" fill="currentcolor"></path>
+</svg>
+                            </div>
+                            <div class="why__we-are-item-content">
+                                <h4 class="title">Transparent Policy</h4>
+                                <p>Duis aute irure dolor in reprehenderit voluptate velit essed eservesets are their health best care</p>
+                            </div>
+                            <div class="why__we-are-item-shape">
+                                <div class="shape-one">
+                                    <svg viewBox="0 0 312 272" fill="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/images/why_item_shape01.svg" class="injectable">
+<path d="M88.7318 1.13948C0.327314 -5.59022 -5.48132 52.5469 2.66493 82.4566C9.89031 116.479 9.92571 142.432 9.04024 151.156C8.1902 156.39 4.43585 184.493 2.66493 197.89C-4.56043 255.092 42.5107 270.327 66.9495 270.795C118.377 262.57 192.154 267.368 222.614 270.795C298.268 280.516 313.639 229.046 311.868 202.096C301.243 166.952 304.253 127.01 307.087 111.432C312.187 85.6347 309.212 50.8335 307.087 36.6575C297.311 0.0182376 242.802 -2.28754 216.77 1.13948C178.518 10.1122 115.473 4.87813 88.7318 1.13948Z" fill="currentcolor"></path>
+</svg>
+                                </div>
+                                <div class="shape-two">
+                                    <svg viewBox="0 0 336 292" fill="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/images/why_item_shape02.svg" class="injectable">
+<path class="animation-dashed" d="M95.9886 2.21488C1.35045 -4.96016 -4.86776 57.0243 3.8529 88.9133C11.5878 125.187 11.6257 152.858 10.6778 162.159C9.76777 167.739 5.74869 197.702 3.8529 211.985C-3.88194 272.973 46.5083 289.217 72.6703 289.715C127.724 280.946 206.703 286.061 239.311 289.715C320.299 300.079 336.755 245.203 334.859 216.47C323.484 179 326.707 136.415 329.74 119.806C335.2 92.3017 332.015 55.1975 329.74 40.0834C319.276 1.01944 260.923 -1.43893 233.055 2.21488C192.105 11.7814 124.615 6.20095 95.9886 2.21488Z" stroke="currentcolor" stroke-width="2" stroke-dasharray="7 7"></path>
+</svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</div>
+    </div>
+    <div class="why__shape-wrap">
+        <img src="{% static 'assets/img/images/h2_why_shape01.png' %}" alt="shape" data-aos="fade-down-right" data-aos-delay="400">
+        <img src="{% static 'assets/img/images/h2_why_shape02.png' %}" alt="shape" class="ribbonRotate">
+    </div>
+</section>
+<!-- why-we-are-area-end -->
+
+<!-- introducing-area -->
+<section class="introducing__area">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="introducing__img">
+                    <img src="{% static 'assets/img/images/introducing_img.png' %}" alt="img">
+                    <div class="shape">
+                        <img src="{% static 'assets/img/images/introducing_img_shape.svg' %}" alt="" class="injectable">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="introducing__content">
+                    <div class="section__title mb-15">
+                        <span class="sub-title">INTRODUCING
+                            <strong class="shake">
+                                                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/pet_icon02.svg" class="injectable">
+<path d="M13.4698 10.3934C14.5316 10.7921 15.7693 10.0008 16.2343 8.62072C16.6992 7.24061 16.2091 5.79916 15.1473 5.39432C14.0856 4.99562 12.8478 5.78689 12.3829 7.167C11.9243 8.55325 12.4081 9.9947 13.4698 10.3934Z" fill="currentcolor"></path>
+<path d="M10.6049 5.63968C11.6981 5.79302 12.7222 4.6644 12.8855 3.11254C13.0489 1.56068 12.3012 0.17443 11.2018 0.0149505C10.1086 -0.138395 9.08446 0.99023 8.92111 2.54209C8.75148 4.10008 9.50541 5.48633 10.6049 5.63968Z" fill="currentcolor"></path>
+<path d="M0.175492 8.62072C0.640418 10.0008 1.87812 10.7982 2.93991 10.3934C4.0017 9.9947 4.49176 8.54712 4.02683 7.167C3.56191 5.78689 2.3242 4.98949 1.26241 5.39432C0.200623 5.79916 -0.289433 7.24061 0.175492 8.62072Z" fill="currentcolor"></path>
+<path d="M3.52421 3.11254C3.69385 4.6644 4.71794 5.79916 5.81114 5.63968C6.90434 5.48633 7.65828 4.10008 7.49492 2.54209C7.33157 0.990231 6.30748 -0.144529 5.21428 0.0149505C4.11479 0.17443 3.36086 1.56068 3.52421 3.11254Z" fill="currentcolor"></path>
+<path d="M2.88337 14.8282C3.55562 16.1408 5.20799 16.7481 6.38287 16.2205C6.57764 16.1285 6.61533 16.1408 7.3567 15.7912C7.59545 15.6808 7.84676 15.601 8.20488 15.601C8.57556 15.601 8.82059 15.6808 9.05305 15.7912C9.79442 16.1408 9.82583 16.1285 10.0269 16.2205C11.2018 16.7419 12.8541 16.1347 13.5264 14.8282C14.5442 12.8408 12.4018 11.3687 11.9683 10.9516C11.0635 10.0744 10.9756 9.18503 10.8876 8.78633C10.5295 7.22834 9.26667 6.63336 8.20488 6.60269C7.14309 6.63949 5.88025 7.22834 5.52213 8.78633C5.43417 9.18503 5.34621 10.0683 4.44149 10.9516C4.00798 11.3748 1.86556 12.8408 2.88337 14.8282Z" fill="currentcolor"></path>
+</svg>
+                            </strong>
+                        </span>
+                        <h2 class="title">We thrive on building a healthy community <br> for all Pets.</h2>
+                    </div>
+                    <p>Duis aute irure dolor in reprehenderit in voWe care for the growing needs of our community. We build systems for providing health services for individuals, families and populations.</p>
+                    <div class="introducing__list-box mb-35">
+                        <ul class="list-wrap">
+                            <li>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="10" viewBox="0 0 15 10" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/check_icon02.svg" class="injectable">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.6704 0.309527C14.8815 0.506614 15 0.773886 15 1.05257C15 1.33125 14.8815 1.59852 14.6704 1.79561L6.23359 9.67303C6.1221 9.77715 5.98973 9.85975 5.84404 9.91611C5.69835 9.97246 5.5422 10.0015 5.38451 10.0015C5.22681 10.0015 5.07066 9.97246 4.92497 9.91611C4.77928 9.85975 4.64691 9.77715 4.53542 9.67303L0.343636 5.75989C0.236129 5.66294 0.150377 5.54697 0.091385 5.41875C0.0323927 5.29053 0.00134125 5.15262 4.24993e-05 5.01307C-0.00125625 4.87352 0.0272238 4.73513 0.0838206 4.60597C0.140417 4.47681 0.223998 4.35946 0.329684 4.26078C0.435371 4.16211 0.561048 4.08407 0.699382 4.03122C0.837715 3.97838 0.985936 3.95179 1.13539 3.953C1.28485 3.95421 1.43255 3.98321 1.56988 4.03829C1.70721 4.09337 1.83142 4.17343 1.93525 4.27381L5.38413 7.494L13.0781 0.309527C13.1826 0.211863 13.3067 0.134389 13.4433 0.0815301C13.5799 0.0286714 13.7264 0.00146484 13.8743 0.00146484C14.0221 0.00146484 14.1686 0.0286714 14.3052 0.0815301C14.4418 0.134389 14.5659 0.211863 14.6704 0.309527Z" fill="currentcolor"></path>
+</svg>
+                                </span>
+                                Over 10 years of experience
+                            </li>
+                            <li>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="10" viewBox="0 0 15 10" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/check_icon02.svg" class="injectable">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.6704 0.309527C14.8815 0.506614 15 0.773886 15 1.05257C15 1.33125 14.8815 1.59852 14.6704 1.79561L6.23359 9.67303C6.1221 9.77715 5.98973 9.85975 5.84404 9.91611C5.69835 9.97246 5.5422 10.0015 5.38451 10.0015C5.22681 10.0015 5.07066 9.97246 4.92497 9.91611C4.77928 9.85975 4.64691 9.77715 4.53542 9.67303L0.343636 5.75989C0.236129 5.66294 0.150377 5.54697 0.091385 5.41875C0.0323927 5.29053 0.00134125 5.15262 4.24993e-05 5.01307C-0.00125625 4.87352 0.0272238 4.73513 0.0838206 4.60597C0.140417 4.47681 0.223998 4.35946 0.329684 4.26078C0.435371 4.16211 0.561048 4.08407 0.699382 4.03122C0.837715 3.97838 0.985936 3.95179 1.13539 3.953C1.28485 3.95421 1.43255 3.98321 1.56988 4.03829C1.70721 4.09337 1.83142 4.17343 1.93525 4.27381L5.38413 7.494L13.0781 0.309527C13.1826 0.211863 13.3067 0.134389 13.4433 0.0815301C13.5799 0.0286714 13.7264 0.00146484 13.8743 0.00146484C14.0221 0.00146484 14.1686 0.0286714 14.3052 0.0815301C14.4418 0.134389 14.5659 0.211863 14.6704 0.309527Z" fill="currentcolor"></path>
+</svg>
+                                </span>
+                                20 talented vets ready to help you
+                            </li>
+                            <li>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="10" viewBox="0 0 15 10" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/check_icon02.svg" class="injectable">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.6704 0.309527C14.8815 0.506614 15 0.773886 15 1.05257C15 1.33125 14.8815 1.59852 14.6704 1.79561L6.23359 9.67303C6.1221 9.77715 5.98973 9.85975 5.84404 9.91611C5.69835 9.97246 5.5422 10.0015 5.38451 10.0015C5.22681 10.0015 5.07066 9.97246 4.92497 9.91611C4.77928 9.85975 4.64691 9.77715 4.53542 9.67303L0.343636 5.75989C0.236129 5.66294 0.150377 5.54697 0.091385 5.41875C0.0323927 5.29053 0.00134125 5.15262 4.24993e-05 5.01307C-0.00125625 4.87352 0.0272238 4.73513 0.0838206 4.60597C0.140417 4.47681 0.223998 4.35946 0.329684 4.26078C0.435371 4.16211 0.561048 4.08407 0.699382 4.03122C0.837715 3.97838 0.985936 3.95179 1.13539 3.953C1.28485 3.95421 1.43255 3.98321 1.56988 4.03829C1.70721 4.09337 1.83142 4.17343 1.93525 4.27381L5.38413 7.494L13.0781 0.309527C13.1826 0.211863 13.3067 0.134389 13.4433 0.0815301C13.5799 0.0286714 13.7264 0.00146484 13.8743 0.00146484C14.0221 0.00146484 14.1686 0.0286714 14.3052 0.0815301C14.4418 0.134389 14.5659 0.211863 14.6704 0.309527Z" fill="currentcolor"></path>
+</svg>
+                                </span>
+                                High-quality products only
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="{% url "contact" %}" class="btn">Contact With Us <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+</svg></a>
+                    <div class="shape">
+                        <img src="{% static 'assets/img/images/introducing_shape.png' %}" alt="shape" data-aos="fade-up-left" data-aos-delay="400">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- introducing-area-end -->
+
+<!-- counter-area -->
+<div class="counter__area-two counter__area-bg" data-background="{% static 'assets/img/bg/counter_bg.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="counter__item-two">
+                    <div class="counter__item-shape">
+                        <img src="{% static 'assets/img/images/h2_counter_shape.png' %}" alt="">
+                    </div>
+                    <span class="count odometer" data-count="5985"></span>
+                    <p>Happy Family</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="counter__item-two">
+                    <div class="counter__item-shape">
+                        <img src="{% static 'assets/img/images/h2_counter_shape.png' %}" alt="">
+                    </div>
+                    <span class="count odometer" data-count="1322"></span>
+                    <p>New Listed States</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="counter__item-two">
+                    <div class="counter__item-shape">
+                        <img src="{% static 'assets/img/images/h2_counter_shape.png' %}" alt="">
+                    </div>
+                    <span class="count odometer" data-count="3102"></span>
+                    <p>Core Breeding</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="counter__item-two">
+                    <div class="counter__item-shape">
+                        <img src="{% static 'assets/img/images/h2_counter_shape.png' %}" alt="">
+                    </div>
+                    <span class="count odometer" data-count="1125"></span>
+                    <p>Annual Awards</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- counter-area-end -->
+ <!-- team-area -->
+        <section class="team__area-two">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section__title text-center mb-40">
+                            <span class="sub-title">WE CHANGE YOUR LIFE & WORLD
+                                <strong class="shake">
+                                                               <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/pet_icon02.svg" class="injectable">
+<path d="M13.4698 10.3934C14.5316 10.7921 15.7693 10.0008 16.2343 8.62072C16.6992 7.24061 16.2091 5.79916 15.1473 5.39432C14.0856 4.99562 12.8478 5.78689 12.3829 7.167C11.9243 8.55325 12.4081 9.9947 13.4698 10.3934Z" fill="currentcolor"></path>
+<path d="M10.6049 5.63968C11.6981 5.79302 12.7222 4.6644 12.8855 3.11254C13.0489 1.56068 12.3012 0.17443 11.2018 0.0149505C10.1086 -0.138395 9.08446 0.99023 8.92111 2.54209C8.75148 4.10008 9.50541 5.48633 10.6049 5.63968Z" fill="currentcolor"></path>
+<path d="M0.175492 8.62072C0.640418 10.0008 1.87812 10.7982 2.93991 10.3934C4.0017 9.9947 4.49176 8.54712 4.02683 7.167C3.56191 5.78689 2.3242 4.98949 1.26241 5.39432C0.200623 5.79916 -0.289433 7.24061 0.175492 8.62072Z" fill="currentcolor"></path>
+<path d="M3.52421 3.11254C3.69385 4.6644 4.71794 5.79916 5.81114 5.63968C6.90434 5.48633 7.65828 4.10008 7.49492 2.54209C7.33157 0.990231 6.30748 -0.144529 5.21428 0.0149505C4.11479 0.17443 3.36086 1.56068 3.52421 3.11254Z" fill="currentcolor"></path>
+<path d="M2.88337 14.8282C3.55562 16.1408 5.20799 16.7481 6.38287 16.2205C6.57764 16.1285 6.61533 16.1408 7.3567 15.7912C7.59545 15.6808 7.84676 15.601 8.20488 15.601C8.57556 15.601 8.82059 15.6808 9.05305 15.7912C9.79442 16.1408 9.82583 16.1285 10.0269 16.2205C11.2018 16.7419 12.8541 16.1347 13.5264 14.8282C14.5442 12.8408 12.4018 11.3687 11.9683 10.9516C11.0635 10.0744 10.9756 9.18503 10.8876 8.78633C10.5295 7.22834 9.26667 6.63336 8.20488 6.60269C7.14309 6.63949 5.88025 7.22834 5.52213 8.78633C5.43417 9.18503 5.34621 10.0683 4.44149 10.9516C4.00798 11.3748 1.86556 12.8408 2.88337 14.8282Z" fill="currentcolor"></path>
+</svg>
+                                </strong>
+                            </span>
+                            <h2 class="title">We’re dedicated to excellent <br> service and care</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                        <div class="team__item">
+                            <div class="team__item-img">
+                                <div class="mask-img-wrap">
+                                    <img src="{% static "assets/img/team/team_img01.jpg" %}" alt="img">
+                                </div>
+                                <div class="team__item-img-shape">
+                                    <div class="shape-one">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 263" fill="none" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/team/team_img_shape01.svg" class="injectable">
+<path class="animation-dashed" d="M6.10826 107.444L6.10828 107.444L6.10831 107.444L6.11408 107.425L6.11916 107.406C6.38877 106.405 6.66335 105.413 6.94283 104.43L5.98096 104.157C6.54248 102.182 7.12371 100.244 7.72394 98.3417L8.6776 98.6425C9.28902 96.7047 9.92017 94.8044 10.5703 92.9409L9.62609 92.6115C10.3038 90.6691 11.002 88.7663 11.72 86.9024L12.6532 87.2618C13.3837 85.3653 14.1347 83.5094 14.9052 81.6934L13.9846 81.3028C14.7869 79.412 15.6103 77.5639 16.4538 75.7575L17.3599 76.1807C18.2221 74.3341 19.1055 72.5318 20.0088 70.7726L19.1192 70.3158C20.0526 68.4979 21.0074 66.7254 21.9823 64.9974L22.8532 65.4887C23.8584 63.7069 24.8851 61.9729 25.9317 60.2854L25.0819 59.7583C26.1522 58.0327 27.2435 56.3552 28.3544 54.7245L29.1809 55.2875C30.3356 53.5926 31.5115 51.9488 32.7069 50.3547L31.9069 49.7548C33.1337 48.1188 34.3812 46.5346 35.6476 45.0005L36.4188 45.6372C37.7074 44.0763 39.0156 42.5679 40.3416 41.1105L39.602 40.4375C40.9857 38.9166 42.3889 37.4505 43.8094 36.0373L44.5147 36.7462C45.9504 35.3179 47.404 33.9442 48.8731 32.6232L48.2045 31.8796C49.7191 30.5179 51.2502 29.2116 52.7956 27.9586L53.4254 28.7354C55.0055 27.4544 56.6006 26.2296 58.2083 25.0588L57.6196 24.2504C59.2709 23.0479 60.9354 21.9019 62.6105 20.8098L63.1566 21.6475C64.8485 20.5445 66.5514 19.497 68.2624 18.5026L67.7599 17.638C69.5225 16.6136 71.2937 15.645 73.0703 14.7296L73.5284 15.6185C75.3311 14.6897 77.1398 13.8159 78.9512 12.9943L78.5381 12.0836C80.3975 11.2403 82.2596 10.4516 84.121 9.71452L84.4891 10.6443C86.3706 9.89924 88.2515 9.20724 90.1285 8.56506L89.8048 7.61891C91.7339 6.9589 93.6586 6.35121 95.5751 5.79238L95.855 6.7524C97.7994 6.18541 99.7356 5.66904 101.66 5.19965L101.423 4.22814C103.414 3.74233 105.392 3.30655 107.352 2.91681L107.547 3.89761C109.545 3.50029 111.525 3.15111 113.482 2.8458L113.328 1.85775C115.359 1.54097 117.365 1.27113 119.34 1.04352L119.455 2.03695C121.489 1.80269 123.49 1.61343 125.455 1.46396L125.379 0.466844C127.441 0.309957 129.461 0.196663 131.434 0.121003L131.472 1.12027C133.536 1.04112 135.547 1.0034 137.498 1.00022L137.496 0.000222021C139.587 -0.00318751 141.609 0.0328347 143.553 0.0998856L143.519 1.09929C145.611 1.17146 147.613 1.27979 149.512 1.41368L149.582 0.416153C151.745 0.568686 153.776 0.754194 155.658 0.957183L155.55 1.95141C157.747 2.18843 159.739 2.44936 161.497 2.70919L161.643 1.71993C164.124 2.0865 166.146 2.45111 167.633 2.74466L167.44 3.72573C168.378 3.91103 169.1 4.06739 169.585 4.17696C169.828 4.23175 170.011 4.27483 170.133 4.30397C170.194 4.31854 170.24 4.32963 170.269 4.33695L170.302 4.34508L170.31 4.34696L170.311 4.34735L170.356 4.35853L170.401 4.36558L170.402 4.36586L170.41 4.36706L170.443 4.37239C170.473 4.37725 170.518 4.38476 170.579 4.39504C170.701 4.41561 170.884 4.44727 171.125 4.49108C171.608 4.57868 172.323 4.71482 173.246 4.9078L173.45 3.92895C174.915 4.23497 176.893 4.68169 179.291 5.30136L179.041 6.26957C180.75 6.71116 182.675 7.24139 184.78 7.8721L185.067 6.91418C186.854 7.44983 188.771 8.0574 190.796 8.74406L190.474 9.69107C192.26 10.2965 194.129 10.9639 196.069 11.6981L196.423 10.7628C198.229 11.4466 200.096 12.188 202.011 12.9911L201.624 13.9133C203.397 14.6568 205.212 15.4534 207.059 16.3062L207.479 15.3983C209.25 16.2159 211.05 17.085 212.872 18.0082L212.42 18.9002C214.159 19.781 215.917 20.7113 217.687 21.6936L218.172 20.8192C219.892 21.7738 221.624 22.7772 223.362 23.8317L222.843 24.6866C224.516 25.702 226.193 26.7649 227.87 27.8774L228.423 27.0441C230.065 28.1341 231.707 29.2714 233.342 30.4579L232.755 31.2673C234.342 32.4186 235.922 33.6164 237.491 34.8624L238.113 34.0793C239.661 35.3084 241.199 36.5843 242.72 37.9086L242.064 38.663C243.545 39.9515 245.011 41.286 246.457 42.668L247.148 41.945C248.579 43.312 249.991 44.7253 251.381 46.1862L250.656 46.8753C252.009 48.298 253.34 49.7661 254.644 51.281L255.402 50.6283C256.694 52.128 257.96 53.6733 259.198 55.2656L258.408 55.8792C259.613 57.4286 260.789 59.0227 261.934 60.6627L262.754 60.0902C263.887 61.7127 264.99 63.3799 266.059 65.0929L265.21 65.6223C266.248 67.2857 267.254 68.9927 268.225 70.7443L269.1 70.2596C270.056 71.9853 270.979 73.754 271.864 75.5667L270.966 76.0056C271.824 77.762 272.647 79.5601 273.432 81.4009L274.352 81.0084C275.126 82.8212 275.863 84.675 276.561 86.5706L275.623 86.9164C275.966 87.8475 276.3 88.7888 276.624 89.7405C276.934 90.6556 277.233 91.5774 277.521 92.5057L278.476 92.2095C279.054 94.0759 279.588 95.9676 280.077 97.8819L279.108 98.1293C279.588 100.008 280.024 101.91 280.416 103.83L281.396 103.63C281.786 105.542 282.133 107.473 282.436 109.42L281.448 109.574C281.746 111.489 282.001 113.42 282.214 115.365L283.208 115.256C283.421 117.2 283.591 119.158 283.718 121.126L282.72 121.19C282.845 123.129 282.929 125.079 282.97 127.037L283.97 127.016C284.011 128.972 284.01 130.935 283.968 132.905L282.968 132.883C282.926 134.825 282.843 136.772 282.718 138.722L283.716 138.786C283.591 140.74 283.425 142.697 283.217 144.656L282.223 144.55C282.018 146.485 281.772 148.421 281.485 150.356L282.474 150.503C282.187 152.44 281.858 154.376 281.489 156.309L280.507 156.122C280.142 158.032 279.736 159.938 279.29 161.839L280.263 162.068C279.816 163.976 279.327 165.878 278.798 167.773L277.834 167.504C277.311 169.379 276.746 171.247 276.141 173.105L277.092 173.415C276.486 175.278 275.839 177.131 275.151 178.974L274.214 178.624C273.533 180.446 272.813 182.257 272.051 184.054L272.972 184.444C272.208 186.249 271.403 188.041 270.557 189.817L269.654 189.387C268.817 191.145 267.94 192.886 267.023 194.611L267.906 195.081C266.986 196.81 266.026 198.521 265.026 200.214L264.165 199.705C263.176 201.378 262.147 203.032 261.078 204.665L261.914 205.213C260.841 206.852 259.728 208.471 258.574 210.067L257.763 209.481C256.625 211.055 255.447 212.607 254.23 214.134L255.012 214.757C253.793 216.287 252.534 217.792 251.236 219.271L250.484 218.611C249.204 220.07 247.884 221.503 246.525 222.908L247.244 223.603C245.883 225.011 244.484 226.391 243.045 227.743L242.36 227.014C240.95 228.338 239.502 229.635 238.015 230.901L238.664 231.663C237.177 232.929 235.653 234.166 234.09 235.372L233.479 234.58C231.942 235.766 230.368 236.922 228.757 238.045L229.329 238.866C227.733 239.978 226.102 241.059 224.434 242.107L223.902 241.26C222.265 242.289 220.592 243.285 218.884 244.249L219.375 245.12C217.673 246.08 215.935 247.008 214.162 247.901L213.712 247.008C211.994 247.874 210.242 248.707 208.457 249.506L208.866 250.419C207.087 251.215 205.276 251.978 203.432 252.706L203.065 251.776C201.267 252.486 199.437 253.163 197.575 253.806L197.902 254.751C196.07 255.383 194.208 255.982 192.314 256.547L192.028 255.589C190.168 256.144 188.278 256.666 186.358 257.153L186.604 258.122C184.732 258.597 182.832 259.04 180.903 259.449L180.695 258.471C178.803 258.873 176.884 259.242 174.936 259.578L175.106 260.563C173.194 260.893 171.257 261.19 169.292 261.455L169.159 260.464C167.248 260.721 165.312 260.948 163.35 261.142L163.448 262.137C161.512 262.328 159.551 262.489 157.565 262.618L157.501 261.62C155.581 261.744 153.638 261.838 151.671 261.902L151.704 262.901C149.756 262.964 147.785 262.998 145.791 263L145.79 262C143.868 262.002 141.924 261.976 139.959 261.92L139.93 262.92C137.982 262.864 136.013 262.78 134.023 262.667L134.08 261.669C132.158 261.559 130.216 261.423 128.254 261.258L128.171 262.254C126.233 262.091 124.275 261.901 122.299 261.684L122.409 260.69C121.425 260.581 120.436 260.466 119.442 260.344C118.436 260.22 117.438 260.091 116.449 259.958L116.315 260.949C114.329 260.681 112.376 260.394 110.454 260.089L110.611 259.101C108.686 258.795 106.794 258.471 104.935 258.128L104.753 259.111C102.758 258.744 100.8 258.355 98.8783 257.947L99.0861 256.969C97.1731 256.562 95.2963 256.136 93.4551 255.69L93.2198 256.662C91.2569 256.187 89.3338 255.69 87.4498 255.172L87.715 254.208C85.8195 253.687 83.9641 253.144 82.1481 252.581L81.852 253.536C79.9305 252.94 78.0523 252.322 76.2167 251.681L76.5462 250.737C74.6894 250.089 72.8767 249.419 71.1071 248.727L70.743 249.658C68.868 248.925 67.0408 248.168 65.2601 247.387L65.6614 246.472C63.8678 245.686 62.1223 244.877 60.4235 244.046L59.9841 244.944C58.1697 244.057 56.4077 243.144 54.6969 242.208L55.1769 241.331C53.4518 240.387 51.7795 239.419 50.1585 238.429L49.6372 239.282C47.928 238.238 46.275 237.169 44.6764 236.077L45.2405 235.251C43.6058 234.134 42.0288 232.993 40.5077 231.83L39.9002 232.625C38.3288 231.423 36.816 230.197 35.3599 228.95L36.0104 228.191C34.5028 226.899 33.0567 225.585 31.67 224.249L30.9763 224.969C29.5419 223.588 28.1701 222.184 26.8584 220.76L27.5938 220.083C26.2652 218.641 24.999 217.178 23.7926 215.698L23.0175 216.33C21.761 214.789 20.5687 213.228 19.4376 211.651L20.2501 211.068C19.1028 209.469 18.0191 207.853 16.9959 206.223L16.149 206.755C15.0949 205.076 14.1044 203.382 13.1742 201.678L14.0519 201.199C13.1137 199.48 12.2375 197.75 11.4197 196.013L10.5148 196.438C9.67194 194.647 8.89064 192.848 8.16726 191.045L9.09536 190.673C8.36359 188.849 7.69154 187.02 7.07534 185.192L6.12768 185.511C5.49455 183.632 4.91994 181.753 4.39969 179.878L5.36329 179.61C4.83799 177.717 4.36851 175.828 3.95054 173.947L2.97435 174.164C2.54405 172.228 2.16795 170.301 1.84138 168.388L2.82712 168.22C2.49572 166.279 2.21568 164.353 1.98207 162.446L0.989493 162.567C0.747693 160.594 0.5553 158.641 0.406886 156.715L1.40393 156.639C1.25186 154.666 1.14629 152.721 1.08132 150.81L0.0818934 150.844C0.0137625 148.84 -0.0100384 146.875 0.00375479 144.954L1.00373 144.961C1.01808 142.962 1.07344 141.012 1.16213 139.118L0.163222 139.071C0.258318 137.04 0.391465 135.075 0.553291 133.184L1.54965 133.269C1.72423 131.229 1.9324 129.277 2.16226 127.425L1.16987 127.302C1.42795 125.222 1.71318 123.268 2.00891 121.456L2.99584 121.617C3.34064 119.505 3.69974 117.589 4.04632 115.896L3.06664 115.695C3.55701 113.3 4.02281 111.348 4.38942 109.918L5.35813 110.166C5.58591 109.277 5.77458 108.593 5.90575 108.133C5.97134 107.903 6.02254 107.729 6.05706 107.613C6.07432 107.555 6.08741 107.512 6.09604 107.484L6.1056 107.453L6.1078 107.445L6.10826 107.444Z" stroke="currentcolor" stroke-width="2" stroke-dasharray="6 6"></path>
+</svg>
+                                    </div>
+                                    <div class="shape-two">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="127" height="84" viewBox="0 0 127 84" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/team/team_img_shape02.svg" class="injectable">
+<path d="M2.11135 29.6298C2.11135 29.6298 -1.96487 21.6589 3.14219 13.9667C7.27878 7.63917 16.4671 7.0997 21.0488 13.0911C22.4436 14.9356 23.6642 17.471 24.52 20.9516C28.3978 37.125 21.9686 42.3115 21.9686 42.3115C21.9686 42.3115 9.94138 50.7644 2.11135 29.6298Z" fill="currentcolor"></path>
+<path d="M40.1946 18.1642C40.1946 18.1642 45.178 -1.53029 58.6976 0.778556C58.6976 0.778556 73.118 1.22375 72.7058 18.6459C72.2937 36.068 62.8659 53.6209 50.5203 50.3352C50.3256 50.2553 31.7091 48.7273 40.1946 18.1642Z" fill="currentcolor"></path>
+<path d="M89.2309 33.3096C99.9647 23.3201 108.328 32.2041 108.328 32.2041C117.351 39.4621 107.7 53.5874 107.7 53.5874C93.1175 75.9999 81.7649 65.0877 81.6599 64.9797C72.6556 59.0368 78.4617 43.2987 89.2309 33.3096Z" fill="currentcolor"></path>
+<path d="M126.089 73.4137C124.622 79.9295 118.448 81.7945 118.448 81.7945C103.552 88.2598 101.958 77.7762 101.958 77.7762C101.958 77.7762 101.45 71.8046 111.79 65.7601C114.007 64.46 115.926 63.8363 117.592 63.6532C123.016 63.0429 127.301 68.1038 126.089 73.4137Z" fill="currentcolor"></path>
+</svg>
+                                    </div>
+                                </div>
+                                <div class="team__social">
+                                    <ul class="list-wrap">
+                                        <li>
+                                            <a href="" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="" target="_blank"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="" target="_blank"><i class="fab fa-instagram"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="" target="_blank"><i class="fab fa-youtube"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="team__item-content">
+                                <h4 class="title"><a href="">Daria Andaloro</a></h4>
+                                <span>Veterinary Technician</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                        <div class="team__item">
+                            <div class="team__item-img">
+                                <div class="mask-img-wrap">
+                                    <img src="{% static "assets/img/team/team_img02.jpg" %}" alt="img">
+                                </div>
+                                <div class="team__item-img-shape">
+                                    <div class="shape-one">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 263" fill="none" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/team/team_img_shape01.svg" class="injectable">
+<path class="animation-dashed" d="M6.10826 107.444L6.10828 107.444L6.10831 107.444L6.11408 107.425L6.11916 107.406C6.38877 106.405 6.66335 105.413 6.94283 104.43L5.98096 104.157C6.54248 102.182 7.12371 100.244 7.72394 98.3417L8.6776 98.6425C9.28902 96.7047 9.92017 94.8044 10.5703 92.9409L9.62609 92.6115C10.3038 90.6691 11.002 88.7663 11.72 86.9024L12.6532 87.2618C13.3837 85.3653 14.1347 83.5094 14.9052 81.6934L13.9846 81.3028C14.7869 79.412 15.6103 77.5639 16.4538 75.7575L17.3599 76.1807C18.2221 74.3341 19.1055 72.5318 20.0088 70.7726L19.1192 70.3158C20.0526 68.4979 21.0074 66.7254 21.9823 64.9974L22.8532 65.4887C23.8584 63.7069 24.8851 61.9729 25.9317 60.2854L25.0819 59.7583C26.1522 58.0327 27.2435 56.3552 28.3544 54.7245L29.1809 55.2875C30.3356 53.5926 31.5115 51.9488 32.7069 50.3547L31.9069 49.7548C33.1337 48.1188 34.3812 46.5346 35.6476 45.0005L36.4188 45.6372C37.7074 44.0763 39.0156 42.5679 40.3416 41.1105L39.602 40.4375C40.9857 38.9166 42.3889 37.4505 43.8094 36.0373L44.5147 36.7462C45.9504 35.3179 47.404 33.9442 48.8731 32.6232L48.2045 31.8796C49.7191 30.5179 51.2502 29.2116 52.7956 27.9586L53.4254 28.7354C55.0055 27.4544 56.6006 26.2296 58.2083 25.0588L57.6196 24.2504C59.2709 23.0479 60.9354 21.9019 62.6105 20.8098L63.1566 21.6475C64.8485 20.5445 66.5514 19.497 68.2624 18.5026L67.7599 17.638C69.5225 16.6136 71.2937 15.645 73.0703 14.7296L73.5284 15.6185C75.3311 14.6897 77.1398 13.8159 78.9512 12.9943L78.5381 12.0836C80.3975 11.2403 82.2596 10.4516 84.121 9.71452L84.4891 10.6443C86.3706 9.89924 88.2515 9.20724 90.1285 8.56506L89.8048 7.61891C91.7339 6.9589 93.6586 6.35121 95.5751 5.79238L95.855 6.7524C97.7994 6.18541 99.7356 5.66904 101.66 5.19965L101.423 4.22814C103.414 3.74233 105.392 3.30655 107.352 2.91681L107.547 3.89761C109.545 3.50029 111.525 3.15111 113.482 2.8458L113.328 1.85775C115.359 1.54097 117.365 1.27113 119.34 1.04352L119.455 2.03695C121.489 1.80269 123.49 1.61343 125.455 1.46396L125.379 0.466844C127.441 0.309957 129.461 0.196663 131.434 0.121003L131.472 1.12027C133.536 1.04112 135.547 1.0034 137.498 1.00022L137.496 0.000222021C139.587 -0.00318751 141.609 0.0328347 143.553 0.0998856L143.519 1.09929C145.611 1.17146 147.613 1.27979 149.512 1.41368L149.582 0.416153C151.745 0.568686 153.776 0.754194 155.658 0.957183L155.55 1.95141C157.747 2.18843 159.739 2.44936 161.497 2.70919L161.643 1.71993C164.124 2.0865 166.146 2.45111 167.633 2.74466L167.44 3.72573C168.378 3.91103 169.1 4.06739 169.585 4.17696C169.828 4.23175 170.011 4.27483 170.133 4.30397C170.194 4.31854 170.24 4.32963 170.269 4.33695L170.302 4.34508L170.31 4.34696L170.311 4.34735L170.356 4.35853L170.401 4.36558L170.402 4.36586L170.41 4.36706L170.443 4.37239C170.473 4.37725 170.518 4.38476 170.579 4.39504C170.701 4.41561 170.884 4.44727 171.125 4.49108C171.608 4.57868 172.323 4.71482 173.246 4.9078L173.45 3.92895C174.915 4.23497 176.893 4.68169 179.291 5.30136L179.041 6.26957C180.75 6.71116 182.675 7.24139 184.78 7.8721L185.067 6.91418C186.854 7.44983 188.771 8.0574 190.796 8.74406L190.474 9.69107C192.26 10.2965 194.129 10.9639 196.069 11.6981L196.423 10.7628C198.229 11.4466 200.096 12.188 202.011 12.9911L201.624 13.9133C203.397 14.6568 205.212 15.4534 207.059 16.3062L207.479 15.3983C209.25 16.2159 211.05 17.085 212.872 18.0082L212.42 18.9002C214.159 19.781 215.917 20.7113 217.687 21.6936L218.172 20.8192C219.892 21.7738 221.624 22.7772 223.362 23.8317L222.843 24.6866C224.516 25.702 226.193 26.7649 227.87 27.8774L228.423 27.0441C230.065 28.1341 231.707 29.2714 233.342 30.4579L232.755 31.2673C234.342 32.4186 235.922 33.6164 237.491 34.8624L238.113 34.0793C239.661 35.3084 241.199 36.5843 242.72 37.9086L242.064 38.663C243.545 39.9515 245.011 41.286 246.457 42.668L247.148 41.945C248.579 43.312 249.991 44.7253 251.381 46.1862L250.656 46.8753C252.009 48.298 253.34 49.7661 254.644 51.281L255.402 50.6283C256.694 52.128 257.96 53.6733 259.198 55.2656L258.408 55.8792C259.613 57.4286 260.789 59.0227 261.934 60.6627L262.754 60.0902C263.887 61.7127 264.99 63.3799 266.059 65.0929L265.21 65.6223C266.248 67.2857 267.254 68.9927 268.225 70.7443L269.1 70.2596C270.056 71.9853 270.979 73.754 271.864 75.5667L270.966 76.0056C271.824 77.762 272.647 79.5601 273.432 81.4009L274.352 81.0084C275.126 82.8212 275.863 84.675 276.561 86.5706L275.623 86.9164C275.966 87.8475 276.3 88.7888 276.624 89.7405C276.934 90.6556 277.233 91.5774 277.521 92.5057L278.476 92.2095C279.054 94.0759 279.588 95.9676 280.077 97.8819L279.108 98.1293C279.588 100.008 280.024 101.91 280.416 103.83L281.396 103.63C281.786 105.542 282.133 107.473 282.436 109.42L281.448 109.574C281.746 111.489 282.001 113.42 282.214 115.365L283.208 115.256C283.421 117.2 283.591 119.158 283.718 121.126L282.72 121.19C282.845 123.129 282.929 125.079 282.97 127.037L283.97 127.016C284.011 128.972 284.01 130.935 283.968 132.905L282.968 132.883C282.926 134.825 282.843 136.772 282.718 138.722L283.716 138.786C283.591 140.74 283.425 142.697 283.217 144.656L282.223 144.55C282.018 146.485 281.772 148.421 281.485 150.356L282.474 150.503C282.187 152.44 281.858 154.376 281.489 156.309L280.507 156.122C280.142 158.032 279.736 159.938 279.29 161.839L280.263 162.068C279.816 163.976 279.327 165.878 278.798 167.773L277.834 167.504C277.311 169.379 276.746 171.247 276.141 173.105L277.092 173.415C276.486 175.278 275.839 177.131 275.151 178.974L274.214 178.624C273.533 180.446 272.813 182.257 272.051 184.054L272.972 184.444C272.208 186.249 271.403 188.041 270.557 189.817L269.654 189.387C268.817 191.145 267.94 192.886 267.023 194.611L267.906 195.081C266.986 196.81 266.026 198.521 265.026 200.214L264.165 199.705C263.176 201.378 262.147 203.032 261.078 204.665L261.914 205.213C260.841 206.852 259.728 208.471 258.574 210.067L257.763 209.481C256.625 211.055 255.447 212.607 254.23 214.134L255.012 214.757C253.793 216.287 252.534 217.792 251.236 219.271L250.484 218.611C249.204 220.07 247.884 221.503 246.525 222.908L247.244 223.603C245.883 225.011 244.484 226.391 243.045 227.743L242.36 227.014C240.95 228.338 239.502 229.635 238.015 230.901L238.664 231.663C237.177 232.929 235.653 234.166 234.09 235.372L233.479 234.58C231.942 235.766 230.368 236.922 228.757 238.045L229.329 238.866C227.733 239.978 226.102 241.059 224.434 242.107L223.902 241.26C222.265 242.289 220.592 243.285 218.884 244.249L219.375 245.12C217.673 246.08 215.935 247.008 214.162 247.901L213.712 247.008C211.994 247.874 210.242 248.707 208.457 249.506L208.866 250.419C207.087 251.215 205.276 251.978 203.432 252.706L203.065 251.776C201.267 252.486 199.437 253.163 197.575 253.806L197.902 254.751C196.07 255.383 194.208 255.982 192.314 256.547L192.028 255.589C190.168 256.144 188.278 256.666 186.358 257.153L186.604 258.122C184.732 258.597 182.832 259.04 180.903 259.449L180.695 258.471C178.803 258.873 176.884 259.242 174.936 259.578L175.106 260.563C173.194 260.893 171.257 261.19 169.292 261.455L169.159 260.464C167.248 260.721 165.312 260.948 163.35 261.142L163.448 262.137C161.512 262.328 159.551 262.489 157.565 262.618L157.501 261.62C155.581 261.744 153.638 261.838 151.671 261.902L151.704 262.901C149.756 262.964 147.785 262.998 145.791 263L145.79 262C143.868 262.002 141.924 261.976 139.959 261.92L139.93 262.92C137.982 262.864 136.013 262.78 134.023 262.667L134.08 261.669C132.158 261.559 130.216 261.423 128.254 261.258L128.171 262.254C126.233 262.091 124.275 261.901 122.299 261.684L122.409 260.69C121.425 260.581 120.436 260.466 119.442 260.344C118.436 260.22 117.438 260.091 116.449 259.958L116.315 260.949C114.329 260.681 112.376 260.394 110.454 260.089L110.611 259.101C108.686 258.795 106.794 258.471 104.935 258.128L104.753 259.111C102.758 258.744 100.8 258.355 98.8783 257.947L99.0861 256.969C97.1731 256.562 95.2963 256.136 93.4551 255.69L93.2198 256.662C91.2569 256.187 89.3338 255.69 87.4498 255.172L87.715 254.208C85.8195 253.687 83.9641 253.144 82.1481 252.581L81.852 253.536C79.9305 252.94 78.0523 252.322 76.2167 251.681L76.5462 250.737C74.6894 250.089 72.8767 249.419 71.1071 248.727L70.743 249.658C68.868 248.925 67.0408 248.168 65.2601 247.387L65.6614 246.472C63.8678 245.686 62.1223 244.877 60.4235 244.046L59.9841 244.944C58.1697 244.057 56.4077 243.144 54.6969 242.208L55.1769 241.331C53.4518 240.387 51.7795 239.419 50.1585 238.429L49.6372 239.282C47.928 238.238 46.275 237.169 44.6764 236.077L45.2405 235.251C43.6058 234.134 42.0288 232.993 40.5077 231.83L39.9002 232.625C38.3288 231.423 36.816 230.197 35.3599 228.95L36.0104 228.191C34.5028 226.899 33.0567 225.585 31.67 224.249L30.9763 224.969C29.5419 223.588 28.1701 222.184 26.8584 220.76L27.5938 220.083C26.2652 218.641 24.999 217.178 23.7926 215.698L23.0175 216.33C21.761 214.789 20.5687 213.228 19.4376 211.651L20.2501 211.068C19.1028 209.469 18.0191 207.853 16.9959 206.223L16.149 206.755C15.0949 205.076 14.1044 203.382 13.1742 201.678L14.0519 201.199C13.1137 199.48 12.2375 197.75 11.4197 196.013L10.5148 196.438C9.67194 194.647 8.89064 192.848 8.16726 191.045L9.09536 190.673C8.36359 188.849 7.69154 187.02 7.07534 185.192L6.12768 185.511C5.49455 183.632 4.91994 181.753 4.39969 179.878L5.36329 179.61C4.83799 177.717 4.36851 175.828 3.95054 173.947L2.97435 174.164C2.54405 172.228 2.16795 170.301 1.84138 168.388L2.82712 168.22C2.49572 166.279 2.21568 164.353 1.98207 162.446L0.989493 162.567C0.747693 160.594 0.5553 158.641 0.406886 156.715L1.40393 156.639C1.25186 154.666 1.14629 152.721 1.08132 150.81L0.0818934 150.844C0.0137625 148.84 -0.0100384 146.875 0.00375479 144.954L1.00373 144.961C1.01808 142.962 1.07344 141.012 1.16213 139.118L0.163222 139.071C0.258318 137.04 0.391465 135.075 0.553291 133.184L1.54965 133.269C1.72423 131.229 1.9324 129.277 2.16226 127.425L1.16987 127.302C1.42795 125.222 1.71318 123.268 2.00891 121.456L2.99584 121.617C3.34064 119.505 3.69974 117.589 4.04632 115.896L3.06664 115.695C3.55701 113.3 4.02281 111.348 4.38942 109.918L5.35813 110.166C5.58591 109.277 5.77458 108.593 5.90575 108.133C5.97134 107.903 6.02254 107.729 6.05706 107.613C6.07432 107.555 6.08741 107.512 6.09604 107.484L6.1056 107.453L6.1078 107.445L6.10826 107.444Z" stroke="currentcolor" stroke-width="2" stroke-dasharray="6 6"></path>
+</svg>
+                                    </div>
+                                    <div class="shape-two">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="127" height="84" viewBox="0 0 127 84" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/team/team_img_shape02.svg" class="injectable">
+<path d="M2.11135 29.6298C2.11135 29.6298 -1.96487 21.6589 3.14219 13.9667C7.27878 7.63917 16.4671 7.0997 21.0488 13.0911C22.4436 14.9356 23.6642 17.471 24.52 20.9516C28.3978 37.125 21.9686 42.3115 21.9686 42.3115C21.9686 42.3115 9.94138 50.7644 2.11135 29.6298Z" fill="currentcolor"></path>
+<path d="M40.1946 18.1642C40.1946 18.1642 45.178 -1.53029 58.6976 0.778556C58.6976 0.778556 73.118 1.22375 72.7058 18.6459C72.2937 36.068 62.8659 53.6209 50.5203 50.3352C50.3256 50.2553 31.7091 48.7273 40.1946 18.1642Z" fill="currentcolor"></path>
+<path d="M89.2309 33.3096C99.9647 23.3201 108.328 32.2041 108.328 32.2041C117.351 39.4621 107.7 53.5874 107.7 53.5874C93.1175 75.9999 81.7649 65.0877 81.6599 64.9797C72.6556 59.0368 78.4617 43.2987 89.2309 33.3096Z" fill="currentcolor"></path>
+<path d="M126.089 73.4137C124.622 79.9295 118.448 81.7945 118.448 81.7945C103.552 88.2598 101.958 77.7762 101.958 77.7762C101.958 77.7762 101.45 71.8046 111.79 65.7601C114.007 64.46 115.926 63.8363 117.592 63.6532C123.016 63.0429 127.301 68.1038 126.089 73.4137Z" fill="currentcolor"></path>
+</svg>
+                                    </div>
+                                </div>
+                                <div class="team__social">
+                                    <ul class="list-wrap">
+                                        <li>
+                                            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="team__item-content">
+                                <h4 class="title"><a href="">Michael Brian</a></h4>
+                                <span>Medicine Specialist</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                        <div class="team__item">
+                            <div class="team__item-img">
+                                <div class="mask-img-wrap">
+                                    <img src="{% static "assets/img/team/team_img03.jpg" %}" alt="img">
+                                </div>
+                                <div class="team__item-img-shape">
+                                    <div class="shape-one">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 263" fill="none" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/team/team_img_shape01.svg" class="injectable">
+<path class="animation-dashed" d="M6.10826 107.444L6.10828 107.444L6.10831 107.444L6.11408 107.425L6.11916 107.406C6.38877 106.405 6.66335 105.413 6.94283 104.43L5.98096 104.157C6.54248 102.182 7.12371 100.244 7.72394 98.3417L8.6776 98.6425C9.28902 96.7047 9.92017 94.8044 10.5703 92.9409L9.62609 92.6115C10.3038 90.6691 11.002 88.7663 11.72 86.9024L12.6532 87.2618C13.3837 85.3653 14.1347 83.5094 14.9052 81.6934L13.9846 81.3028C14.7869 79.412 15.6103 77.5639 16.4538 75.7575L17.3599 76.1807C18.2221 74.3341 19.1055 72.5318 20.0088 70.7726L19.1192 70.3158C20.0526 68.4979 21.0074 66.7254 21.9823 64.9974L22.8532 65.4887C23.8584 63.7069 24.8851 61.9729 25.9317 60.2854L25.0819 59.7583C26.1522 58.0327 27.2435 56.3552 28.3544 54.7245L29.1809 55.2875C30.3356 53.5926 31.5115 51.9488 32.7069 50.3547L31.9069 49.7548C33.1337 48.1188 34.3812 46.5346 35.6476 45.0005L36.4188 45.6372C37.7074 44.0763 39.0156 42.5679 40.3416 41.1105L39.602 40.4375C40.9857 38.9166 42.3889 37.4505 43.8094 36.0373L44.5147 36.7462C45.9504 35.3179 47.404 33.9442 48.8731 32.6232L48.2045 31.8796C49.7191 30.5179 51.2502 29.2116 52.7956 27.9586L53.4254 28.7354C55.0055 27.4544 56.6006 26.2296 58.2083 25.0588L57.6196 24.2504C59.2709 23.0479 60.9354 21.9019 62.6105 20.8098L63.1566 21.6475C64.8485 20.5445 66.5514 19.497 68.2624 18.5026L67.7599 17.638C69.5225 16.6136 71.2937 15.645 73.0703 14.7296L73.5284 15.6185C75.3311 14.6897 77.1398 13.8159 78.9512 12.9943L78.5381 12.0836C80.3975 11.2403 82.2596 10.4516 84.121 9.71452L84.4891 10.6443C86.3706 9.89924 88.2515 9.20724 90.1285 8.56506L89.8048 7.61891C91.7339 6.9589 93.6586 6.35121 95.5751 5.79238L95.855 6.7524C97.7994 6.18541 99.7356 5.66904 101.66 5.19965L101.423 4.22814C103.414 3.74233 105.392 3.30655 107.352 2.91681L107.547 3.89761C109.545 3.50029 111.525 3.15111 113.482 2.8458L113.328 1.85775C115.359 1.54097 117.365 1.27113 119.34 1.04352L119.455 2.03695C121.489 1.80269 123.49 1.61343 125.455 1.46396L125.379 0.466844C127.441 0.309957 129.461 0.196663 131.434 0.121003L131.472 1.12027C133.536 1.04112 135.547 1.0034 137.498 1.00022L137.496 0.000222021C139.587 -0.00318751 141.609 0.0328347 143.553 0.0998856L143.519 1.09929C145.611 1.17146 147.613 1.27979 149.512 1.41368L149.582 0.416153C151.745 0.568686 153.776 0.754194 155.658 0.957183L155.55 1.95141C157.747 2.18843 159.739 2.44936 161.497 2.70919L161.643 1.71993C164.124 2.0865 166.146 2.45111 167.633 2.74466L167.44 3.72573C168.378 3.91103 169.1 4.06739 169.585 4.17696C169.828 4.23175 170.011 4.27483 170.133 4.30397C170.194 4.31854 170.24 4.32963 170.269 4.33695L170.302 4.34508L170.31 4.34696L170.311 4.34735L170.356 4.35853L170.401 4.36558L170.402 4.36586L170.41 4.36706L170.443 4.37239C170.473 4.37725 170.518 4.38476 170.579 4.39504C170.701 4.41561 170.884 4.44727 171.125 4.49108C171.608 4.57868 172.323 4.71482 173.246 4.9078L173.45 3.92895C174.915 4.23497 176.893 4.68169 179.291 5.30136L179.041 6.26957C180.75 6.71116 182.675 7.24139 184.78 7.8721L185.067 6.91418C186.854 7.44983 188.771 8.0574 190.796 8.74406L190.474 9.69107C192.26 10.2965 194.129 10.9639 196.069 11.6981L196.423 10.7628C198.229 11.4466 200.096 12.188 202.011 12.9911L201.624 13.9133C203.397 14.6568 205.212 15.4534 207.059 16.3062L207.479 15.3983C209.25 16.2159 211.05 17.085 212.872 18.0082L212.42 18.9002C214.159 19.781 215.917 20.7113 217.687 21.6936L218.172 20.8192C219.892 21.7738 221.624 22.7772 223.362 23.8317L222.843 24.6866C224.516 25.702 226.193 26.7649 227.87 27.8774L228.423 27.0441C230.065 28.1341 231.707 29.2714 233.342 30.4579L232.755 31.2673C234.342 32.4186 235.922 33.6164 237.491 34.8624L238.113 34.0793C239.661 35.3084 241.199 36.5843 242.72 37.9086L242.064 38.663C243.545 39.9515 245.011 41.286 246.457 42.668L247.148 41.945C248.579 43.312 249.991 44.7253 251.381 46.1862L250.656 46.8753C252.009 48.298 253.34 49.7661 254.644 51.281L255.402 50.6283C256.694 52.128 257.96 53.6733 259.198 55.2656L258.408 55.8792C259.613 57.4286 260.789 59.0227 261.934 60.6627L262.754 60.0902C263.887 61.7127 264.99 63.3799 266.059 65.0929L265.21 65.6223C266.248 67.2857 267.254 68.9927 268.225 70.7443L269.1 70.2596C270.056 71.9853 270.979 73.754 271.864 75.5667L270.966 76.0056C271.824 77.762 272.647 79.5601 273.432 81.4009L274.352 81.0084C275.126 82.8212 275.863 84.675 276.561 86.5706L275.623 86.9164C275.966 87.8475 276.3 88.7888 276.624 89.7405C276.934 90.6556 277.233 91.5774 277.521 92.5057L278.476 92.2095C279.054 94.0759 279.588 95.9676 280.077 97.8819L279.108 98.1293C279.588 100.008 280.024 101.91 280.416 103.83L281.396 103.63C281.786 105.542 282.133 107.473 282.436 109.42L281.448 109.574C281.746 111.489 282.001 113.42 282.214 115.365L283.208 115.256C283.421 117.2 283.591 119.158 283.718 121.126L282.72 121.19C282.845 123.129 282.929 125.079 282.97 127.037L283.97 127.016C284.011 128.972 284.01 130.935 283.968 132.905L282.968 132.883C282.926 134.825 282.843 136.772 282.718 138.722L283.716 138.786C283.591 140.74 283.425 142.697 283.217 144.656L282.223 144.55C282.018 146.485 281.772 148.421 281.485 150.356L282.474 150.503C282.187 152.44 281.858 154.376 281.489 156.309L280.507 156.122C280.142 158.032 279.736 159.938 279.29 161.839L280.263 162.068C279.816 163.976 279.327 165.878 278.798 167.773L277.834 167.504C277.311 169.379 276.746 171.247 276.141 173.105L277.092 173.415C276.486 175.278 275.839 177.131 275.151 178.974L274.214 178.624C273.533 180.446 272.813 182.257 272.051 184.054L272.972 184.444C272.208 186.249 271.403 188.041 270.557 189.817L269.654 189.387C268.817 191.145 267.94 192.886 267.023 194.611L267.906 195.081C266.986 196.81 266.026 198.521 265.026 200.214L264.165 199.705C263.176 201.378 262.147 203.032 261.078 204.665L261.914 205.213C260.841 206.852 259.728 208.471 258.574 210.067L257.763 209.481C256.625 211.055 255.447 212.607 254.23 214.134L255.012 214.757C253.793 216.287 252.534 217.792 251.236 219.271L250.484 218.611C249.204 220.07 247.884 221.503 246.525 222.908L247.244 223.603C245.883 225.011 244.484 226.391 243.045 227.743L242.36 227.014C240.95 228.338 239.502 229.635 238.015 230.901L238.664 231.663C237.177 232.929 235.653 234.166 234.09 235.372L233.479 234.58C231.942 235.766 230.368 236.922 228.757 238.045L229.329 238.866C227.733 239.978 226.102 241.059 224.434 242.107L223.902 241.26C222.265 242.289 220.592 243.285 218.884 244.249L219.375 245.12C217.673 246.08 215.935 247.008 214.162 247.901L213.712 247.008C211.994 247.874 210.242 248.707 208.457 249.506L208.866 250.419C207.087 251.215 205.276 251.978 203.432 252.706L203.065 251.776C201.267 252.486 199.437 253.163 197.575 253.806L197.902 254.751C196.07 255.383 194.208 255.982 192.314 256.547L192.028 255.589C190.168 256.144 188.278 256.666 186.358 257.153L186.604 258.122C184.732 258.597 182.832 259.04 180.903 259.449L180.695 258.471C178.803 258.873 176.884 259.242 174.936 259.578L175.106 260.563C173.194 260.893 171.257 261.19 169.292 261.455L169.159 260.464C167.248 260.721 165.312 260.948 163.35 261.142L163.448 262.137C161.512 262.328 159.551 262.489 157.565 262.618L157.501 261.62C155.581 261.744 153.638 261.838 151.671 261.902L151.704 262.901C149.756 262.964 147.785 262.998 145.791 263L145.79 262C143.868 262.002 141.924 261.976 139.959 261.92L139.93 262.92C137.982 262.864 136.013 262.78 134.023 262.667L134.08 261.669C132.158 261.559 130.216 261.423 128.254 261.258L128.171 262.254C126.233 262.091 124.275 261.901 122.299 261.684L122.409 260.69C121.425 260.581 120.436 260.466 119.442 260.344C118.436 260.22 117.438 260.091 116.449 259.958L116.315 260.949C114.329 260.681 112.376 260.394 110.454 260.089L110.611 259.101C108.686 258.795 106.794 258.471 104.935 258.128L104.753 259.111C102.758 258.744 100.8 258.355 98.8783 257.947L99.0861 256.969C97.1731 256.562 95.2963 256.136 93.4551 255.69L93.2198 256.662C91.2569 256.187 89.3338 255.69 87.4498 255.172L87.715 254.208C85.8195 253.687 83.9641 253.144 82.1481 252.581L81.852 253.536C79.9305 252.94 78.0523 252.322 76.2167 251.681L76.5462 250.737C74.6894 250.089 72.8767 249.419 71.1071 248.727L70.743 249.658C68.868 248.925 67.0408 248.168 65.2601 247.387L65.6614 246.472C63.8678 245.686 62.1223 244.877 60.4235 244.046L59.9841 244.944C58.1697 244.057 56.4077 243.144 54.6969 242.208L55.1769 241.331C53.4518 240.387 51.7795 239.419 50.1585 238.429L49.6372 239.282C47.928 238.238 46.275 237.169 44.6764 236.077L45.2405 235.251C43.6058 234.134 42.0288 232.993 40.5077 231.83L39.9002 232.625C38.3288 231.423 36.816 230.197 35.3599 228.95L36.0104 228.191C34.5028 226.899 33.0567 225.585 31.67 224.249L30.9763 224.969C29.5419 223.588 28.1701 222.184 26.8584 220.76L27.5938 220.083C26.2652 218.641 24.999 217.178 23.7926 215.698L23.0175 216.33C21.761 214.789 20.5687 213.228 19.4376 211.651L20.2501 211.068C19.1028 209.469 18.0191 207.853 16.9959 206.223L16.149 206.755C15.0949 205.076 14.1044 203.382 13.1742 201.678L14.0519 201.199C13.1137 199.48 12.2375 197.75 11.4197 196.013L10.5148 196.438C9.67194 194.647 8.89064 192.848 8.16726 191.045L9.09536 190.673C8.36359 188.849 7.69154 187.02 7.07534 185.192L6.12768 185.511C5.49455 183.632 4.91994 181.753 4.39969 179.878L5.36329 179.61C4.83799 177.717 4.36851 175.828 3.95054 173.947L2.97435 174.164C2.54405 172.228 2.16795 170.301 1.84138 168.388L2.82712 168.22C2.49572 166.279 2.21568 164.353 1.98207 162.446L0.989493 162.567C0.747693 160.594 0.5553 158.641 0.406886 156.715L1.40393 156.639C1.25186 154.666 1.14629 152.721 1.08132 150.81L0.0818934 150.844C0.0137625 148.84 -0.0100384 146.875 0.00375479 144.954L1.00373 144.961C1.01808 142.962 1.07344 141.012 1.16213 139.118L0.163222 139.071C0.258318 137.04 0.391465 135.075 0.553291 133.184L1.54965 133.269C1.72423 131.229 1.9324 129.277 2.16226 127.425L1.16987 127.302C1.42795 125.222 1.71318 123.268 2.00891 121.456L2.99584 121.617C3.34064 119.505 3.69974 117.589 4.04632 115.896L3.06664 115.695C3.55701 113.3 4.02281 111.348 4.38942 109.918L5.35813 110.166C5.58591 109.277 5.77458 108.593 5.90575 108.133C5.97134 107.903 6.02254 107.729 6.05706 107.613C6.07432 107.555 6.08741 107.512 6.09604 107.484L6.1056 107.453L6.1078 107.445L6.10826 107.444Z" stroke="currentcolor" stroke-width="2" stroke-dasharray="6 6"></path>
+</svg>
+                                    </div>
+                                    <div class="shape-two">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="127" height="84" viewBox="0 0 127 84" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/team/team_img_shape02.svg" class="injectable">
+<path d="M2.11135 29.6298C2.11135 29.6298 -1.96487 21.6589 3.14219 13.9667C7.27878 7.63917 16.4671 7.0997 21.0488 13.0911C22.4436 14.9356 23.6642 17.471 24.52 20.9516C28.3978 37.125 21.9686 42.3115 21.9686 42.3115C21.9686 42.3115 9.94138 50.7644 2.11135 29.6298Z" fill="currentcolor"></path>
+<path d="M40.1946 18.1642C40.1946 18.1642 45.178 -1.53029 58.6976 0.778556C58.6976 0.778556 73.118 1.22375 72.7058 18.6459C72.2937 36.068 62.8659 53.6209 50.5203 50.3352C50.3256 50.2553 31.7091 48.7273 40.1946 18.1642Z" fill="currentcolor"></path>
+<path d="M89.2309 33.3096C99.9647 23.3201 108.328 32.2041 108.328 32.2041C117.351 39.4621 107.7 53.5874 107.7 53.5874C93.1175 75.9999 81.7649 65.0877 81.6599 64.9797C72.6556 59.0368 78.4617 43.2987 89.2309 33.3096Z" fill="currentcolor"></path>
+<path d="M126.089 73.4137C124.622 79.9295 118.448 81.7945 118.448 81.7945C103.552 88.2598 101.958 77.7762 101.958 77.7762C101.958 77.7762 101.45 71.8046 111.79 65.7601C114.007 64.46 115.926 63.8363 117.592 63.6532C123.016 63.0429 127.301 68.1038 126.089 73.4137Z" fill="currentcolor"></path>
+</svg>
+                                    </div>
+                                </div>
+                                <div class="team__social">
+                                    <ul class="list-wrap">
+                                        <li>
+                                            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="team__item-content">
+                                <h4 class="title"><a href="">Kenroly Gajon</a></h4>
+                                <span>Food Technician</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                        <div class="team__item">
+                            <div class="team__item-img">
+                                <div class="mask-img-wrap">
+                                    <img src="{% static "assets/img/team/team_img04.jpg" %}" alt="img">
+                                </div>
+                                <div class="team__item-img-shape">
+                                    <div class="shape-one">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 263" fill="none" x="0px" y="0px" preserveAspectRatio="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/team/team_img_shape01.svg" class="injectable">
+<path class="animation-dashed" d="M6.10826 107.444L6.10828 107.444L6.10831 107.444L6.11408 107.425L6.11916 107.406C6.38877 106.405 6.66335 105.413 6.94283 104.43L5.98096 104.157C6.54248 102.182 7.12371 100.244 7.72394 98.3417L8.6776 98.6425C9.28902 96.7047 9.92017 94.8044 10.5703 92.9409L9.62609 92.6115C10.3038 90.6691 11.002 88.7663 11.72 86.9024L12.6532 87.2618C13.3837 85.3653 14.1347 83.5094 14.9052 81.6934L13.9846 81.3028C14.7869 79.412 15.6103 77.5639 16.4538 75.7575L17.3599 76.1807C18.2221 74.3341 19.1055 72.5318 20.0088 70.7726L19.1192 70.3158C20.0526 68.4979 21.0074 66.7254 21.9823 64.9974L22.8532 65.4887C23.8584 63.7069 24.8851 61.9729 25.9317 60.2854L25.0819 59.7583C26.1522 58.0327 27.2435 56.3552 28.3544 54.7245L29.1809 55.2875C30.3356 53.5926 31.5115 51.9488 32.7069 50.3547L31.9069 49.7548C33.1337 48.1188 34.3812 46.5346 35.6476 45.0005L36.4188 45.6372C37.7074 44.0763 39.0156 42.5679 40.3416 41.1105L39.602 40.4375C40.9857 38.9166 42.3889 37.4505 43.8094 36.0373L44.5147 36.7462C45.9504 35.3179 47.404 33.9442 48.8731 32.6232L48.2045 31.8796C49.7191 30.5179 51.2502 29.2116 52.7956 27.9586L53.4254 28.7354C55.0055 27.4544 56.6006 26.2296 58.2083 25.0588L57.6196 24.2504C59.2709 23.0479 60.9354 21.9019 62.6105 20.8098L63.1566 21.6475C64.8485 20.5445 66.5514 19.497 68.2624 18.5026L67.7599 17.638C69.5225 16.6136 71.2937 15.645 73.0703 14.7296L73.5284 15.6185C75.3311 14.6897 77.1398 13.8159 78.9512 12.9943L78.5381 12.0836C80.3975 11.2403 82.2596 10.4516 84.121 9.71452L84.4891 10.6443C86.3706 9.89924 88.2515 9.20724 90.1285 8.56506L89.8048 7.61891C91.7339 6.9589 93.6586 6.35121 95.5751 5.79238L95.855 6.7524C97.7994 6.18541 99.7356 5.66904 101.66 5.19965L101.423 4.22814C103.414 3.74233 105.392 3.30655 107.352 2.91681L107.547 3.89761C109.545 3.50029 111.525 3.15111 113.482 2.8458L113.328 1.85775C115.359 1.54097 117.365 1.27113 119.34 1.04352L119.455 2.03695C121.489 1.80269 123.49 1.61343 125.455 1.46396L125.379 0.466844C127.441 0.309957 129.461 0.196663 131.434 0.121003L131.472 1.12027C133.536 1.04112 135.547 1.0034 137.498 1.00022L137.496 0.000222021C139.587 -0.00318751 141.609 0.0328347 143.553 0.0998856L143.519 1.09929C145.611 1.17146 147.613 1.27979 149.512 1.41368L149.582 0.416153C151.745 0.568686 153.776 0.754194 155.658 0.957183L155.55 1.95141C157.747 2.18843 159.739 2.44936 161.497 2.70919L161.643 1.71993C164.124 2.0865 166.146 2.45111 167.633 2.74466L167.44 3.72573C168.378 3.91103 169.1 4.06739 169.585 4.17696C169.828 4.23175 170.011 4.27483 170.133 4.30397C170.194 4.31854 170.24 4.32963 170.269 4.33695L170.302 4.34508L170.31 4.34696L170.311 4.34735L170.356 4.35853L170.401 4.36558L170.402 4.36586L170.41 4.36706L170.443 4.37239C170.473 4.37725 170.518 4.38476 170.579 4.39504C170.701 4.41561 170.884 4.44727 171.125 4.49108C171.608 4.57868 172.323 4.71482 173.246 4.9078L173.45 3.92895C174.915 4.23497 176.893 4.68169 179.291 5.30136L179.041 6.26957C180.75 6.71116 182.675 7.24139 184.78 7.8721L185.067 6.91418C186.854 7.44983 188.771 8.0574 190.796 8.74406L190.474 9.69107C192.26 10.2965 194.129 10.9639 196.069 11.6981L196.423 10.7628C198.229 11.4466 200.096 12.188 202.011 12.9911L201.624 13.9133C203.397 14.6568 205.212 15.4534 207.059 16.3062L207.479 15.3983C209.25 16.2159 211.05 17.085 212.872 18.0082L212.42 18.9002C214.159 19.781 215.917 20.7113 217.687 21.6936L218.172 20.8192C219.892 21.7738 221.624 22.7772 223.362 23.8317L222.843 24.6866C224.516 25.702 226.193 26.7649 227.87 27.8774L228.423 27.0441C230.065 28.1341 231.707 29.2714 233.342 30.4579L232.755 31.2673C234.342 32.4186 235.922 33.6164 237.491 34.8624L238.113 34.0793C239.661 35.3084 241.199 36.5843 242.72 37.9086L242.064 38.663C243.545 39.9515 245.011 41.286 246.457 42.668L247.148 41.945C248.579 43.312 249.991 44.7253 251.381 46.1862L250.656 46.8753C252.009 48.298 253.34 49.7661 254.644 51.281L255.402 50.6283C256.694 52.128 257.96 53.6733 259.198 55.2656L258.408 55.8792C259.613 57.4286 260.789 59.0227 261.934 60.6627L262.754 60.0902C263.887 61.7127 264.99 63.3799 266.059 65.0929L265.21 65.6223C266.248 67.2857 267.254 68.9927 268.225 70.7443L269.1 70.2596C270.056 71.9853 270.979 73.754 271.864 75.5667L270.966 76.0056C271.824 77.762 272.647 79.5601 273.432 81.4009L274.352 81.0084C275.126 82.8212 275.863 84.675 276.561 86.5706L275.623 86.9164C275.966 87.8475 276.3 88.7888 276.624 89.7405C276.934 90.6556 277.233 91.5774 277.521 92.5057L278.476 92.2095C279.054 94.0759 279.588 95.9676 280.077 97.8819L279.108 98.1293C279.588 100.008 280.024 101.91 280.416 103.83L281.396 103.63C281.786 105.542 282.133 107.473 282.436 109.42L281.448 109.574C281.746 111.489 282.001 113.42 282.214 115.365L283.208 115.256C283.421 117.2 283.591 119.158 283.718 121.126L282.72 121.19C282.845 123.129 282.929 125.079 282.97 127.037L283.97 127.016C284.011 128.972 284.01 130.935 283.968 132.905L282.968 132.883C282.926 134.825 282.843 136.772 282.718 138.722L283.716 138.786C283.591 140.74 283.425 142.697 283.217 144.656L282.223 144.55C282.018 146.485 281.772 148.421 281.485 150.356L282.474 150.503C282.187 152.44 281.858 154.376 281.489 156.309L280.507 156.122C280.142 158.032 279.736 159.938 279.29 161.839L280.263 162.068C279.816 163.976 279.327 165.878 278.798 167.773L277.834 167.504C277.311 169.379 276.746 171.247 276.141 173.105L277.092 173.415C276.486 175.278 275.839 177.131 275.151 178.974L274.214 178.624C273.533 180.446 272.813 182.257 272.051 184.054L272.972 184.444C272.208 186.249 271.403 188.041 270.557 189.817L269.654 189.387C268.817 191.145 267.94 192.886 267.023 194.611L267.906 195.081C266.986 196.81 266.026 198.521 265.026 200.214L264.165 199.705C263.176 201.378 262.147 203.032 261.078 204.665L261.914 205.213C260.841 206.852 259.728 208.471 258.574 210.067L257.763 209.481C256.625 211.055 255.447 212.607 254.23 214.134L255.012 214.757C253.793 216.287 252.534 217.792 251.236 219.271L250.484 218.611C249.204 220.07 247.884 221.503 246.525 222.908L247.244 223.603C245.883 225.011 244.484 226.391 243.045 227.743L242.36 227.014C240.95 228.338 239.502 229.635 238.015 230.901L238.664 231.663C237.177 232.929 235.653 234.166 234.09 235.372L233.479 234.58C231.942 235.766 230.368 236.922 228.757 238.045L229.329 238.866C227.733 239.978 226.102 241.059 224.434 242.107L223.902 241.26C222.265 242.289 220.592 243.285 218.884 244.249L219.375 245.12C217.673 246.08 215.935 247.008 214.162 247.901L213.712 247.008C211.994 247.874 210.242 248.707 208.457 249.506L208.866 250.419C207.087 251.215 205.276 251.978 203.432 252.706L203.065 251.776C201.267 252.486 199.437 253.163 197.575 253.806L197.902 254.751C196.07 255.383 194.208 255.982 192.314 256.547L192.028 255.589C190.168 256.144 188.278 256.666 186.358 257.153L186.604 258.122C184.732 258.597 182.832 259.04 180.903 259.449L180.695 258.471C178.803 258.873 176.884 259.242 174.936 259.578L175.106 260.563C173.194 260.893 171.257 261.19 169.292 261.455L169.159 260.464C167.248 260.721 165.312 260.948 163.35 261.142L163.448 262.137C161.512 262.328 159.551 262.489 157.565 262.618L157.501 261.62C155.581 261.744 153.638 261.838 151.671 261.902L151.704 262.901C149.756 262.964 147.785 262.998 145.791 263L145.79 262C143.868 262.002 141.924 261.976 139.959 261.92L139.93 262.92C137.982 262.864 136.013 262.78 134.023 262.667L134.08 261.669C132.158 261.559 130.216 261.423 128.254 261.258L128.171 262.254C126.233 262.091 124.275 261.901 122.299 261.684L122.409 260.69C121.425 260.581 120.436 260.466 119.442 260.344C118.436 260.22 117.438 260.091 116.449 259.958L116.315 260.949C114.329 260.681 112.376 260.394 110.454 260.089L110.611 259.101C108.686 258.795 106.794 258.471 104.935 258.128L104.753 259.111C102.758 258.744 100.8 258.355 98.8783 257.947L99.0861 256.969C97.1731 256.562 95.2963 256.136 93.4551 255.69L93.2198 256.662C91.2569 256.187 89.3338 255.69 87.4498 255.172L87.715 254.208C85.8195 253.687 83.9641 253.144 82.1481 252.581L81.852 253.536C79.9305 252.94 78.0523 252.322 76.2167 251.681L76.5462 250.737C74.6894 250.089 72.8767 249.419 71.1071 248.727L70.743 249.658C68.868 248.925 67.0408 248.168 65.2601 247.387L65.6614 246.472C63.8678 245.686 62.1223 244.877 60.4235 244.046L59.9841 244.944C58.1697 244.057 56.4077 243.144 54.6969 242.208L55.1769 241.331C53.4518 240.387 51.7795 239.419 50.1585 238.429L49.6372 239.282C47.928 238.238 46.275 237.169 44.6764 236.077L45.2405 235.251C43.6058 234.134 42.0288 232.993 40.5077 231.83L39.9002 232.625C38.3288 231.423 36.816 230.197 35.3599 228.95L36.0104 228.191C34.5028 226.899 33.0567 225.585 31.67 224.249L30.9763 224.969C29.5419 223.588 28.1701 222.184 26.8584 220.76L27.5938 220.083C26.2652 218.641 24.999 217.178 23.7926 215.698L23.0175 216.33C21.761 214.789 20.5687 213.228 19.4376 211.651L20.2501 211.068C19.1028 209.469 18.0191 207.853 16.9959 206.223L16.149 206.755C15.0949 205.076 14.1044 203.382 13.1742 201.678L14.0519 201.199C13.1137 199.48 12.2375 197.75 11.4197 196.013L10.5148 196.438C9.67194 194.647 8.89064 192.848 8.16726 191.045L9.09536 190.673C8.36359 188.849 7.69154 187.02 7.07534 185.192L6.12768 185.511C5.49455 183.632 4.91994 181.753 4.39969 179.878L5.36329 179.61C4.83799 177.717 4.36851 175.828 3.95054 173.947L2.97435 174.164C2.54405 172.228 2.16795 170.301 1.84138 168.388L2.82712 168.22C2.49572 166.279 2.21568 164.353 1.98207 162.446L0.989493 162.567C0.747693 160.594 0.5553 158.641 0.406886 156.715L1.40393 156.639C1.25186 154.666 1.14629 152.721 1.08132 150.81L0.0818934 150.844C0.0137625 148.84 -0.0100384 146.875 0.00375479 144.954L1.00373 144.961C1.01808 142.962 1.07344 141.012 1.16213 139.118L0.163222 139.071C0.258318 137.04 0.391465 135.075 0.553291 133.184L1.54965 133.269C1.72423 131.229 1.9324 129.277 2.16226 127.425L1.16987 127.302C1.42795 125.222 1.71318 123.268 2.00891 121.456L2.99584 121.617C3.34064 119.505 3.69974 117.589 4.04632 115.896L3.06664 115.695C3.55701 113.3 4.02281 111.348 4.38942 109.918L5.35813 110.166C5.58591 109.277 5.77458 108.593 5.90575 108.133C5.97134 107.903 6.02254 107.729 6.05706 107.613C6.07432 107.555 6.08741 107.512 6.09604 107.484L6.1056 107.453L6.1078 107.445L6.10826 107.444Z" stroke="currentcolor" stroke-width="2" stroke-dasharray="6 6"></path>
+</svg>
+                                    </div>
+                                    <div class="shape-two">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="127" height="84" viewBox="0 0 127 84" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/team/team_img_shape02.svg" class="injectable">
+<path d="M2.11135 29.6298C2.11135 29.6298 -1.96487 21.6589 3.14219 13.9667C7.27878 7.63917 16.4671 7.0997 21.0488 13.0911C22.4436 14.9356 23.6642 17.471 24.52 20.9516C28.3978 37.125 21.9686 42.3115 21.9686 42.3115C21.9686 42.3115 9.94138 50.7644 2.11135 29.6298Z" fill="currentcolor"></path>
+<path d="M40.1946 18.1642C40.1946 18.1642 45.178 -1.53029 58.6976 0.778556C58.6976 0.778556 73.118 1.22375 72.7058 18.6459C72.2937 36.068 62.8659 53.6209 50.5203 50.3352C50.3256 50.2553 31.7091 48.7273 40.1946 18.1642Z" fill="currentcolor"></path>
+<path d="M89.2309 33.3096C99.9647 23.3201 108.328 32.2041 108.328 32.2041C117.351 39.4621 107.7 53.5874 107.7 53.5874C93.1175 75.9999 81.7649 65.0877 81.6599 64.9797C72.6556 59.0368 78.4617 43.2987 89.2309 33.3096Z" fill="currentcolor"></path>
+<path d="M126.089 73.4137C124.622 79.9295 118.448 81.7945 118.448 81.7945C103.552 88.2598 101.958 77.7762 101.958 77.7762C101.958 77.7762 101.45 71.8046 111.79 65.7601C114.007 64.46 115.926 63.8363 117.592 63.6532C123.016 63.0429 127.301 68.1038 126.089 73.4137Z" fill="currentcolor"></path>
+</svg>
+                                    </div>
+                                </div>
+                                <div class="team__social">
+                                    <ul class="list-wrap">
+                                        <li>
+                                            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="team__item-content">
+                                <h4 class="title"><a href="{% static "assets/img/team/team_img04.jpg" %}">Lizay Arianya</a></h4>
+                                <span>Veterinary Technician</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="team__bottom-content">
+                    <p>Our Valuable Expert Doctors Team</p>
+                    <a href="" class="btn">See All Team <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+</svg></a>
+                </div>
+            </div>
+            <div class="team__shape-two">
+<img src="{% static "assets/img/team/h2_team_shape.png" %}" alt="img" class="ribbonRotate">
+            </div>
+        </section>
+        <!-- team-area-end -->
+
+        <!-- testimonial-area -->
+        <section class="testimonial__area-two">
+            <div class="container">
+                <div class="testimonial__item-wrap-two">
+                    <div class="swiper testimonial-active-two">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="testimonial__item-two">
+                                    <div class="testimonial__icon-two">
+                                        <svg width="59" height="44" viewBox="0 0 59 44" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/quote.svg" class="injectable">
+<path d="M13.4098 18.5471H13.4099C15.7203 18.5469 17.9834 19.2004 19.9376 20.4319C21.8917 21.6634 23.4569 23.4225 24.4523 25.5056C25.4477 27.5887 25.8325 29.9109 25.5623 32.2034C25.2922 34.4959 24.378 36.6652 22.9256 38.4604C21.4732 40.2556 19.5417 41.6032 17.3547 42.3474C15.1677 43.0916 12.8145 43.2018 10.5674 42.6653C8.32025 42.1288 6.27113 40.9676 4.657 39.316C3.04287 37.6644 1.9297 35.59 1.44614 33.3328L1.23338 32.3397L1.22723 32.3411C1.18993 32.0514 1.1541 31.7315 1.13033 31.4085L1.12946 31.3968L1.12833 31.3851C1.01009 30.1698 0.951635 28.4654 1.04932 26.3993C1.167 24.3474 1.47023 21.9586 2.14395 19.4508C2.50055 18.1973 2.93406 16.916 3.46825 15.6689C3.53126 15.536 3.59338 15.4043 3.65494 15.2737C4.20987 14.0971 4.71965 13.0162 5.43343 12.023L5.4594 11.9868L5.48206 11.9485C6.16941 10.7866 7.06724 9.74579 8.03 8.70207L8.05613 8.67374L8.08 8.64349C8.45899 8.16318 8.91835 7.74276 9.43515 7.31588C9.60393 7.17646 9.78968 7.0281 9.98173 6.8747C10.3335 6.59373 10.7064 6.29588 11.0348 6.00527C11.4843 5.63211 11.9752 5.31875 12.5005 5.01038C12.6673 4.91247 12.8454 4.81083 13.028 4.7066C13.3944 4.49743 13.779 4.27788 14.1272 4.0574L14.137 4.0512L14.1466 4.04479C14.567 3.76471 15.0171 3.55643 15.5037 3.36067C15.658 3.29859 15.8303 3.23263 16.0098 3.16395C16.3384 3.0382 16.6908 2.90333 17.0001 2.7664C17.2706 2.66121 17.5168 2.56113 17.7449 2.46846C18.3944 2.20449 18.8962 2.00056 19.3913 1.90927L19.4233 1.90337L19.4549 1.89538C19.9086 1.78075 20.3077 1.68266 20.677 1.59189C20.9566 1.52316 21.2191 1.45863 21.4754 1.39429L22.2631 1.20442L23.2395 5.1032L22.6441 5.35048L22.6412 5.3517L21.0919 5.98936C20.6876 6.125 20.3207 6.32033 19.9975 6.50871C19.8466 6.59669 19.695 6.68937 19.5511 6.77729C19.5352 6.78703 19.5193 6.79671 19.5036 6.80632C19.3422 6.90492 19.1877 6.99869 19.0305 7.08875L19.0012 7.10551L18.9732 7.12422C18.7831 7.25084 18.5962 7.35361 18.3692 7.47841C18.2498 7.54407 18.1193 7.61583 17.9714 7.70036C17.5867 7.92024 17.1409 8.19914 16.7381 8.59284C16.5328 8.7818 16.3157 8.95078 16.0604 9.14949C15.9694 9.22033 15.8736 9.29495 15.7717 9.3756C15.4046 9.6661 14.9878 10.0146 14.6232 10.4534L14.6116 10.4673L14.6005 10.4817C14.425 10.7091 14.2385 10.9061 14.0152 11.1418C13.9251 11.237 13.829 11.3386 13.7252 11.4509C13.4031 11.7997 13.0393 12.2233 12.7607 12.7523C12.7508 12.7673 12.7409 12.7823 12.7309 12.7975C12.2478 13.5306 11.6993 14.3628 11.3316 15.3275C10.9619 16.0337 10.7353 16.7951 10.5433 17.4404L10.5395 17.4529L10.0931 18.953L11.6419 18.7277C11.6843 18.7216 11.7262 18.7154 11.7678 18.7094C12.3637 18.6223 12.8788 18.5471 13.4098 18.5471ZM45.7635 18.5471H45.7636C48.0739 18.5469 50.3371 19.2004 52.2913 20.4319C54.2454 21.6634 55.8106 23.4225 56.806 25.5056C57.8014 27.5887 58.1862 29.9109 57.916 32.2034C57.6459 34.4959 56.7317 36.6652 55.2793 38.4604C53.8269 40.2556 51.8954 41.6032 49.7084 42.3474C47.5214 43.0916 45.1682 43.2018 42.9211 42.6653C40.6739 42.1288 38.6248 40.9676 37.0107 39.316C35.3966 37.6644 34.2834 35.59 33.7998 33.3328L33.5871 32.3397L33.5809 32.3411C33.5436 32.0514 33.5078 31.7315 33.484 31.4085L33.4832 31.3968L33.482 31.3851C33.3638 30.1698 33.3053 28.4654 33.403 26.3995C33.5207 24.3474 33.8239 21.9586 34.4977 19.4506C34.8543 18.1972 35.2878 16.9159 35.8219 15.6689C35.8849 15.536 35.9471 15.4043 36.0086 15.2738C36.5635 14.0971 37.0733 13.0162 37.7871 12.023L37.8131 11.9868L37.8358 11.9485C38.5231 10.7866 39.4209 9.74579 40.3837 8.70207L40.4094 8.67421L40.4329 8.64449C40.812 8.16532 41.2715 7.74544 41.7885 7.31871C41.9566 7.17997 42.1413 7.03251 42.3322 6.88008C42.6849 6.5985 43.0588 6.29998 43.3885 6.00821C43.838 5.63505 44.3289 5.32169 44.8542 5.01332C45.021 4.91541 45.1991 4.81377 45.3817 4.70955C45.7481 4.50037 46.1327 4.28082 46.4809 4.06034L46.4915 4.0536L46.502 4.0466C46.9213 3.76605 47.371 3.55812 47.8582 3.36223C48.0085 3.30182 48.1751 3.23799 48.3486 3.17155C48.6816 3.04403 49.0397 2.90686 49.3555 2.76574C49.6253 2.66078 49.871 2.56094 50.0986 2.46845C50.7481 2.20449 51.2499 2.00056 51.745 1.90927L51.777 1.90337L51.8086 1.89538C52.2623 1.78074 52.6614 1.68265 53.0307 1.59187C53.3103 1.52315 53.5729 1.45862 53.8291 1.39429C53.8306 1.39391 53.8322 1.39352 53.8337 1.39313L54.6168 1.20442L55.5932 5.1032L54.9978 5.35048L54.9949 5.3517L53.4456 5.98936C53.0413 6.125 52.6744 6.32033 52.3512 6.50871C52.2003 6.59672 52.0485 6.68944 51.9046 6.77739L51.8573 6.80632C51.6959 6.90493 51.5414 6.99869 51.3842 7.08875L51.3549 7.10551L51.3269 7.12422C51.1368 7.25084 50.9499 7.35361 50.7229 7.4784C50.6035 7.54406 50.473 7.61582 50.3251 7.70036C49.9404 7.92023 49.4947 8.19912 49.0918 8.59281C48.8865 8.78179 48.6694 8.95078 48.4141 9.14952C48.3231 9.22035 48.2273 9.29496 48.1254 9.3756C47.7583 9.6661 47.3415 10.0146 46.9769 10.4534L46.9653 10.4673L46.9542 10.4817C46.7787 10.7091 46.5922 10.9061 46.3689 11.1418C46.2788 11.237 46.1827 11.3386 46.0789 11.4509C45.7568 11.7997 45.393 12.2233 45.1144 12.7522C45.1045 12.7673 45.0946 12.7824 45.0846 12.7975C44.6014 13.5306 44.053 14.3628 43.6853 15.3275C43.3156 16.0337 43.089 16.7951 42.897 17.4404L42.8932 17.4529L42.4468 18.953L43.9956 18.7277C44.038 18.7216 44.0799 18.7154 44.1215 18.7094C44.7174 18.6223 45.2325 18.5471 45.7635 18.5471Z" stroke="currentcolor" stroke-width="2"></path>
+</svg>
+                                    </div>
+                                    <div class="testimonial__content-two">
+                                        <h2 class="title">Pet Health Important</h2>
+                                        <p>“ Duis aute irure dolor in repreerit in voluptate velitesse We understand that your furry aute irure dolor in repreerit in voluptate just about the best thing you can do. dolor in repreerit in voluptate understand that you ”</p>
+                                        <div class="testimonial__author-two">
+                                            <div class="testimonial__author-thumb">
+                                                <img src="{% static "assets/img/images/testi_author01.png" %}" alt="">
+                                            </div>
+                                            <div class="testimonial__author-content">
+                                                <h4 class="title">Uraney Jacke</h4>
+                                                <span>Business Study</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="testimonial__item-two">
+                                    <div class="testimonial__icon-two">
+                                        <img src="{% static "assets/img/icon/quote.svg" %}" alt="" class="injectable">
+                                    </div>
+                                    <div class="testimonial__content-two">
+                                        <h2 class="title">Pet Health Important</h2>
+                                        <p>“ Duis aute irure dolor in repreerit in voluptate velitesse We understand that your furry aute irure dolor in repreerit in voluptate just about the best thing you can do. dolor in repreerit in voluptate understand that you ”</p>
+                                        <div class="testimonial__author-two">
+                                            <div class="testimonial__author-thumb">
+                                                <img src="{% static "assets/img/images/testi_author01.png" %}" alt="">
+                                            </div>
+                                            <div class="testimonial__author-content">
+                                                <h4 class="title">Uraney Jacke</h4>
+                                                <span>Business Study</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial__nav-wrap">
+                        <button class="testimonial-button-prev"><img src="{% static "assets/img/icon/right_arrow03.svg" %}" alt="" class="injectable"></button>
+                        <button class="testimonial-button-next"><img src="{% static "assets/img/icon/right_arrow03.svg" %}" alt="" class="injectable"></button>
+                    </div>
+                    <div class="shape">
+                        <img src={% static "assets/img/images/h2_testimonial_shape01.png" %} alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial__shape-wrap-two">
+                <img src={% static "assets/img/images/h2_testimonial_shape02.png" %} alt="img" data-aos="fade-down-left" data-aos-delay="400">
+            </div>
+        </section>
+        <!-- testimonial-area-end -->
+
+        <!-- blog-post-area -->
+        <section class="blog__post-area-two">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="section__title mb-40">
+                            <span class="sub-title">News & Blogs
+                                <strong class="shake">
+                                                               <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/pet_icon02.svg" class="injectable">
+<path d="M13.4698 10.3934C14.5316 10.7921 15.7693 10.0008 16.2343 8.62072C16.6992 7.24061 16.2091 5.79916 15.1473 5.39432C14.0856 4.99562 12.8478 5.78689 12.3829 7.167C11.9243 8.55325 12.4081 9.9947 13.4698 10.3934Z" fill="currentcolor"></path>
+<path d="M10.6049 5.63968C11.6981 5.79302 12.7222 4.6644 12.8855 3.11254C13.0489 1.56068 12.3012 0.17443 11.2018 0.0149505C10.1086 -0.138395 9.08446 0.99023 8.92111 2.54209C8.75148 4.10008 9.50541 5.48633 10.6049 5.63968Z" fill="currentcolor"></path>
+<path d="M0.175492 8.62072C0.640418 10.0008 1.87812 10.7982 2.93991 10.3934C4.0017 9.9947 4.49176 8.54712 4.02683 7.167C3.56191 5.78689 2.3242 4.98949 1.26241 5.39432C0.200623 5.79916 -0.289433 7.24061 0.175492 8.62072Z" fill="currentcolor"></path>
+<path d="M3.52421 3.11254C3.69385 4.6644 4.71794 5.79916 5.81114 5.63968C6.90434 5.48633 7.65828 4.10008 7.49492 2.54209C7.33157 0.990231 6.30748 -0.144529 5.21428 0.0149505C4.11479 0.17443 3.36086 1.56068 3.52421 3.11254Z" fill="currentcolor"></path>
+<path d="M2.88337 14.8282C3.55562 16.1408 5.20799 16.7481 6.38287 16.2205C6.57764 16.1285 6.61533 16.1408 7.3567 15.7912C7.59545 15.6808 7.84676 15.601 8.20488 15.601C8.57556 15.601 8.82059 15.6808 9.05305 15.7912C9.79442 16.1408 9.82583 16.1285 10.0269 16.2205C11.2018 16.7419 12.8541 16.1347 13.5264 14.8282C14.5442 12.8408 12.4018 11.3687 11.9683 10.9516C11.0635 10.0744 10.9756 9.18503 10.8876 8.78633C10.5295 7.22834 9.26667 6.63336 8.20488 6.60269C7.14309 6.63949 5.88025 7.22834 5.52213 8.78633C5.43417 9.18503 5.34621 10.0683 4.44149 10.9516C4.00798 11.3748 1.86556 12.8408 2.88337 14.8282Z" fill="currentcolor"></path>
+</svg>
+                                </strong>
+                            </span>
+                            <h2 class="title">Our Recent Articles</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="view__all-btn text-end mb-40">
+                            <a href="" class="btn">See All Posts <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+<path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
+</svg></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog__post-item-two shine-animate-item">
+                            <div class="blog__post-thumb-two shine-animate">
+                                <a href=""><img src="{% static "assets/img/blog/h2_blog_post01.jpg" %}" alt="img"></a>
+                                <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                                    <li><a href="">Pet</a></li>
+                                    <li><a href="">Medical</a></li>
+                                </ul>
+                            </div>
+                            <div class="blog__post-content-two">
+                                <h2 class="title"><a href="">Clean indoor air as important in controlling asthma</a></h2>
+                                <div class="blog__post-meta">
+                                    <ul class="list-wrap">
+                                        <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                                        <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog__post-item-two shine-animate-item">
+                            <div class="blog__post-thumb-two shine-animate">
+                                <a href=""><img src="{% static "assets/img/blog/h2_blog_post02.jpg" %}" alt="img"></a>
+                                <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                                    <li><a href="">Pet</a></li>
+                                    <li><a href="">Medical</a></li>
+                                </ul>
+                            </div>
+                            <div class="blog__post-content-two">
+                                <h2 class="title"><a href="">How to Spot, Treat, and Prevent Hot Spots in Pets</a></h2>
+                                <div class="blog__post-meta">
+                                    <ul class="list-wrap">
+                                        <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                                        <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog__post-item-two shine-animate-item">
+                            <div class="blog__post-thumb-two shine-animate">
+                                <a href=""><img src="{% static "assets/img/blog/h2_blog_post03.jpg" %}" alt="img"></a>
+                                <ul class="list-wrap blog__post-tag blog__post-tag-two">
+                                    <li><a href="">Pet</a></li>
+                                    <li><a href="">Medical</a></li>
+                                </ul>
+                            </div>
+                            <div class="blog__post-content-two">
+                                <h2 class="title"><a href="">3 Signs It’s Time for the First Pet Dental Cleaning</a></h2>
+                                <div class="blog__post-meta">
+                                    <ul class="list-wrap">
+                                        <li><i class="flaticon-user"></i>by <a href="">admin</a></li>
+                                        <li><i class="flaticon-calendar"></i>25th Aug, 2024</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog__shape-wrap-two">
+                
+            </div>
+        </section>
+        <!-- blog-post-area-end -->
+
+    </main>
+    <!-- main-area-end -->
+
+{% endblock content %}
