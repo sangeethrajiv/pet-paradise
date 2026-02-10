@@ -157,4 +157,9 @@ admin.site.register(ConfirmAppointment)
 admin.site.register(Species, SpeciesAdmin)
 admin.site.register(Breed, BreedAdmin)
 admin.site.register(Pet, PetAdmin)
-admin.site.register(Petadopt,PetAdoptAdmin)
+admin.site.register(Petadopt, PetAdoptAdmin)
+
+# Admin Site Customizations
+admin.site.site_header = "Pet Paradise Admin"
+admin.site.site_title = "Pet Paradise Admin Portal"
+admin.site.index_title = "Welcome to the Pet Paradise Management Portal"

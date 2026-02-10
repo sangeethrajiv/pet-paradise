@@ -1,6 +1,13 @@
-from django.urls import path
+from django.urls import path, include
 
 from . import views  # Import your views
+from . import api_views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'products', api_views.ProductViewSet)
+router.register(r'pets', api_views.PetViewSet)
+router.register(r'categories', api_views.CategoryViewSet)
 
 urlpatterns = [
     # Main pages
@@ -89,4 +96,6 @@ urlpatterns = [
     path("blog/", views.blog, name="blog"),
     path("ourblog/",views.ourblog,name="ourblog"),
     path("change_password/", views.change_password, name="change_password"),
+    # API endpoints
+    path("api/", include(router.urls)),
 ]
