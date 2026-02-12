@@ -16,10 +16,23 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='Species',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(help_text='Enter the species name (e.g., Dog, Cat)', max_length=50, unique=True)),
+            ],
+            options={
+                'verbose_name': 'Species',
+                'verbose_name_plural': 'Species',
+                'ordering': ['name'],
+            },
+        ),
+        migrations.CreateModel(
             name='Breed',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(help_text='Enter the breed name', max_length=100)),
+                ('species', models.ForeignKey(help_text='Select the species this breed belongs to', on_delete=django.db.models.deletion.CASCADE, related_name='breeds', to='Paradiseapp.species')),
             ],
             options={
                 'verbose_name': 'Breed',
@@ -43,18 +56,6 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=255)),
             ],
-        ),
-        migrations.CreateModel(
-            name='Species',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Enter the species name (e.g., Dog, Cat)', max_length=50, unique=True)),
-            ],
-            options={
-                'verbose_name': 'Species',
-                'verbose_name_plural': 'Species',
-                'ordering': ['name'],
-            },
         ),
         migrations.CreateModel(
             name='Appointment',
@@ -162,6 +163,7 @@ class Migration(migrations.Migration):
                 ('map', models.TextField(blank=True, default='', null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True, help_text='The date and time when the pet record was created')),
                 ('updated_at', models.DateTimeField(auto_now=True, help_text='The date and time when the pet record was last updated')),
+                ('pets_no', models.CharField(default='', help_text='Enter the 4-digit pet number', max_length=4, unique=True)),
                 ('breed', models.ForeignKey(blank=True, help_text='Select the breed of the pet', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='pets', to='Paradiseapp.breed')),
             ],
             options={
@@ -254,11 +256,6 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
-        ),
-        migrations.AddField(
-            model_name='breed',
-            name='species',
-            field=models.ForeignKey(help_text='Select the species this breed belongs to', on_delete=django.db.models.deletion.CASCADE, related_name='breeds', to='Paradiseapp.species'),
         ),
         migrations.CreateModel(
             name='SubCategory',
