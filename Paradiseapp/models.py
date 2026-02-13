@@ -49,7 +49,7 @@ class Product(models.Model):
     description = RichTextField(null=True, blank=True)
     product_information = RichTextField(null=True, blank=True)
     tags = models.CharField(max_length=555, null=True, blank=True)
-    slug = models.CharField(max_length=555, null=True, blank=True)
+    slug = models.CharField(max_length=555, null=True, blank=True, unique=True)
     quantity = models.IntegerField(default=0)
 
     def __str__(self) -> str:
@@ -73,7 +73,23 @@ def generate_slug(sender, instance, *args, **kwargs):
         base_slug = slugify(instance.title)
         unique_slug = base_slug
         num = 1
-        while Product.objects.filter(slug=unique_slug).exists():
+        while sender.objects.filter(slug=unique_slug).exists():
+            unique_slug = f"{base_slug}-{num}"
+            num += 1
+        instance.slug = unique_slug
+    else:
+        # Even if slug is provided, we must ensure it's unique if it's being changed
+        # or if the existing slug now conflicts (though unlikely for existing items)
+        base_slug = slugify(instance.slug)
+        unique_slug = base_slug
+        num = 1
+        # If the object exists and the slug is different from what's in DB
+        if instance.pk:
+            obj = sender.objects.filter(pk=instance.pk).first()
+            if obj and obj.slug == instance.slug:
+                return # slug didn't change
+        
+        while sender.objects.filter(slug=unique_slug).exclude(pk=instance.pk).exists():
             unique_slug = f"{base_slug}-{num}"
             num += 1
         instance.slug = unique_slug
@@ -97,6 +113,23 @@ class userAddress(models.Model):
 
     def __str__(self):
         return f"{self.user} "
+
+class ShippingAddress(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='shipping_addresses')
+    fname = models.CharField(max_length=150)
+    lname = models.CharField(max_length=150)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    address = models.TextField()
+    state = models.CharField(max_length=150)
+    city = models.CharField(max_length=150)
+    pincode = models.CharField(max_length=10)
+    is_default = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.fname} {self.lname} - {self.city}"
+
 
 
 class Species(models.Model):
@@ -193,7 +226,7 @@ class Pet(models.Model):
     description = models.TextField(
         blank=True, null=True, help_text="Enter a brief description of the pet"
     )
-    slug = models.SlugField(max_length=250, null=True, blank=True)
+    slug = models.SlugField(max_length=250, null=True, blank=True, unique=True)
     image = models.ImageField(
         upload_to="pets/", blank=True, null=True, help_text="Upload an image of the pet"
     )
@@ -241,7 +274,19 @@ def generate_slug(sender, instance, *args, **kwargs):
         base_slug = slugify(instance.name)
         unique_slug = base_slug
         num = 1
-        while Pet.objects.filter(slug=unique_slug).exists():
+        while sender.objects.filter(slug=unique_slug).exists():
+            unique_slug = f"{base_slug}-{num}"
+            num += 1
+        instance.slug = unique_slug
+    else:
+        base_slug = slugify(instance.slug)
+        unique_slug = base_slug
+        num = 1
+        if instance.pk:
+            obj = sender.objects.filter(pk=instance.pk).first()
+            if obj and obj.slug == instance.slug:
+                return
+        while sender.objects.filter(slug=unique_slug).exclude(pk=instance.pk).exists():
             unique_slug = f"{base_slug}-{num}"
             num += 1
         instance.slug = unique_slug
@@ -520,7 +565,10 @@ class Petadopt(models.Model):
     description = models.TextField(
         blank=True, null=True, help_text="Enter a brief description of the pet"
     )
-    slug = models.SlugField(max_length=250, null=True, blank=True)
+    slug = models.SlugField(max_length=250, null=True, blank=True, unique=True)
+    pets_no = models.CharField(
+        max_length=4, unique=True, help_text="Enter the 4-digit pet number", default=""
+    )
     image = models.ImageField(
         upload_to="pets/", blank=True, null=True, help_text="Upload an image of the pet"
     )
@@ -550,6 +598,11 @@ class Petadopt(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Petadopt"
+        verbose_name_plural = "Petsadoption"
+        ordering = ["-created_at"]
+
 
 @receiver(pre_save, sender=Petadopt)
 def generate_petadopt_slug(sender, instance, *args, **kwargs):
@@ -557,19 +610,22 @@ def generate_petadopt_slug(sender, instance, *args, **kwargs):
         base_slug = slugify(instance.name)
         unique_slug = base_slug
         num = 1
-        while Petadopt.objects.filter(slug=unique_slug).exists():
+        while sender.objects.filter(slug=unique_slug).exists():
             unique_slug = f"{base_slug}-{num}"
             num += 1
         instance.slug = unique_slug
-
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Petadopt"
-        verbose_name_plural = "Petsadoption"
-        ordering = ["-created_at"]
+    else:
+        base_slug = slugify(instance.slug)
+        unique_slug = base_slug
+        num = 1
+        if instance.pk:
+            obj = sender.objects.filter(pk=instance.pk).first()
+            if obj and obj.slug == instance.slug:
+                return
+        while sender.objects.filter(slug=unique_slug).exclude(pk=instance.pk).exists():
+            unique_slug = f"{base_slug}-{num}"
+            num += 1
+        instance.slug = unique_slug
 
 
 class petsadopt_additional_image(models.Model):

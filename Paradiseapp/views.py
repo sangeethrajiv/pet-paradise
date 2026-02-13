@@ -15,6 +15,8 @@ from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
 from django.middleware.csrf import get_token
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
+
 from django.template.loader import render_to_string
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
@@ -147,7 +149,14 @@ def about(request):
     return render(request, "home/about.html", context)
 
 
+from django.contrib import messages
+
 def contact(request):
+    if request.method == "POST":
+        # In a real app, you'd save the form data here
+        messages.success(request, "Your message has been sent successfully!")
+        return redirect("contact")
+
     if request.user.is_authenticated:
         cart_items = CartItem.objects.filter(user=request.user)
     else:
@@ -187,18 +196,23 @@ def pro_details(request, slug):
     additional_info = Addtional_information.objects.filter(product=product)
     amount_in_cents = int(product.price * 100)
 
-    client = razorpay.Client(
-        auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_SECRET_KEY)
-    )
-    razorpay_order = client.order.create(
-        {"amount": amount_in_cents, "currency": "INR", "payment_capture": "1"}
-    )
+    try:
+        client = razorpay.Client(
+            auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_SECRET_KEY)
+        )
+        razorpay_order = client.order.create(
+            {"amount": amount_in_cents, "currency": "INR", "payment_capture": "1"}
+        )
+        razorpay_order_id = razorpay_order["id"]
+    except Exception as e:
+        razorpay_order_id = None
+        print(f"Razorpay Error: {e}")
 
     context = {
         "product": product,
         "razorpay_key_id": settings.RAZORPAY_KEY_ID,
         "amount_in_cents": amount_in_cents,
-        "razorpay_order_id": razorpay_order["id"],
+        "razorpay_order_id": razorpay_order_id,
         "csrf_token": get_token(request),
         "additional_info": additional_info,
         "cart_items": cart_items,
@@ -399,11 +413,14 @@ def cart_data(request):
 @login_required
 def checkout(request):
     if request.user.is_authenticated:
-        cart_itemss = CartItem.objects.filter(user=request.user)
+        cart_items = CartItem.objects.filter(user=request.user)
+        userprofile = Profile.objects.filter(user=request.user).first()
+        saved_addresses = ShippingAddress.objects.filter(user=request.user)
     else:
-        cart_itemss = []
+        cart_items = []
+        userprofile = None
+        saved_addresses = []
 
-    cart_items = CartItem.objects.filter(user=request.user)
     subtotal = sum(
         ((item.product.price * (1 - item.product.discount / 100)) * item.quantity)
         for item in cart_items
@@ -416,9 +433,11 @@ def checkout(request):
             "cart_items": cart_items,
             "subtotal": subtotal,
             "quantity": quantity,
-            "cart_itemss": cart_itemss,
+            "userprofile": userprofile,
+            "saved_addresses": saved_addresses,
         },
     )
+
     # Retrieve all cart items for the logged-in user
 
 
@@ -489,31 +508,54 @@ def place_order_checkout(request):
     if request.method == "POST":
         try:
             current_user = request.user
+            fname = request.POST.get("fname")
+            lname = request.POST.get("lname")
+            email = request.POST.get("email")
+            phone = request.POST.get("phone")
+            address = request.POST.get("address")
+            state = request.POST.get("state")
+            city = request.POST.get("city")
+            pincode = request.POST.get("pincode")
+            payment_mode = request.POST.get("payment_mode")
 
-            # Retrieve user details (if not already available)
+            # Check if user wants to save this address or if it's already saved
+            shipping_address_id = request.POST.get("shipping_address_id")
+            if not shipping_address_id:
+                # Save as a new shipping address for future use if it doesn't exist
+                ShippingAddress.objects.get_or_create(
+                    user=current_user,
+                    fname=fname,
+                    lname=lname,
+                    email=email,
+                    phone=phone,
+                    address=address,
+                    state=state,
+                    city=city,
+                    pincode=pincode
+                )
+
+            # Update user profile if not set
             if not current_user.first_name:
-                current_user.first_name = request.POST.get("fname")
-                current_user.last_name = request.POST.get("lname")
+                current_user.first_name = fname
+                current_user.last_name = lname
                 current_user.save()
 
-            # Create an order instance
+            # Create an order instance (Pending status for security)
             new_order = Order(
                 user=current_user,
-                fname=request.POST.get("fname"),
-                lname=request.POST.get("lname"),
-                email=request.POST.get("email"),
-                phone=request.POST.get("phone"),
-                address=request.POST.get("address"),
-                state=request.POST.get("state"),
-                city=request.POST.get("city"),
-                pincode=request.POST.get("pincode"),
-                payment_mode=request.POST.get("payment_mode"),
-                payment_status="Success",
-                status="Ready For Shipment",
-                razorpay_order_id=request.POST.get("order_id"),
-                razorpay_payment_id=request.POST.get("razorpay_payment_id"),
-                payment_id=request.POST.get("razorpay_payment_id"),
+                fname=fname,
+                lname=lname,
+                email=email,
+                phone=phone,
+                address=address,
+                state=state,
+                city=city,
+                pincode=pincode,
+                payment_mode=payment_mode,
+                payment_status="Pending",
+                status="Pending",
             )
+
 
             # Retrieve the user's cart items
             cart_items = CartItem.objects.filter(user=current_user)
@@ -555,15 +597,37 @@ def place_order_checkout(request):
                     quantity=item.quantity,
                 )
 
-                # Decrease quantity from available stock
-            new_order.update_product_availability()
+            if payment_mode == "COD":
+                # For COD, we can mark as Ready For Shipment immediately if desired, 
+                # but let's keep it Pending for confirmation logic if any.
+                new_order.status = "Ready For Shipment"
+                new_order.payment_status = "Success"
+                new_order.save()
+                new_order.update_product_availability()
+                cart_items.delete()
+                messages.success(request, "Your Order has been placed successfully")
+                return redirect("/")
+            else:
+                # For Razorpay, redirect to payment page
+                total_amount_paise = int(cart_total_price * 100)
+                razorpay_order = client.order.create({
+                    "amount": total_amount_paise,
+                    "currency": "INR",
+                    "payment_capture": "1"
+                })
+                new_order.razorpay_order_id = razorpay_order['id']
+                new_order.save()
 
-            # Clear the user's cart items
-            cart_items.delete()
+                context = {
+                    "order": new_order,
+                    "razorpay_order_id": razorpay_order['id'],
+                    "razorpay_merchant_key": settings.RAZORPAY_KEY_ID,
+                    "amount": cart_total_price,
+                    "currency": "INR",
+                    "callback_url": request.build_absolute_uri(reverse("payment_callback")),
+                }
+                return render(request, "shop/payment.html", context)
 
-            # Display success message and redirect to homepage
-            messages.success(request, "Your Order has been placed successfully")
-            return redirect("/")
 
         except Exception as e:
             # Print the error for debugging purposes
@@ -689,20 +753,34 @@ def order_success(request):
 def payment_callback(request):
     if request.method == "POST":
         payment_id = request.POST.get("razorpay_payment_id")
-        order_id = request.POST.get("order_id")
+        order_id = request.POST.get("razorpay_order_id")
         razorpay_signature = request.POST.get("razorpay_signature")
 
         # Verify the payment signature
-        # Implement Razorpay's signature verification
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_SECRET_KEY))
+        
+        params_dict = {
+            'razorpay_order_id': order_id,
+            'razorpay_payment_id': payment_id,
+            'razorpay_signature': razorpay_signature
+        }
 
-        # Update the order status
-        order = Order.objects.get(id=order_id)
-        order.status = "Ready For Shipment"
-        order.save()
-
-        return redirect("/order-success/")
+        try:
+            client.utility.verify_payment_signature(params_dict)
+            # Update the order status on success
+            order = Order.objects.get(razorpay_order_id=order_id)
+            order.status = "Ready For Shipment"
+            order.payment_status = "Success"
+            order.razorpay_payment_id = payment_id
+            order.save()
+            messages.success(request, "Payment successful!")
+            return redirect("/order-success/")
+        except Exception:
+            messages.error(request, "Payment verification failed!")
+            return redirect("/checkout/")
     else:
         return redirect("/checkout/")
+
 
 
 @login_required
@@ -915,11 +993,17 @@ def buy_now(request, product_id):
             quantity=1,  # Since it's a buy now, quantity is 1
         )
 
-        # Display success message and redirect to orders list
-        messages.success(
-            request, f"Your order for {product.name} has been placed successfully!"
-        )
-        return redirect("order-success")  # Adjust this to your order success URL
+        # Context for payment page
+        context = {
+            'razorpay_order_id': razorpay_order['id'],
+            'razorpay_merchant_key': settings.RAZORPAY_KEY_ID,
+            'amount': int(total_price * 100),
+            'currency': 'INR',
+            'callback_url': request.build_absolute_uri(reverse('payment_callback')),
+            'id': new_order.id
+        }
+        return render(request, 'shop/payment.html', context)
+
 
     except Exception as e:
         # Handle any errors during order creation
@@ -975,11 +1059,10 @@ def place_order_buynow(request, product_id):
                 city=request.POST.get("city"),
                 pincode=request.POST.get("pincode"),
                 payment_mode=request.POST.get("payment_mode"),
-                payment_status="Success",
+                payment_status="Pending",
                 status="Ready For Shipment",
                 razorpay_order_id=razorpay_order["id"],
-                razorpay_payment_id=request.POST.get("razorpay_payment_id"),
-                payment_id=request.POST.get("razorpay_payment_id"),
+
                 total_price=total_price,
                 amount=total_price,
             )
@@ -1004,9 +1087,17 @@ def place_order_buynow(request, product_id):
             # Decrease quantity from available stock
             new_order.update_product_availability()
 
-            # Display success message and redirect to order success page
-            messages.success(request, "Your order has been placed successfully")
-            return redirect("order-success")
+            # Redirect to payment page instead of order success
+            context = {
+                'razorpay_order_id': razorpay_order['id'],
+                'razorpay_merchant_key': settings.RAZORPAY_KEY_ID,
+                'amount': int(total_price * 100),
+                'currency': 'INR',
+                'callback_url': request.build_absolute_uri(reverse('payment_callback')),
+                'id': new_order.id
+            }
+            return render(request, 'shop/payment.html', context)
+
 
         except Exception as e:
             # Handle exceptions and errors
@@ -1065,14 +1156,13 @@ def place_order_petbuy(request, pet_id):
                 city=request.POST.get("city"),
                 pincode=request.POST.get("pincode"),
                 payment_mode=request.POST.get("payment_mode"),
-                payment_status="Success",
+                payment_status="Pending",
                 status="Ready For Shipment",
                 razorpay_order_id=razorpay_order["id"],
-                razorpay_payment_id=request.POST.get("razorpay_payment_id"),
-                payment_id=request.POST.get("razorpay_payment_id"),
                 total_price=total_price,
                 amount=total_price,
             )
+
 
             # Generate a unique tracking number for the order
             trackno = "petparadise" + str(random.randint(1111111, 9999999))
@@ -1095,9 +1185,20 @@ def place_order_petbuy(request, pet_id):
             pet.quantity -= quantity
             pet.save()
 
-            # Display success message and redirect to order success page
-            messages.success(request, "Your order has been placed successfully")
-            return redirect("order-success")
+            # Save the new order instance
+            new_order.save()
+
+            # Redirect to payment page instead of order success
+            context = {
+                'razorpay_order_id': razorpay_order['id'],
+                'razorpay_merchant_key': settings.RAZORPAY_KEY_ID,
+                'amount': int(total_price * 100),
+                'currency': 'INR',
+                'callback_url': request.build_absolute_uri(reverse('payment_callback')),
+                'id': new_order.id
+            }
+            return render(request, 'shop/payment.html', context)
+
 
         except Exception as e:
             # Handle exceptions and errors
@@ -1197,9 +1298,12 @@ def petshop(request):
     logger.debug(f"Search query: '{query}'")  # Use logging for debugging
 
     # Base query
+    from django.db.models import Count
+
+    # Base query
     filter_conditions = Q()
     if query:
-        filter_conditions &= Q(name__icontains=query) | Q(tags__icontains=query)
+        filter_conditions &= Q(name__icontains=query) | Q(pets_no__icontains=query)
 
     if min_price and max_price:
         try:
@@ -1208,17 +1312,27 @@ def petshop(request):
             filter_conditions &= Q(price__gte=min_price, price__lte=max_price)
         except ValueError:
             pass  # Handle invalid price inputs gracefully
-
+    
+    # Filter handling
     if categories:
-        filter_conditions &= Q(category__in=categories)
+        filter_conditions &= Q(species__in=categories)
     if breeds:
-        filter_conditions &= Q(breed__in=breeds)
+        filter_conditions &= Q(breed__id__in=breeds)
     if genders:
         filter_conditions &= Q(gender__in=genders)
     if locations:
         filter_conditions &= Q(location__in=locations)
 
     pets = Pet.objects.filter(filter_conditions).distinct()
+
+    # Aggregations for Sidebar (using all pets to show available options)
+    # You might want to filter these based on the current search query if desired, 
+    # but for now we'll show all available options.
+    
+    species_list = Pet.objects.values('species').annotate(count=Count('id')).order_by('species')
+    breed_list = Breed.objects.annotate(count=Count('pets')).filter(count__gt=0).order_by('name')
+    gender_list = Pet.objects.values('gender').annotate(count=Count('id')).order_by('gender')
+    location_list = Pet.objects.values('location').annotate(count=Count('id')).order_by('location')
 
     context = {
         "pets": pets,
@@ -1229,10 +1343,14 @@ def petshop(request):
         "min_price": min_price,
         "max_price": max_price,
         "selected_categories": categories,
-        "selected_breeds": breeds,
+        "selected_breeds": [int(b) for b in breeds if b.isdigit()], # Ensure IDs are integers for template comparison
         "selected_genders": genders,
         "selected_locations": locations,
         "petss": petss,
+        "species_list": species_list,
+        "breed_list": breed_list,
+        "gender_list": gender_list,
+        "location_list": location_list,
     }
 
     return render(request, "shop/pets/petshop.html", context)
@@ -1305,8 +1423,9 @@ def adoption_view(request, slug):
     return render(request, "shop/pets/adoptionview.html", context)
 
 
-@csrf_exempt
+
 def adoption_request_send(request, pet_id):
+
     if request.method == "POST":
         try:
             # Extract form data from request

@@ -22,14 +22,17 @@
             </div>
             <div class="col-lg-4">
                 <div class="breadcrumb__img">
-                    <img src="{% static 'assets/img/images/breadcrumb_img.png' %}" alt="img" data-aos="fade-left" data-aos-delay="800">
+                    <img src="{% static 'assets/img/images/breadcrumb_img.png' %}" alt="img" data-aos="fade-left"
+                        data-aos-delay="800">
                 </div>
             </div>
         </div>
     </div>
     <div class="breadcrumb__shape-wrap">
-        <img src="{% static 'assets/img/images/breadcrumb_shape01.png' %}" alt="img" data-aos="fade-down-right" data-aos-delay="400">
-        <img src="{% static 'assets/img/images/breadcrumb_shape02.png' %}" alt="img" data-aos="fade-up-left" data-aos-delay="400">
+        <img src="{% static 'assets/img/images/breadcrumb_shape01.png' %}" alt="img" data-aos="fade-down-right"
+            data-aos-delay="400">
+        <img src="{% static 'assets/img/images/breadcrumb_shape02.png' %}" alt="img" data-aos="fade-up-left"
+            data-aos-delay="400">
     </div>
 </section>
 <!-- breadcrumb-area-end -->
@@ -39,40 +42,50 @@
         <div class="row">
             <div class="col-xl-9 col-lg-8 order-0 order-lg-2">
                 <div class="row">
-               {% for petsadopt in pets %}
-            <div class="col-xl-4 col-md-6">
-                <div class="animal__item animal__item-two animal__item-three shine-animate-item">
-                    <div class="animal__thumb animal__thumb-two shine-animate">
-                        <a href="{% url 'adoptionview' petsadopt.slug %}">
-                            <img src="{{ petsadopt.image.url }}" alt="img">
-                        </a>
-                        <a href="{% url 'adoptionview' petsadopt.slug %}" class="wishlist"><i class="flaticon-love"></i></a>
-                    </div>
-                    <div class="animal__content animal__content-two">
-                        <h4 class="title"><a href="{% url 'adoptionview' petsadopt.slug %}">{{ petsadopt.name }}</a></h4>
-                        <div class="pet-info">
-                            <ul class="list-wrap">
-                                <li>Gender: <span>{{petsadopt.gender }}</span></li>
-                                <li>Breed: <span>{{ petsadopt.breed2 }}</span></li>
-                            </ul>
+                    {% for petsadopt in pets %}
+                    <div class="col-xl-4 col-md-6">
+                        <div class="animal__item animal__item-two animal__item-three shine-animate-item">
+                            <div class="animal__thumb animal__thumb-two shine-animate">
+                                <a href="{% url 'adoptionview' petsadopt.slug %}">
+                                    {% if petsadopt.image %}
+                                    <img src="{{ petsadopt.image.url }}" alt="img">
+                                    {% else %}
+                                    <img src="{% static 'assets/img/images/placeholder_pet.png' %}" alt="placeholder">
+                                    {% endif %}
+                                </a>
+                                <a href="{% url 'adoptionview' petsadopt.slug %}" class="wishlist"><i
+                                        class="flaticon-love"></i></a>
+                            </div>
+                            <div class="animal__content animal__content-two">
+                                <h4 class="title"><a href="{% url 'adoptionview' petsadopt.slug %}">{{ petsadopt.name
+                                        }}</a></h4>
+                                <div class="pet-info">
+                                    <ul class="list-wrap">
+                                        <li>Gender: <span>{{petsadopt.gender }}</span></li>
+                                        <li>Breed: <span>{{ petsadopt.breed2 }}</span></li>
+                                    </ul>
+                                </div>
+                                <div class="location">
+                                    <i class="flaticon-placeholder"></i>
+                                    <span>{{ petsadopt.location }}</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="location">
-                            <i class="flaticon-placeholder"></i>
-                            <span>{{ petsadopt.location }}</span>
-                        </div>
                     </div>
-                </div>
-            </div>
-        {% endfor %}
+                    {% endfor %}
                 </div>
                 <nav class="pagination__wrap mt-50">
                     <ul class="list-wrap">
-                        <li class="link-arrow"><a href="#"><img src="{% static 'assets/img/icon/pagination_icon01.svg' %}" alt="" class="injectable"></a></li>
+                        <li class="link-arrow"><a href="#"><img
+                                    src="{% static 'assets/img/icon/pagination_icon01.svg' %}" alt=""
+                                    class="injectable"></a></li>
                         <li class="active"><a href="#">1</a></li>
                         <li><a href="">2</a></li>
                         <li><a href="">3</a></li>
                         <li><a href="">4</a></li>
-                        <li class="link-arrow"><a href="#"><img src="{% static 'assets/img/icon/pagination_icon02.svg' %}" alt="" class="injectable"></a></li>
+                        <li class="link-arrow"><a href="#"><img
+                                    src="{% static 'assets/img/icon/pagination_icon02.svg' %}" alt=""
+                                    class="injectable"></a></li>
                     </ul>
                 </nav>
             </div>
@@ -80,13 +93,7 @@
     </div>
 </section>
 <!-- animal-area-end -->
-    </main>
-    <!-- main-area-end -->
+</main>
+<!-- main-area-end -->
 
 {% endblock content %}
-
-
-
-
-
-

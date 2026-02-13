@@ -1,10 +1,8 @@
-
 {% load static %}
-{% block content %}
-    <!-- footer-area -->
-    <footer>
-        
-        <div class="footer__area">
+<!-- footer-area -->
+<footer>
+
+    <div class="footer__area">
         <div class="footer__area">
             <div class="footer__newsletter-three">
                 <div class="container">
@@ -17,7 +15,9 @@
                         <div class="col-lg-7">
                             <form action="#" class="footer__newsletter-form-two">
                                 <input type="email" placeholder="Type Your E-mail">
-                                <button type="submit">Subscribe <img src="{% static "assets/img/icon/right_arrow04.svg" %}" alt="" class="injectable"></button>
+                                <button type="submit">Subscribe <img
+                                        src="{% static 'assets/img/icon/right_arrow04.svg' %}" alt=""
+                                        class="injectable"></button>
                             </form>
                         </div>
                     </div>
@@ -29,9 +29,9 @@
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="footer__widget">
                                 <div class="footer__logo">
-                                    <a href=""><img src="{% static "assets/img/logo/w_logo.png" %} " alt=""></a>
+                                    <a href=""><img src="{% static 'assets/img/logo/w_logo.png' %}" alt=""></a>
                                 </div>
-                                <div class="footer__content">
+                                <div class=" footer__content">
                                     <p>369 C, East Manster Street, Kollam, Kerala, India 691001</p>
                                     <a href="tel:+910123456789">+91 123 456 789</a>
                                     <a href="mailto:petspaaradise@gmail.com">petspaaradise@gmail.com</a>
@@ -39,11 +39,16 @@
                                 <div class="footer__social">
                                     <h6 class="title">Follow Us On:</h6>
                                     <ul class="list-wrap">
-                                        <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-                                        <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="https://www.facebook.com/" target="_blank"><i
+                                                    class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="https://twitter.com/" target="_blank"><i
+                                                    class="fab fa-twitter"></i></a></li>
+                                        <li><a href="https://www.whatsapp.com/" target="_blank"><i
+                                                    class="fab fa-whatsapp"></i></a></li>
+                                        <li><a href="https://www.instagram.com/" target="_blank"><i
+                                                    class="fab fa-instagram"></i></a></li>
+                                        <li><a href="https://www.youtube.com/" target="_blank"><i
+                                                    class="fab fa-youtube"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -83,7 +88,8 @@
                                 <div class="footer__newsletter">
                                     <h2 class="title">Subscribe to our newsletter</h2>
                                     <div class="shape">
-                                        <img src="{% static "assets/img/images/footer_newsletter_shape.svg" %}" alt="" class="injectable">
+                                        <img src="{% static 'assets/img/images/footer_newsletter_shape.svg' %}" alt=""
+                                            class="injectable">
                                     </div>
                                     <form action="#">
                                         <input id="email" type="email" placeholder="Type Your E-mail">
@@ -95,8 +101,10 @@
                     </div>
                 </div>
                 <div class="footer__shape-wrap">
-                    <img src="{% static "assets/img/images/footer_shape01.png" %}" alt="img" data-aos="fade-up-right" data-aos-delay="400">
-                    <img src="{% static "assets/img/images/footer_shape02.png" %}" alt="img" data-aos="fade-up-left" data-aos-delay="400">
+                    <img src="{% static 'assets/img/images/footer_shape01.png' %}" alt="img" data-aos="fade-up-right"
+                        data-aos-delay="400">
+                    <img src="{% static 'assets/img/images/footer_shape02.png' %}" alt="img" data-aos="fade-up-left"
+                        data-aos-delay="400">
                 </div>
             </div>
             <div class="footer__bottom">
@@ -105,10 +113,10 @@
                         <div class="col-lg-7">
                             <div class="footer__bottom-menu">
                                 <ul class="list-wrap">
-                                    <li><a href="{% url "contact" %}">Support</a></li>
-                                    <li><a href="{% url "contact" %}">Terms & Conditions</a></li>
-                                    <li><a href="{% url "contact" %}">Privacy Policy</a></li>
-                                    <li><a href="{% url "contact" %}">Career</a></li>
+                                    <li><a href="{% url 'contact' %}">Support</a></li>
+                                    <li><a href="{% url 'contact' %}">Terms & Conditions</a></li>
+                                    <li><a href="{% url 'contact' %}">Privacy Policy</a></li>
+                                    <li><a href="{% url 'contact' %}">Career</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -121,10 +129,6 @@
                 </div>
             </div>
         </div>
-    </footer>
+</footer>
 
-    <!-- footer-area-end -->
-
-
-
-{% endblock content %}
+<!-- footer-area-end -->

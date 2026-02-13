@@ -36,4 +36,4 @@ Werkzeug==3.0.1
 whitenoise==6.11.0
 cloudinary==1.41.0
 django-cloudinary-storage==0.3.0
-pymysql==1.1.0
+pymysql==1.1.0python-dotenv

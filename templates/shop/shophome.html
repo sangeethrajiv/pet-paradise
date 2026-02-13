@@ -65,7 +65,7 @@
                             <div class="slider__content">
                                 <h1 class="title">Pet Healthy Food <br> & Accessories</h1>
                                 <h4 class="sub-title">Delicious Food Made With Love</h4>
-                                <a href="{% url 'shop' %}" class="btn">Shop Now <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="https://themedox.com/demo/petpal/assets/img/icon/right_arrow.svg" class="injectable">
+                                <a href="{% url 'shop' %}" class="btn">Shop Now <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none" data-inject-url="{% static 'assets/img/icon/right_arrow.svg' %}" class="injectable">
 <path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
 <path d="M16 14C16 13.258 16.733 12.15 17.475 11.22C18.429 10.02 19.569 8.973 20.876 8.174C21.856 7.575 23.044 7 24 7M24 7C23.044 7 21.855 6.425 20.876 5.826C19.569 5.026 18.429 3.979 17.475 2.781C16.733 1.85 16 0.739999 16 -6.99382e-07M24 7L6.11959e-07 7" stroke="currentcolor" stroke-width="2"></path>
 </svg></a>
@@ -780,7 +780,7 @@
                                         <div class="swiper-slide">
                                             <div class="product__item">
                                                 <div class="product__thumb">
-                                                    <a href="{% url 'shop' %}"><img src="a{% static "assets/img/products/products_img04.jpg" %}" alt="img"></a>
+                                                    <a href="{% url 'shop' %}"><img src="{% static "assets/img/products/products_img04.jpg" %}" alt="img"></a>
                                                     <div class="product__action">
                                                         <a href="{% url 'shop' %}"><i class="flaticon-love"></i></a>
                                                         <a href="{% url 'shop' %}"><i class="flaticon-loupe"></i></a>

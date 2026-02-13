@@ -11,305 +11,349 @@
                     <h3 class="title">Pet Details</h3>
                     <nav class="breadcrumb">
                         <span property="itemListElement" typeof="ListItem">
-                            <a href="{% url 'home' %}">Home</a> 
+                            <a href="{% url 'home' %}">Home</a>
                         </span>
                         <span class="breadcrumb-separator"><i class="flaticon-right-arrow-angle"></i></span>
                         <span property="itemListElement" typeof="ListItem">
-                          <a href="{% url 'petshop' %}">Shop</a>  </span>
+                            <a href="{% url 'petshop' %}">Shop</a> </span>
                         <span class="breadcrumb-separator"><i class="flaticon-right-arrow-angle"></i></span>
-                        <span property="itemListElement" typeof="ListItem"> <a href="{% url 'petshop' %}">Pet Details</a></span>
+                        <span property="itemListElement" typeof="ListItem"> <a href="{% url 'petshop' %}">Pet
+                                Details</a></span>
                     </nav>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="breadcrumb__img">
-                    <img src="{% static 'assets/img/images/breadcrumb_img.png' %}" alt="img" data-aos="fade-left" data-aos-delay="800">
+                    <img src="{% static 'assets/img/images/breadcrumb_img.png' %}" alt="img" data-aos="fade-left"
+                        data-aos-delay="800">
                 </div>
             </div>
         </div>
     </div>
     <div class="breadcrumb__shape-wrap">
-        <img src="{% static 'assets/img/images/breadcrumb_shape01.png' %}" alt="img" data-aos="fade-down-right" data-aos-delay="400">
-        <img src="{% static 'assets/img/images/breadcrumb_shape02.png' %}" alt="img" data-aos="fade-up-left" data-aos-delay="400">
+        <img src="{% static 'assets/img/images/breadcrumb_shape01.png' %}" alt="img" data-aos="fade-down-right"
+            data-aos-delay="400">
+        <img src="{% static 'assets/img/images/breadcrumb_shape02.png' %}" alt="img" data-aos="fade-up-left"
+            data-aos-delay="400">
     </div>
 </section>
 <!-- breadcrumb-area-end -->
-        <!-- animal-details-area -->
-        <section class="animal__details-area">
-            <div class="container">
-                <div class="animal__details-wrap">
-                    <div class="row">
-                        <div class="col-61">
-                                <div class="animal__details-img-wrap">
-                                    <div class="tab-content" id="myTabContent">
-                                        <!-- Main pet image tab -->
-                                        <div class="tab-pane fade show active" id="itemOne-tab-pane" role="tabpanel" aria-labelledby="itemOne-tab" tabindex="0">
-                                            <div class="swiper pet-active">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide">
-                                                        <img src="{{ pet.image.url }}" style="width: 770px; height: 500px;" alt="img">
-                                                    </div>
-                                                    {% for image in pet_images %}
-                                                    <div class="swiper-slide">
-                                                        <img src="{{ image.image.url }}"style="width: 770px; height: 500px;" alt="img">
-                                                    </div>
-                                                    {% endfor %}
-                                                </div>
-                                            </div>
-                                            <div class="pet__nav">
-                                                <button class="pet-button-prev"><i class="flaticon-left"></i></button>
-                                                <button class="pet-button-next"><i class="flaticon-next"></i></button>
-                                            </div>
+<!-- animal-details-area -->
+<section class="animal__details-area">
+    <div class="container">
+        <div class="animal__details-wrap">
+            <div class="row">
+                <div class="col-61">
+                    <div class="animal__details-img-wrap">
+                        <div class="tab-content" id="myTabContent">
+                            <!-- Main pet image tab -->
+                            <div class="tab-pane fade show active" id="itemOne-tab-pane" role="tabpanel"
+                                aria-labelledby="itemOne-tab" tabindex="0">
+                                <div class="swiper pet-active">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            {% if pet.image %}
+                                            <img src="{{ pet.image.url }}" style="width: 770px; height: 500px;"
+                                                alt="img">
+                                            {% else %}
+                                            <img src="https://via.placeholder.com/770x500?text=No+Image"
+                                                style="width: 770px; height: 500px;" alt="img">
+                                            {% endif %}
                                         </div>
+                                        {% for image in pet_images %}
+                                        <div class="swiper-slide">
+                                            <img src="{{ image.image.url }}" style="width: 770px; height: 500px;"
+                                                alt="img">
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="pet__nav">
+                                    <button class="pet-button-prev"><i class="flaticon-left"></i></button>
+                                    <button class="pet-button-next"><i class="flaticon-next"></i></button>
+                                </div>
+                            </div>
 
-                                        <!-- Additional images tabs -->
-                                        {% for image in pet_images %}
-                                        <div class="tab-pane fade" id="item-tab-pane-{{ forloop.counter }}" role="tabpanel" aria-labelledby="item-tab-{{ forloop.counter }}" tabindex="0">
-                                            <div class="swiper pet-active">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide">
-                                                       <img src="{{ image.image.url }}" style="width: 770px; height: 500px;" alt="img">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="pet__nav">
-                                                <button class="pet-button-prev"><i class="flaticon-left"></i></button>
-                                                <button class="pet-button-next"><i class="flaticon-next"></i></button>
-                                            </div>
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="itemOne-tab" data-bs-toggle="tab" data-bs-target="#itemOne-tab-pane" type="button" role="tab" aria-controls="itemOne-tab-pane" aria-selected="true">
-                                                <img src="{{ pet.image.url }}" style="width: 200px; height: 140px;" alt="img">
-                                            </button>
-                                        </li>
-                                        {% for image in pet_images %}
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="item-tab-{{ forloop.counter }}" data-bs-toggle="tab" data-bs-target="#item-tab-pane-{{ forloop.counter }}" type="button" role="tab" aria-controls="item-tab-pane-{{ forloop.counter }}" aria-selected="false">
-                                                <img src="{{ image.image.url }}"style="width: 200px; height: 140px;" alt="img">
-                                            </button>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            <div class="animal__details-description">
-                                <h4 class="title">Description</h4>
-                                <p>When an unknown printer took a galley of type and scrambled ew year make a type speci awmen bookbsites and e-commerce shops. We know how hard.when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not  centurieswhen an unknown printer took a galley of type and scrambled.</p>
-                            </div>
-                            <div class="animal__details-info-wrap">
-                                <h4 class="title">More Additional Information</h4>
-                                <p>When an unknown printer took a galley of type and scrambled ew year make a type speci awmen bookbsites and e-commerce shops. We know how hard.</p>
-                                <div class="introducing__list-box">
-                                    <ul class="list-wrap">
-                                        <li>
-                                            <span class="icon">
-                                                <img src="{% static "assets/img/icon/check_icon02.svg" %}" alt="" class="injectable">
-                                            </span>
-                                            Vaccine Completed
-                                        </li>
-                                        <li>
-                                            <span class="icon">
-                                                <img src="{% static "assets/img/icon/check_icon02.svg" %}" alt="" class="injectable">
-                                            </span>
-                                            24/7 emergency assistance
-                                        </li>
-                                        <li>
-                                            <span class="icon">
-                                                <img src="{% static "assets/img/icon/check_icon02.svg" %}" alt="" class="injectable">
-                                            </span>
-                                            6 Month Health Insurance
-                                        </li>
-                                        <li>
-                                            <span class="icon">
-                                                <img src="{% static "assets/img/icon/check_icon02.svg" %}" alt="" class="injectable">
-                                            </span>
-                                            Health Record Profile
-                                        </li>
-                                        <li>
-                                            <span class="icon">
-                                                <img src="{% static "assets/img/icon/check_icon02.svg" %}" alt="" class="injectable">
-                                            </span>
-                                            100% Coverage
-                                        </li>
-                                        <li>
-                                            <span class="icon">
-                                                <img src="{% static "assets/img/icon/check_icon02.svg" %}" alt="" class="injectable">
-                                            </span>
-                                            NYC sales tax
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-39">
-                            <aside class="animal__details-sidebar">
-                                <div class="animal__details-widget">
-                                    <div class="animal__details-sidebar-info">
-                                        <h4 class="title">The {{pet.name}}</h4>
-                                        <p>{{pet.description}}.</p>
-                                        <h4 class="price">₹ {{pet.price}}</h4>
-                                        <ul class="list-wrap">
-                                            <li><span>Available Date:</span>{{pet.created_at}}</li>
-                                            <li><span>Breed:</span>{{pet.breed}}</li>
-                                            <li><span>Color:</span>{{pet.color}}</li>
-                                            <li><span>Gender:</span>{{pet.gender}}</li>
-                                            <li><span>Weight:</span>{{pet.weight}}kg</li>
-                                            <li><span>location:</span>{{pet.location}}</li>
-                                            <li><span>Puppy ID:</span>{{pet.pets_no}}-EP</li>
-                                            <li><span>Date of Birth:</span>{{pet.dob}}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="animal__details-widget">
-                                    <h4 class="widget-title">Payment Type</h4>
-                                    <div class="payment__type-wrap">
-                <form action="{% url 'checkoutpet' %}" method="post" class="payment__form">
-                    {% csrf_token %}
-                    <div class="select-grp">
-                        <select name="pet_type" class="orderby">
-                        <option value="COD">Cash On Delivery</option>
-                        </select>
-                    </div>
-                    <input type="hidden" name="pet_id" value="{{ pet.id }}">
-                    <button type="submit">Bring Me Home</button>
-                </form>
-                                        <div class="social-wrap">
-                                            <h6 class="title">Share This Post:</h6>
-                                            <ul class="list-wrap">
-                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                                <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                                <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-                                                <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                                <li><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                                            </ul>
+                            <!-- Additional images tabs -->
+                            {% for image in pet_images %}
+                            <div class="tab-pane fade" id="item-tab-pane-{{ forloop.counter }}" role="tabpanel"
+                                aria-labelledby="item-tab-{{ forloop.counter }}" tabindex="0">
+                                <div class="swiper pet-active">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="{{ image.image.url }}" style="width: 770px; height: 500px;"
+                                                alt="img">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="animal__details-widget">
-                                    <div class="animal__details-map">
-                                        <h4 class="widget-title">Map Location</h4>
-                                        <div class="location-map">
-                                            {{pet.map|safe}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-                <div class="related__animal-area">
-                    <div class="row align-items-end">
-                        <div class="col-md-8">
-                            <h3 class="related__animal-title">You May Also Like</h3>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="pet__nav-two">
-                                <button class="petTwo-button-prev"><i class="flaticon-left"></i></button>
-                                <button class="petTwo-button-next"><i class="flaticon-next"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper pet-active-two">
-                        <div class="swiper-wrapper">
-                            {% for pets in petz %}
-                            <div class="swiper-slide">
-                                <div class="animal__item animal__item-two animal__item-three shine-animate-item">
-                                    <div class="animal__thumb animal__thumb-two shine-animate">
-                                        <a href="{% url 'petsdetails' pet.id %}"><img src="{{pets.image.url}}" alt="img"></a>
-                                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
-                                    </div>
-                                    <div class="animal__content animal__content-two">
-                                        <h4 class="title"><a href="{% url 'petsdetails' pet.id %}">{{pets.name}}</a></h4>
-                                        <div class="pet-info">
-                                            <ul class="list-wrap">
-                                                <li>Gender: <span>{{pets.gender}}</span></li>
-                                                <li>Breed: <span>{{pets.breed}}</span></li>
-                                            </ul>
-                                        </div>
-                                        <div class="location">
-                                            <i class="flaticon-placeholder"></i>
-                                            <span>{{pets.location}}</span>
-                                        </div>
-                                    </div>
+                                <div class="pet__nav">
+                                    <button class="pet-button-prev"><i class="flaticon-left"></i></button>
+                                    <button class="pet-button-next"><i class="flaticon-next"></i></button>
                                 </div>
                             </div>
                             {% endfor %}
-                            {% comment %} <div class="swiper-slide">
-                                <div class="animal__item animal__item-two animal__item-three shine-animate-item">
-                                    <div class="animal__thumb animal__thumb-two shine-animate">
-                                        <a href=""><img src="assets/img/shop/shop_img02.jpg" alt="img"></a>
-                                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
-                                    </div>
-                                    <div class="animal__content animal__content-two">
-                                        <h4 class="title"><a href="">purebred pussycat</a></h4>
-                                        <div class="pet-info">
-                                            <ul class="list-wrap">
-                                                <li>Gender: <span>Female</span></li>
-                                                <li>Breed: <span>Germany</span></li>
-                                            </ul>
-                                        </div>
-                                        <div class="location">
-                                            <i class="flaticon-placeholder"></i>
-                                            <span>Central Park, New York</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="animal__item animal__item-two animal__item-three shine-animate-item">
-                                    <div class="animal__thumb animal__thumb-two shine-animate">
-                                        <a href=""><img src="assets/img/shop/shop_img03.jpg" alt="img"></a>
-                                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
-                                    </div>
-                                    <div class="animal__content animal__content-two">
-                                        <h4 class="title"><a href="">Italian Rabbit</a></h4>
-                                        <div class="pet-info">
-                                            <ul class="list-wrap">
-                                                <li>Gender: <span>Male</span></li>
-                                                <li>Breed: <span>Italy</span></li>
-                                            </ul>
-                                        </div>
-                                        <div class="location">
-                                            <i class="flaticon-placeholder"></i>
-                                            <span>Birmingham, Alabama</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="animal__item animal__item-two animal__item-three shine-animate-item">
-                                    <div class="animal__thumb animal__thumb-two shine-animate">
-                                        <a href=""><img src="assets/img/shop/shop_img04.jpg" alt="img"></a>
-                                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
-                                    </div>
-                                    <div class="animal__content animal__content-two">
-                                        <h4 class="title"><a href="">Macaw Russian</a></h4>
-                                        <div class="pet-info">
-                                            <ul class="list-wrap">
-                                                <li>Gender: <span>Male</span></li>
-                                                <li>Breed: <span>Canada</span></li>
-                                            </ul>
-                                        </div>
-                                        <div class="location">
-                                            <i class="flaticon-placeholder"></i>
-                                            <span>Anchorage, Alaska</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% comment %} <div class="swiper-slide"> {% endcomment %}
-                            </div>
+                        </div>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="itemOne-tab" data-bs-toggle="tab"
+                                    data-bs-target="#itemOne-tab-pane" type="button" role="tab"
+                                    aria-controls="itemOne-tab-pane" aria-selected="true">
+                                    {% if pet.image %}
+                                    <img src="{{ pet.image.url }}" style="width: 200px; height: 140px;" alt="img">
+                                    {% else %}
+                                    <img src="https://via.placeholder.com/200x140?text=No+Image"
+                                        style="width: 200px; height: 140px;" alt="img">
+                                    {% endif %}
+                                </button>
+                            </li>
+                            {% for image in pet_images %}
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="item-tab-{{ forloop.counter }}" data-bs-toggle="tab"
+                                    data-bs-target="#item-tab-pane-{{ forloop.counter }}" type="button" role="tab"
+                                    aria-controls="item-tab-pane-{{ forloop.counter }}" aria-selected="false">
+                                    <img src="{{ image.image.url }}" style="width: 200px; height: 140px;" alt="img">
+                                </button>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="animal__details-description">
+                        <h4 class="title">Description</h4>
+                        <p>When an unknown printer took a galley of type and scrambled ew year make a type speci awmen
+                            bookbsites and e-commerce shops. We know how hard.when an unknown printer took a galley of
+                            type and scrambled it to make a type specimen book. It has survived not centurieswhen an
+                            unknown printer took a galley of type and scrambled.</p>
+                    </div>
+                    <div class="animal__details-info-wrap">
+                        <h4 class="title">More Additional Information</h4>
+                        <p>When an unknown printer took a galley of type and scrambled ew year make a type speci awmen
+                            bookbsites and e-commerce shops. We know how hard.</p>
+                        <div class="introducing__list-box">
+                            <ul class="list-wrap">
+                                <li>
+                                    <span class="icon">
+                                        <img src="{% static 'assets/img/icon/check_icon02.svg' %}" alt=""
+                                            class="injectable">
+                                    </span>
+                                    Vaccine Completed
+                                </li>
+                                <li>
+                                    <span class="icon">
+                                        <img src="{% static 'assets/img/icon/check_icon02.svg' %}" alt=""
+                                            class="injectable">
+                                    </span>
+                                    24/7 emergency assistance
+                                </li>
+                                <li>
+                                    <span class="icon">
+                                        <img src="{% static 'assets/img/icon/check_icon02.svg' %}" alt=""
+                                            class="injectable">
+                                    </span>
+                                    6 Month Health Insurance
+                                </li>
+                                <li>
+                                    <span class="icon">
+                                        <img src="{% static 'assets/img/icon/check_icon02.svg' %}" alt=""
+                                            class="injectable">
+                                    </span>
+                                    Health Record Profile
+                                </li>
+                                <li>
+                                    <span class="icon">
+                                        <img src="{% static 'assets/img/icon/check_icon02.svg' %}" alt=""
+                                            class="injectable">
+                                    </span>
+                                    100% Coverage
+                                </li>
+                                <li>
+                                    <span class="icon">
+                                        <img src="{% static 'assets/img/icon/check_icon02.svg' %}" alt=""
+                                            class="injectable">
+                                    </span>
+                                    NYC sales tax
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+                <div class="col-39">
+                    <aside class="animal__details-sidebar">
+                        <div class="animal__details-widget">
+                            <div class="animal__details-sidebar-info">
+                                <h4 class="title">The {{pet.name}}</h4>
+                                <p>{{pet.description}}.</p>
+                                <h4 class="price">₹ {{pet.price}}</h4>
+                                <ul class="list-wrap">
+                                    <li><span>Available Date:</span>{{pet.created_at}}</li>
+                                    <li><span>Breed:</span>{{pet.breed}}</li>
+                                    <li><span>Color:</span>{{pet.color}}</li>
+                                    <li><span>Gender:</span>{{pet.gender}}</li>
+                                    <li><span>Weight:</span>{{pet.weight}}kg</li>
+                                    <li><span>location:</span>{{pet.location}}</li>
+                                    <li><span>Puppy ID:</span>{{pet.pets_no}}-EP</li>
+                                    <li><span>Date of Birth:</span>{{pet.dob}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="animal__details-widget">
+                            <h4 class="widget-title">Payment Type</h4>
+                            <div class="payment__type-wrap">
+                                <form action="{% url 'checkoutpet' %}" method="post" class="payment__form">
+                                    {% csrf_token %}
+                                    <div class="select-grp">
+                                        <select name="pet_type" class="orderby">
+                                            <option value="COD">Cash On Delivery</option>
+                                        </select>
+                                    </div>
+                                    <input type="hidden" name="pet_id" value="{{ pet.id }}">
+                                    <button type="submit">Bring Me Home</button>
+                                </form>
+                                <div class="social-wrap">
+                                    <h6 class="title">Share This Post:</h6>
+                                    <ul class="list-wrap">
+                                        <li><a href="https://www.facebook.com/" target="_blank"><i
+                                                    class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="https://twitter.com/" target="_blank"><i
+                                                    class="fab fa-twitter"></i></a></li>
+                                        <li><a href="https://www.whatsapp.com/" target="_blank"><i
+                                                    class="fab fa-whatsapp"></i></a></li>
+                                        <li><a href="https://www.instagram.com/" target="_blank"><i
+                                                    class="fab fa-instagram"></i></a></li>
+                                        <li><a href="https://www.youtube.com/" target="_blank"><i
+                                                    class="fab fa-youtube"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="animal__details-widget">
+                            <div class="animal__details-map">
+                                <h4 class="widget-title">Map Location</h4>
+                                <div class="location-map">
+                                    {{pet.map|safe}}
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
             </div>
-        </section>
-        <!-- animal-details-area-end -->
+        </div>
+        <div class="related__animal-area">
+            <div class="row align-items-end">
+                <div class="col-md-8">
+                    <h3 class="related__animal-title">You May Also Like</h3>
+                </div>
+                <div class="col-md-4">
+                    <div class="pet__nav-two">
+                        <button class="petTwo-button-prev"><i class="flaticon-left"></i></button>
+                        <button class="petTwo-button-next"><i class="flaticon-next"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper pet-active-two">
+                <div class="swiper-wrapper">
+                    {% for pets in petz %}
+                    <div class="swiper-slide">
+                        <div class="animal__item animal__item-two animal__item-three shine-animate-item">
+                            <div class="animal__thumb animal__thumb-two shine-animate">
+                                <a href="{% url 'petsdetails' pets.id %}">
+                                    {% if pets.image %}
+                                    <img src="{{pets.image.url}}" alt="img">
+                                    {% else %}
+                                    <img src="https://via.placeholder.com/300x300?text=No+Image" alt="img">
+                                    {% endif %}
+                                </a>
+                                <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                            </div>
+                            <div class="animal__content animal__content-two">
+                                <h4 class="title"><a href="{% url 'petsdetails' pet.id %}">{{pets.name}}</a></h4>
+                                <div class="pet-info">
+                                    <ul class="list-wrap">
+                                        <li>Gender: <span>{{pets.gender}}</span></li>
+                                        <li>Breed: <span>{{pets.breed}}</span></li>
+                                    </ul>
+                                </div>
+                                <div class="location">
+                                    <i class="flaticon-placeholder"></i>
+                                    <span>{{pets.location}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% comment %} <div class="swiper-slide">
+                        <div class="animal__item animal__item-two animal__item-three shine-animate-item">
+                            <div class="animal__thumb animal__thumb-two shine-animate">
+                                <a href=""><img src="assets/img/shop/shop_img02.jpg" alt="img"></a>
+                                <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                            </div>
+                            <div class="animal__content animal__content-two">
+                                <h4 class="title"><a href="">purebred pussycat</a></h4>
+                                <div class="pet-info">
+                                    <ul class="list-wrap">
+                                        <li>Gender: <span>Female</span></li>
+                                        <li>Breed: <span>Germany</span></li>
+                                    </ul>
+                                </div>
+                                <div class="location">
+                                    <i class="flaticon-placeholder"></i>
+                                    <span>Central Park, New York</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="animal__item animal__item-two animal__item-three shine-animate-item">
+                            <div class="animal__thumb animal__thumb-two shine-animate">
+                                <a href=""><img src="assets/img/shop/shop_img03.jpg" alt="img"></a>
+                                <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                            </div>
+                            <div class="animal__content animal__content-two">
+                                <h4 class="title"><a href="">Italian Rabbit</a></h4>
+                                <div class="pet-info">
+                                    <ul class="list-wrap">
+                                        <li>Gender: <span>Male</span></li>
+                                        <li>Breed: <span>Italy</span></li>
+                                    </ul>
+                                </div>
+                                <div class="location">
+                                    <i class="flaticon-placeholder"></i>
+                                    <span>Birmingham, Alabama</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="animal__item animal__item-two animal__item-three shine-animate-item">
+                            <div class="animal__thumb animal__thumb-two shine-animate">
+                                <a href=""><img src="assets/img/shop/shop_img04.jpg" alt="img"></a>
+                                <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                            </div>
+                            <div class="animal__content animal__content-two">
+                                <h4 class="title"><a href="">Macaw Russian</a></h4>
+                                <div class="pet-info">
+                                    <ul class="list-wrap">
+                                        <li>Gender: <span>Male</span></li>
+                                        <li>Breed: <span>Canada</span></li>
+                                    </ul>
+                                </div>
+                                <div class="location">
+                                    <i class="flaticon-placeholder"></i>
+                                    <span>Anchorage, Alaska</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} <div class="swiper-slide"> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- animal-details-area-end -->
 
-    </main>
-    <!-- main-area-end -->
+</main>
+<!-- main-area-end -->
 
 
 

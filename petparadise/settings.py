@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,12 +26,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+2(zzsvw&z7t^_29)!8w22cwwkn&f!ilcv)tx+h2ah2(r!=32m'
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-+2(zzsvw&z7t^_29)!8w22cwwkn&f!ilcv)tx+h2ah2(r!=32m")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
+
 
 
 # Application definition
@@ -149,7 +154,14 @@ CLOUDINARY_CLOUD_NAME = os.environ.get("CLOUDINARY_CLOUD_NAME")
 CLOUDINARY_API_KEY = os.environ.get("CLOUDINARY_API_KEY")
 CLOUDINARY_API_SECRET = os.environ.get("CLOUDINARY_API_SECRET")
 
-if all([CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET]):
+# Check if credentials are valid (not placeholders and not empty)
+is_cloudinary_configured = (
+    CLOUDINARY_CLOUD_NAME and CLOUDINARY_CLOUD_NAME != "your-cloud-name" and
+    CLOUDINARY_API_KEY and CLOUDINARY_API_KEY != "your-api-key" and
+    CLOUDINARY_API_SECRET and CLOUDINARY_API_SECRET != "your-api-secret"
+)
+
+if is_cloudinary_configured:
     CLOUDINARY_STORAGE = {
         "CLOUD_NAME": CLOUDINARY_CLOUD_NAME,
         "API_KEY": CLOUDINARY_API_KEY,
@@ -157,7 +169,7 @@ if all([CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET]):
     }
     DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 else:
-    # Fallback to local storage if Cloudinary is not configured
+    # Fallback to local storage if Cloudinary is not configured or uses placeholders
     DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 
 MEDIA_URL = "/media/"
@@ -171,9 +183,10 @@ LOGIN_URL = "/login-required/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-RAZORPAY_KEY_ID = "rzp_test_MFikh57HLh7CDc"
-RAZORPAY_SECRET_KEY = "O7kMVBRZy3sVCPpYlNtvaen0"
+RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID", "rzp_test_MFikh57HLh7CDc")
+RAZORPAY_SECRET_KEY = os.environ.get("RAZORPAY_SECRET_KEY", "O7kMVBRZy3sVCPpYlNtvaen0")
 SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
+
 
 CKEDITOR_UPLOAD_SLUGIFY_FILENAME = False
 CKEDITOR_JQUERY_URL = "http://libs.baidu.com/jquery/2.0.3/jquery.min.js"
@@ -235,5 +248,6 @@ EMAIL_HOST = "smtp.gmail.com"  # Your SMTP server address
 EMAIL_PORT = 587  # Port for SMTP
 EMAIL_USE_TLS = True  # Use TLS (Transport Layer Security)
 # EMAIL_USE_TLS = False # Use TLS (Transport Layer Security)
-EMAIL_HOST_USER = "achusangeeth777@gmail.com"  # Your email address
-EMAIL_HOST_PASSWORD = "npuy phph vdvz cufp"  # Your email password
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "achusangeeth777@gmail.com")  # Your email address
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "npuy phph vdvz cufp")  # Your email password
+

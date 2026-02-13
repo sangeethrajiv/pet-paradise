@@ -20,14 +20,17 @@
             </div>
             <div class="col-lg-4">
                 <div class="breadcrumb__img">
-                    <img src="{% static 'assets/img/images/breadcrumb_img.png' %}" alt="img" data-aos="fade-left" data-aos-delay="800">
+                    <img src="{% static 'assets/img/images/breadcrumb_img.png' %}" alt="img" data-aos="fade-left"
+                        data-aos-delay="800">
                 </div>
             </div>
         </div>
     </div>
     <div class="breadcrumb__shape-wrap">
-        <img src="{% static 'assets/img/images/breadcrumb_shape01.png' %}" alt="img" data-aos="fade-down-right" data-aos-delay="400">
-        <img src="{% static 'assets/img/images/breadcrumb_shape02.png' %}" alt="img" data-aos="fade-up-left" data-aos-delay="400">
+        <img src="{% static 'assets/img/images/breadcrumb_shape01.png' %}" alt="img" data-aos="fade-down-right"
+            data-aos-delay="400">
+        <img src="{% static 'assets/img/images/breadcrumb_shape02.png' %}" alt="img" data-aos="fade-up-left"
+            data-aos-delay="400">
     </div>
 </section>
 <!-- breadcrumb-area-end -->
@@ -37,210 +40,151 @@
         <div class="row">
             <div class="col-xl-9 col-lg-8 order-0 order-lg-2">
                 <div class="row">
-               {% for pet in pets %}
-            <div class="col-xl-4 col-md-6">
-                <div class="animal__item animal__item-two animal__item-three shine-animate-item">
-                    <div class="animal__thumb animal__thumb-two shine-animate">
-                        <a href="{% url 'petsdetails' pet.id %}">
-                            <img src="{{ pet.image.url }}" alt="img">
-                        </a>
-                        <a href="" class="wishlist"><i class="flaticon-love"></i></a>
-                    </div>
-                    <div class="animal__content animal__content-two">
-                        <h4 class="title"><a href="{% url 'petsdetails' pet.id %}">{{ pet.name }}</a></h4>
-                        <div class="pet-info">
-                            <ul class="list-wrap">
-                                <li>Price: <span> ₹ {{ pet.price }}</span></li>
-                                <li>Gender: <span>{{ pet.gender }}</span></li>
-                                <li>Breed: <span>{{ pet.breed2 }}</span></li>
-                            </ul>
+                    {% for pet in pets %}
+                    <div class="col-xl-4 col-md-6">
+                        <div class="animal__item animal__item-two animal__item-three shine-animate-item">
+                            <div class="animal__thumb animal__thumb-two shine-animate">
+                                <a href="{% url 'petsdetails' pet.id %}">
+                                    {% if pet.image %}
+                                    <img src="{{ pet.image.url }}" alt="img">
+                                    {% else %}
+                                    <img src="{% static 'assets/img/images/placeholder_pet.png' %}" alt="placeholder">
+                                    {% endif %}
+                                </a>
+                                <a href="" class="wishlist"><i class="flaticon-love"></i></a>
+                            </div>
+                            <div class="animal__content animal__content-two">
+                                <h4 class="title"><a href="{% url 'petsdetails' pet.id %}">{{ pet.name }}</a></h4>
+                                <div class="pet-info">
+                                    <ul class="list-wrap">
+                                        <li>Price: <span> ₹ {{ pet.price }}</span></li>
+                                        <li>Gender: <span>{{ pet.gender }}</span></li>
+                                        <li>Breed: <span>{{ pet.breed2 }}</span></li>
+                                    </ul>
+                                </div>
+                                <div class="location">
+                                    <i class="flaticon-placeholder"></i>
+                                    <span>{{ pet.location }}</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="location">
-                            <i class="flaticon-placeholder"></i>
-                            <span>{{ pet.location }}</span>
-                        </div>
                     </div>
-                </div>
-            </div>
-        {% endfor %}
+                    {% endfor %}
                 </div>
                 <nav class="pagination__wrap mt-50">
                     <ul class="list-wrap">
-                        <li class="link-arrow"><a href="#"><img src="{% static 'assets/img/icon/pagination_icon01.svg' %}" alt="" class="injectable"></a></li>
+                        <li class="link-arrow"><a href="#"><img
+                                    src="{% static 'assets/img/icon/pagination_icon01.svg' %}" alt=""
+                                    class="injectable"></a></li>
                         <li class="active"><a href="#">1</a></li>
                         <li><a href="">2</a></li>
                         <li><a href="">3</a></li>
                         <li><a href="">4</a></li>
-                        <li class="link-arrow"><a href="#"><img src="{% static 'assets/img/icon/pagination_icon02.svg' %}" alt="" class="injectable"></a></li>
+                        <li class="link-arrow"><a href="#"><img
+                                    src="{% static 'assets/img/icon/pagination_icon02.svg' %}" alt=""
+                                    class="injectable"></a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-xl-3 col-lg-4">
                 <aside class="animal__sidebar">
-                    <div class="animal__widget">
-                        <h4 class="animal__widget-title">Filters</h4>
-                        <div class="sidebar-search-form">
-                             <form method="get" action="{% url 'search_view' %}">
+                    <form method="get" action="{% url 'petshop' %}">
+                        <div class="animal__widget">
+                            <h4 class="animal__widget-title">Filters</h4>
+                            <div class="sidebar-search-form">
                                 <input type="text" name="q" value="{{ query }}" placeholder="Type Keywords. . .">
                                 <button type="submit"><i class="flaticon-loupe"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="animal__widget">
-                        <h4 class="animal__widget-title">Price Range</h4>
-                        <div class="price_filter">
-                            <div id="slider-range"></div>
-                            <div class="price_slider_amount">
-                                <input type="text" id="amount" name="price" placeholder="Add Your Price" />
                             </div>
                         </div>
-                    </div>
-                    <div class="animal__widget">
-                        <h4 class="animal__widget-title">Pet Categories</h4>
-                        <div class="courses-cat-list">
-                            <ul class="list-wrap">
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="species" value="Dog" id="cat_1">
-                                        <label class="form-check-label" for="cat_1">Dogs <span>(344)</span></label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="cat_2">
-                                        <label class="form-check-label" for="cat_2">Cats <span>(12)</span></label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="cat_3">
-                                        <label class="form-check-label" for="cat_3">Rabbit <span>(56)</span></label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="cat_4">
-                                        <label class="form-check-label" for="cat_4">Birds <span>(14)</span></label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="cat_5">
-                                        <label class="form-check-label" for="cat_5">Fish <span>(11)</span></label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="cat_6">
-                                        <label class="form-check-label" for="cat_6">Others <span>(14)</span></label>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="animal__widget">
+                            <h4 class="animal__widget-title">Price Range</h4>
+                            <div class="price_filter">
+                                <div id="slider-range"></div>
+                                <div class="price_slider_amount">
+                                    <input type="text" id="amount" name="price" placeholder="Add Your Price" readonly
+                                        style="border:0; color:#f6931f; font-weight:bold;" />
+                                    <input type="hidden" name="min_price" id="min_price"
+                                        value="{{ min_price|default:0 }}">
+                                    <input type="hidden" name="max_price" id="max_price"
+                                        value="{{ max_price|default:100000 }}">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="animal__widget">
-                        <h4 class="animal__widget-title">Breeds</h4>
-                        <div class="courses-cat-list">
-                            <ul class="list-wrap">
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="bre_1">
-                                        <label class="form-check-label" for="bre_1">Airedale Terrier</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="bre_2">
-                                        <label class="form-check-label" for="bre_2">American Eskimo</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="bre_3">
-                                        <label class="form-check-label" for="bre_3">Basset Hound</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="bre_4">
-                                        <label class="form-check-label" for="bre_4">Bernese Mountain Dog</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="bre_5">
-                                        <label class="form-check-label" for="bre_5">Bichon Frise</label>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="animal__widget">
+                            <h4 class="animal__widget-title">Pet Categories</h4>
+                            <div class="courses-cat-list">
+                                <ul class="list-wrap">
+                                    {% for species in species_list %}
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="species"
+                                                value="{{ species.species }}" id="cat_{{ forloop.counter }}" {% if species.species in selected_categories %}checked{% endif %}>
+                                            <label class="form-check-label" for="cat_{{ forloop.counter }}">{{ species.species }} <span>({{ species.count }})</span></label>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="animal__widget">
-                        <h4 class="animal__widget-title">Gender</h4>
-                        <div class="courses-cat-list">
-                            <ul class="list-wrap">
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="gender_1">
-                                        <label class="form-check-label" for="gender_1">Male (344)</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="gender_2">
-                                        <label class="form-check-label" for="gender_2">Female (21)</label>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="animal__widget">
+                            <h4 class="animal__widget-title">Breeds</h4>
+                            <div class="courses-cat-list">
+                                <ul class="list-wrap">
+                                    {% for breed in breed_list %}
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="breeds"
+                                                value="{{ breed.id }}" id="bre_{{ forloop.counter }}" {% if breed.id in selected_breeds %}checked{% endif %}>
+                                            <label class="form-check-label" for="bre_{{ forloop.counter }}">{{ breed.name }} <span>({{ breed.count }})</span></label>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="animal__widget">
-                        <h4 class="animal__widget-title">Location</h4>
-                        <div class="courses-cat-list">
-                            <ul class="list-wrap">
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="loc_1">
-                                        <label class="form-check-label" for="loc_1">All</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="loc_2">
-                                        <label class="form-check-label" for="loc_2">NewYork City</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="loc_3">
-                                        <label class="form-check-label" for="loc_3">Kansas City</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="loc_4">
-                                        <label class="form-check-label" for="loc_4">NewJersey</label>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="animal__widget">
+                            <h4 class="animal__widget-title">Gender</h4>
+                            <div class="courses-cat-list">
+                                <ul class="list-wrap">
+                                    {% for gender in gender_list %}
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="genders"
+                                                value="{{ gender.gender }}" id="gender_{{ forloop.counter }}" {% if gender.gender in selected_genders %}checked{% endif %}>
+                                            <label class="form-check-label" for="gender_{{ forloop.counter }}">{{ gender.gender|title }} <span>({{ gender.count }})</span></label>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
-                        <div class="apply-btn">
-                            <a href="#" class="btn">Apply Now</a>
+                        <div class="animal__widget">
+                            <h4 class="animal__widget-title">Location</h4>
+                            <div class="courses-cat-list">
+                                <ul class="list-wrap">
+                                    {% for location in location_list %}
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="locations"
+                                                value="{{ location.location }}" id="loc_{{ forloop.counter }}" {% if location.location in selected_locations %}checked{% endif %}>
+                                            <label class="form-check-label" for="loc_{{ forloop.counter }}">{{ location.location }} <span>({{ location.count }})</span></label>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="apply-btn">
+                                <button type="submit" class="btn">Apply Now</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </aside>
             </div>
         </div>
     </div>
 </section>
 <!-- animal-area-end -->
-    </main>
-    <!-- main-area-end -->
+</main>
+<!-- main-area-end -->
 
 {% endblock content %}
-
-
-
-
-
-

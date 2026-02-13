@@ -1,54 +1,59 @@
-
 {% load static %}
 <!doctype html>
 <html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block title %} {% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" />
 
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
     <!-- Place favicon.ico in the root directory -->
     <!-- CSS here -->
-<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/flaticon_pet_care.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/odometer.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/default.css' %}">
-<link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon_pet_care.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/odometer.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
+        integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-    {% comment %} <!--Preloader-->
-    <div id="preloader">
-        <div id="loader" class="loader">
-            <div class="loader-container">
-                <div class="loader-icon"><img src="{% static "assets/img/logo/preloader.svg" %} " alt="Preloader"></div>
-            </div>
+{% comment %} <!--Preloader-->
+<div id="preloader">
+    <div id="loader" class="loader">
+        <div class="loader-container">
+            <div class="loader-icon"><img src="{% static 'assets/img/logo/preloader.svg' %}" alt=" Preloader"></div>
         </div>
     </div>
-    <!--Preloader-end -->
+</div>
+<!--Preloader-end -->
 
-    <!-- Scroll-top -->
-    <button class="scroll__top scroll-to-target" data-target="html">
-        <i class="fas fa-angle-up"></i>
-    </button>
-    <!-- Scroll-top-end--> {% endcomment %}
+<!-- Scroll-top -->
+<button class="scroll__top scroll-to-target" data-target="html">
+    <i class="fas fa-angle-up"></i>
+</button>
+<!-- Scroll-top-end--> {% endcomment %}
+
 <body>
     {% block header %}
     <!--Preloader-->
     <div id="preloader">
         <div id="loader" class="loader">
             <div class="loader-container">
-                <div class="loader-icon"><img src="{% static "assets/img/logo/preloader.svg" %} " alt="Preloader"></div>
+                <div class="loader-icon"><img src="{% static 'assets/img/logo/preloader.svg' %}" alt=" Preloader">
+                </div>
             </div>
         </div>
     </div>
@@ -74,39 +79,39 @@
                                         <ul class="navigation">
                                             <li class="menu-item-has-children"><a href="#">Home</a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="{% url "home" %}">Pet Care & Veterinary</a></li>
-                                                    <li><a href="{% url "petbreed" %}">Pet Breed</a></li>
-                                                    <li><a href="{% url "petadopt" %}">Pet Adopt</a></li>
+                                                    <li><a href="{% url 'home' %}">Pet Care & Veterinary</a></li>
+                                                    <li><a href="{% url 'petbreed' %}">Pet Breed</a></li>
+                                                    <li><a href="{% url 'petadopt' %}">Pet Adopt</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="active"><a href="{% url "about" %}">About</a></li>
+                                            <li class="active"><a href="{% url 'about' %}">About</a></li>
                                             <li class="menu-item-has-children"><a href="#">Shop</a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="{% url "shophome" %}">Our Shop</a></li>
-                                                    <li><a href="{% url "shop" %}">Shop Details</a></li>
-                                                     <li><a href="{% url "petshop" %}">Pets Available</a></li>
+                                                    <li><a href="{% url 'shophome' %}">Our Shop</a></li>
+                                                    <li><a href="{% url 'shop' %}">Shop Details</a></li>
+                                                    <li><a href="{% url 'petshop' %}">Pets Available</a></li>
                                                 </ul>
                                             </li>
                                             <li class="menu-item-has-children"><a href="#">Pages</a>
                                                 <ul class="sub-menu">
-                                                <li><a href="{% url "petshop" %}">All Pets</a></li>
-                                                <li><a href="{% url "orderslist" %}">My Orders</a></li>
-                                                <li><a href="{% url "petadoption" %}">Pet Details</a></li>
-                                                <li><a href="{% url "gallery" %}">Gallery</a></li>
-                                                <li><a href="{% url "faq" %}">Faq Page</a></li>
-                                                <li><a href="{% url "ourteam" %}">Our Team</a></li>
-                                                <li><a href="{% url "teamdetails" %}">Team Details</a></li>
-                                                <li><a href="{% url "blog" %}">Our Blog</a></li>
-                                                <li><a href="{% url "ourblog" %}">Blog Details</a></li>
+                                                    <li><a href="{% url 'petshop' %}">All Pets</a></li>
+                                                    <li><a href="{% url 'orderslist' %}">My Orders</a></li>
+                                                    <li><a href="{% url 'petadoption' %}">Pet Details</a></li>
+                                                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                                                    <li><a href="{% url 'faq' %}">Faq Page</a></li>
+                                                    <li><a href="{% url 'ourteam' %}">Our Team</a></li>
+                                                    <li><a href="{% url 'teamdetails' %}">Team Details</a></li>
+                                                    <li><a href="{% url 'blog' %}">Our Blog</a></li>
+                                                    <li><a href="{% url 'ourblog' %}">Blog Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="{% url "contact" %}">contacts</a></li>
+                                            <li><a href="{% url 'contact' %}">contacts</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-xl-2 col-md-4">
                                     <div class="logo text-center">
-                                        <a href="#"><img src="{% static "assets/img/logo/w_logo.png" alt="Logo" %}"></a>
+                                        <a href="#"><img src="{% static 'assets/img/logo/w_logo.png' %}" alt="Logo"></a>
                                     </div>
                                 </div>
                                 <div class="col-xl-5 col-md-8">
@@ -124,13 +129,13 @@
                                                 </a>
                                             </li>
                                             {% if user.is_authenticated %}
-                                                <li class="header-btn login-btn"><a href="{% url "home" %}" class="btn"><i
-                                                            class="fas fa-user"></i>{{user.username}}</a></li>
-                                                <li class="header-btn login-btn"><a href="{% url "logout" %}" class="btn"><i
-                                                            class="fas fa-sign-out-alt"></i>Logout</a></li>
+                                            <li class="header-btn login-btn"><a href="{% url 'home' %}" class="btn"><i
+                                                        class="fas fa-user"></i>{{user.username}}</a></li>
+                                            <li class="header-btn login-btn"><a href="{% url 'logout' %}" class="btn"><i
+                                                        class="fas fa-sign-out-alt"></i>Logout</a></li>
                                             {% else %}
-                                                <li class="header-btn login-btn"><a href="{% url "login" %}" class="btn"><i
-                                                            class="flaticon-locked"></i>Login</a></li>
+                                            <li class="header-btn login-btn"><a href="{% url 'login' %}" class="btn"><i
+                                                        class="flaticon-locked"></i>Login</a></li>
                                             {% endif %}
                                         </ul>
                                     </div>
@@ -146,7 +151,7 @@
                             <nav class="tgmobile__menu-box">
                                 <div class="close-btn"><i class="fas fa-times"></i></div>
                                 <div class="nav-logo">
-                                    <a href=""><img src="{% static "assets/img/logo/logo.png" %} " alt="Logo"></a>
+                                    <a href=""><img src="{% static 'assets/img/logo/logo.png' %}" alt=" Logo"></a>
                                 </div>
                                 <div class="tgmobile__search">
                                     <form action="#">
@@ -159,11 +164,16 @@
                                 </div>
                                 <div class="social-links">
                                     <ul class="list-wrap">
-                                        <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="https://www.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-                                        <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="https://www.facebook.com/" target="_blank"><i
+                                                    class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="https://twitter.com/" target="_blank"><i
+                                                    class="fab fa-twitter"></i></a></li>
+                                        <li><a href="https://www.whatsapp.com/" target="_blank"><i
+                                                    class="fab fa-whatsapp"></i></a></li>
+                                        <li><a href="https://www.instagram.com/" target="_blank"><i
+                                                    class="fab fa-instagram"></i></a></li>
+                                        <li><a href="https://www.youtube.com/" target="_blank"><i
+                                                    class="fab fa-youtube"></i></a></li>
                                     </ul>
                                 </div>
                             </nav>
@@ -183,9 +193,12 @@
                         <div class="search__wrapper">
                             <div class="search__close">
                                 <button type="button" class="search-close-btn">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17 1L1 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M1 1L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 1L1 17" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M1 1L17 17" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
                                     </svg>
                                 </button>
                             </div>
@@ -195,9 +208,15 @@
                                         <input class="search-input-field" type="text" placeholder="Type keywords here">
                                         <span class="search-focus-border"></span>
                                         <button>
-                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9.55 18.1C14.272 18.1 18.1 14.272 18.1 9.55C18.1 4.82797 14.272 1 9.55 1C4.82797 1 1 4.82797 1 9.55C1 14.272 4.82797 18.1 9.55 18.1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                <path d="M19.0002 19.0002L17.2002 17.2002" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M9.55 18.1C14.272 18.1 18.1 14.272 18.1 9.55C18.1 4.82797 14.272 1 9.55 1C4.82797 1 1 4.82797 1 9.55C1 14.272 4.82797 18.1 9.55 18.1Z"
+                                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path d="M19.0002 19.0002L17.2002 17.2002" stroke="currentcolor"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
                                             </svg>
                                         </button>
                                     </div>
@@ -217,10 +236,10 @@
     {% endblock header %}
 
     {% block content %}
-        <!-- Main content will be injected here from child templates -->
+    <!-- Main content will be injected here from child templates -->
     {% endblock content %}
 
-     {% include "home/footer.html" %}
+    {% include "home/footer.html" %}
 
     <!-- JS here -->
     <script src="{% static 'assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
@@ -242,11 +261,12 @@
     </script>
 
     {% block js %}
-        <!-- Additional JS scripts can be added here from child templates -->
+    <!-- Additional JS scripts can be added here from child templates -->
     {% endblock js %}
     <script src="{% static 'assets/js/checkout.js'%}"></script>
-    <script src="{% static 'assets/js/checkout2.js'%}"></script>    
-     <script src="{% static 'assets/js/checkpet.js'%}"></script>    
+    <script src="{% static 'assets/js/checkout2.js'%}"></script>
+    <script src="{% static 'assets/js/checkpet.js'%}"></script>
 
 </body>
+
 </html>
