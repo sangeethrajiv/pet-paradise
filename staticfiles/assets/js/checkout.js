@@ -38,7 +38,7 @@ $(document).ready(function () {
         success: function (response) {
           if (response.total_price) {
             var options = {
-              key: "", // Enter the Key ID generated from the Dashboard
+              key: response.razorpay_key, // Dynamically fetched from backend
               amount: response.total_price * 100, // Amount in paise (e.g., 50000 paise = 500 INR)
               currency: "INR",
               name: "Petparadise",

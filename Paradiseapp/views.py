@@ -683,7 +683,10 @@ def calculate_total_price(user):
 def proceed_to_pay(request):
     if request.method == "GET":
         total_price = calculate_total_price(request.user)
-        return JsonResponse({"total_price": total_price})
+        return JsonResponse({
+            "total_price": total_price,
+            "razorpay_key": settings.RAZORPAY_KEY_ID
+        })
     else:
         return JsonResponse({"error": "Invalid request method"})
 
@@ -701,7 +704,10 @@ def proceed_to_pay_view(request):
         product = Product.objects.first()
         if product:
             effective_price = product.price - (product.price * product.discount / 100)
-            response_data = {"total_prices": effective_price}
+            response_data = {
+                "total_prices": effective_price,
+                "razorpay_key": settings.RAZORPAY_KEY_ID
+            }
         else:
             response_data = {"error": "No product found"}
         return JsonResponse(response_data)
