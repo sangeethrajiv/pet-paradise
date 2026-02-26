@@ -18,6 +18,16 @@
 
 **Pet Paradise** is a full-featured, production-grade e-commerce and services web platform built with **Django 5**. It offers a seamlessly integrated experience for discovering and purchasing pet products, adopting pets, and booking professional care services — all in one place.
 
+<div align="center">
+
+### 📸 App Preview
+
+| Home Page | Product Shop | Pet Adoption |
+| :---: | :---: | :---: |
+| ![Home](screenshots/home.png) | ![Shop](screenshots/shop.png) | ![Adoption](screenshots/adoption.png) |
+
+</div>
+
 ---
 
 ## ✨ Features
