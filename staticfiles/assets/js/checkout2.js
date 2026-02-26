@@ -39,7 +39,7 @@ $(document).ready(function () {
         success: function (response) {
           if (response.total_prices) {
             var options = {
-              key: "rzp_test_MFikh57HLh7CDc", // Replace with your Razorpay Key ID
+              key: "", // Replace with your Razorpay Key ID
               amount: response.total_prices * 100, // Amount in paise (e.g., 50000 paise = 500 INR)
               currency: "INR",
               name: "Petparadise",

@@ -183,8 +183,8 @@ LOGIN_URL = "/login-required/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID", "rzp_test_MFikh57HLh7CDc")
-RAZORPAY_SECRET_KEY = os.environ.get("RAZORPAY_SECRET_KEY", "O7kMVBRZy3sVCPpYlNtvaen0")
+RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID", "")
+RAZORPAY_SECRET_KEY = os.environ.get("RAZORPAY_SECRET_KEY", "")
 SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
 
 
@@ -248,6 +248,6 @@ EMAIL_HOST = "smtp.gmail.com"  # Your SMTP server address
 EMAIL_PORT = 587  # Port for SMTP
 EMAIL_USE_TLS = True  # Use TLS (Transport Layer Security)
 # EMAIL_USE_TLS = False # Use TLS (Transport Layer Security)
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "achusangeeth777@gmail.com")  # Your email address
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "npuy phph vdvz cufp")  # Your email password
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")  # Your email address
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")  # Your email password
 

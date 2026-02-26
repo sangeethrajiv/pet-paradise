@@ -38,7 +38,7 @@ $(document).ready(function () {
         success: function (response) {
           if (response.total_price) {
             var options = {
-              key: "rzp_test_MFikh57HLh7CDc", // Enter the Key ID generated from the Dashboard
+              key: "", // Enter the Key ID generated from the Dashboard
               amount: response.total_price * 100, // Amount in paise (e.g., 50000 paise = 500 INR)
               currency: "INR",
               name: "Petparadise",
