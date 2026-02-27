@@ -22,9 +22,9 @@
 
 ### 📸 App Preview
 
-| Home Page | Product Shop | Pet Adoption |
-| :---: | :---: | :---: |
-| ![Home](screenshots/home.png) | ![Shop](screenshots/shop.png) | ![Adoption](screenshots/adoption.png) |
+| Home Page | Product Shop | Pet Adoption | Product Details |
+| :---: | :---: | :---: | :---: |
+| ![Home](screenshots/home.png) | ![Shop](screenshots/shop.png) | ![Adoption](screenshots/adoption.png) | ![Details](screenshots/product.png) |
 
 </div>
 
